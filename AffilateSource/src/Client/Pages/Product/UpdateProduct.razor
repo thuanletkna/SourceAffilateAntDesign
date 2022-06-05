@@ -7,7 +7,7 @@
 @inject HttpClient Http
 @inject PostApiServices postApi
 @inject NavigationManager NavigationManager
-
+@inject NotificationService _notice
 <style>
     .ant-spin-container {
         position: relative;
@@ -68,7 +68,6 @@
                         Placeholder="Chọn trạng thái cần chỉnh sửa"
                         AllowClear>
                 </Select>
-                @*<Input Placeholder="Chọn trạng thái" @bind-Value="@productUpdateModel.StatusId" />*@
             </AntDesign.FormItem>
         </AntDesign.FormItem>
         <AntDesign.FormItem>

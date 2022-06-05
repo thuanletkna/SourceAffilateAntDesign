@@ -213,14 +213,14 @@
       "netstandard.dll": "sha256-qpOz\/RBwhlIYfaE2GDEmjiproxkvSf2b9GeqHxvH+lg=",
       "System.Private.CoreLib.dll": "sha256-sfzSZ3YKC2rpF77TVOKLuPgQag93QXr9U4AUc9d\/LKA=",
       "AffilateSource.Shared.dll": "sha256-4JyXOs2oMsEtFSr1NCX9+hA3TkChnrGR7e8Wk2PNGfI=",
-      "AffilateSource.Client.dll": "sha256-vY\/m4fqyka9DURo\/OgQ9koJ6UJHiM\/G0I1z2yhaUifY="
+      "AffilateSource.Client.dll": "sha256-g4B0RPWaiWODV34Rsnr9U9GDEc1maKbRLBtjef1eu3k="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
       "AffilateSource.Shared.pdb": "sha256-l8eM2jOyu1lkEs\/f027+4OV8R7MKydZ9uVSTUf9tztA=",
-      "AffilateSource.Client.pdb": "sha256-Fhu1WUxpDYKe7uIvaEtcc67i9o3xUU6YWXHQ2wuDJyQ="
+      "AffilateSource.Client.pdb": "sha256-mcR34MhGmB83E6FoqE+ub4HvmrvyW90vVZAsSj6aXDk="
     },
     "runtime": {
       "dotnet.6.0.5.s7iri0fah9.js": "sha256-783uOt0jgblQfP6Yz5TJeuW2xxtl6UHZQPngZtCz79U=",

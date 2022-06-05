@@ -1,10 +1,11 @@
 ﻿@page "/product/create-product"
 @using AffilateSource.Client.Services
+@using AffilateSource.Shared.ViewModel.Status
 @using Telerik.Blazor.Components.Editor
 @inject HttpClient Http
 @inject PostApiServices postApi
 @inject NavigationManager NavigationManager
-
+@inject NotificationService _notice
 <PageContainer Title="Tạo mới sản phẩm">
     <Form Model="@productCreateViewModel"
           OnFinish="CreateProductAsync">
@@ -41,7 +42,13 @@
             </AntDesign.FormItem>
             <AntDesign.FormItem Style="display: inline-block; width: calc(50% - 10px)">
                 <Text>Trạng thái</Text>
-                <Input Placeholder="Chọn trạng thái" @bind-Value="@productCreateViewModel.StatusId" />
+                <Select DataSource="@StatusViewModel"
+                        @bind-Value="@productCreateViewModel.StatusId"
+                        LabelName="@nameof(StatusVm.StatusName)"
+                        ValueName="@nameof(StatusVm.StatusId)"
+                        Placeholder="Chọn trạng thái cần chỉnh sửa"
+                        AllowClear>
+                </Select>
             </AntDesign.FormItem>
         </AntDesign.FormItem>
         <AntDesign.FormItem Style="margin-bottom: 0px;">

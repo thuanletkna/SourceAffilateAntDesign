@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Components.Web;
 using AffilateSource.Shared.ViewModel.Post;
 using AffilateSource.Shared.ViewModel.Category;
 using AffilateSource.Shared.ViewModel.Product;
+using AntDesign;
+using AffilateSource.Shared.ViewModel.Status;
 
 namespace AffilateSource.Client.Pages.Product
 {
@@ -27,7 +29,7 @@ namespace AffilateSource.Client.Pages.Product
         public CategoriesSelectViewModel categoryQuickVM { get; set; }
         public ProductSelectViewModel productSelectViewModel { get; set; }
         public PostHomeViewModel DataPostLast { get; set; }
-
+        public List<StatusVm> StatusViewModel { get; set; } = new List<StatusVm>();
         // file upload image
         public string SaveUrl => ToAbsoluteUrl("api/upload/Save");
 
@@ -46,13 +48,21 @@ namespace AffilateSource.Client.Pages.Product
             var checkname = await Http.PostAsJsonAsync("/Product/CreateProduct", productCreateViewModel);
             if (checkname.IsSuccessStatusCode)
             {
-                // hub realtime signalR
-               
-                
+                await _notice.Open(new NotificationConfig()
+                {
+                    Message = "Thêm mới sản phẩm thành công",
+                    NotificationType = NotificationType.Success
+                });
+                NavigationManager.NavigateTo("/");
+
             }
             else
             {
-                
+                await _notice.Open(new NotificationConfig()
+                {
+                    Message = "Lỗi",
+                    NotificationType = NotificationType.Error
+                });
             }
         }
         #endregion actionCreateEmployee
@@ -89,6 +99,7 @@ namespace AffilateSource.Client.Pages.Product
         protected override async Task OnInitializedAsync()
         {
             CategoryParent = await postApi.GetdataSelectCategoryByParentId("Categories", "GetCategoriesByParentId", 2);
+            StatusViewModel = await postApi.GetDataSelectStatus("Status", "GetListSatatus");
         }
         async Task GetPostDetailById()
         {

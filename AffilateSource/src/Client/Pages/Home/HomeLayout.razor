@@ -7,6 +7,59 @@
 @inject NavigationManager NavigationManager
 
 <PageContainer Title="Danh sách bài đăng">
+    @*Lọc *@
+<div style="margin-bottom:15px">
+    <Space>
+        <SpaceItem>
+            <TelerikDropDownList Data="@filtterRequest.dataSelectCategoryFilter" Class="drl_nhanvien"
+                                 TextField="DisplayText"
+                                 Filterable="true"
+                                 ValueField="ValueText"
+                                 DefaultText="Chọn danh mục"
+                                 ValueChanged="@( (string v) => SelectChangeHandlerCategory(v, "CategoryParentId") )">
+                <DropDownListSettings>
+                    <DropDownListPopupSettings Height="300px" />
+                </DropDownListSettings>
+            </TelerikDropDownList>
+        </SpaceItem>
+        @*<SpaceItem>
+            <TelerikDropDownList Data="@filtterRequest.dataSelectPhongBan" Class="drl_phongban"
+                                 TextField="DisplayText"
+                                 ValueField="ValueText"
+                                 DefaultText="Chọn phòng ban"
+                                 ValueChanged="@( (string v) => SelectChangeHandlerPhongBan(v, "PhongBan") )">
+            </TelerikDropDownList>
+        </SpaceItem>
+        <SpaceItem>
+            <TelerikDropDownList Data="@filtterRequest.dataSelectKhuVuc" Class="drl_khuvuc"
+                                 TextField="DisplayText"
+                                 ValueField="ValueText"
+                                 DefaultText="Chọn khu vực"
+                                 ValueChanged="@( (string v) => SelectChangeHandlerKhuVuc(v, "KhuVuc") )">
+                <DropDownListSettings>
+                    <DropDownListPopupSettings Height="140px" />
+                </DropDownListSettings>
+            </TelerikDropDownList>
+        </SpaceItem>*@
+        <SpaceItem>
+            <TelerikDropDownList Data="@filtterRequest.dataSelectStatus" Class="drl_khuvuc"
+                                 TextField="StatusName"
+                                 ValueField="StatusId"
+                                 DefaultText="Chọn trạng thái"
+                                 ValueChanged="@( (string v) => SelectChangeHandlerStatus(v, "StatusId") )">
+                <DropDownListSettings>
+                    <DropDownListPopupSettings Height="140px" />
+                </DropDownListSettings>
+            </TelerikDropDownList>
+        </SpaceItem>
+        <SpaceItem>
+            <TelerikButton Class="btn-loc-header" ThemeColor="@(ThemeConstants.Button.ThemeColor.Warning)" OnClick="@RefreshGrid" Enabled="@(!Visible)">
+                Lọc
+                <TelerikLoader Class="loader-indicator" ThemeColor="light" Visible="@Visible"></TelerikLoader>
+            </TelerikButton>
+        </SpaceItem>
+    </Space>
+</div>
 <TelerikGrid TItem="@PostHomeViewModel" OnRead=@ReadItems ScrollMode="@GridScrollMode.Scrollable"
              FilterMode="@GridFilterMode.None"
              SelectionMode="@selectionMode"

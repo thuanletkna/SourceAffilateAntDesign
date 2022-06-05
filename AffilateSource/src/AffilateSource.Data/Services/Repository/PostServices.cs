@@ -453,7 +453,7 @@ namespace AffilateSource.Data.Services.Repository
                         where += KendoApplyFilter.ApplyFilter(request.Filters[0], "");
                     string sort = KendoApplyFilter.GetSorts<PostHomeViewModel>(request);
                     result.Data = await conn.QueryAsync<PostHomeViewModel>("[POST_GetAllPostFilterAdmin]",
-                        new { @pageSize = request.PageSize, @page = request.Page, where, @orderBy = sort }, commandType: CommandType.StoredProcedure);
+                        new { @pageSize = request.PageSize, @page = request.Page, @where = where, @orderBy = sort }, commandType: CommandType.StoredProcedure);
                     result.Total = await conn.QueryFirstOrDefaultAsync<int>("[POST_GetAllPostFilterAdminTotal]", new { where }, commandType: CommandType.StoredProcedure);
                 }
                 catch (Exception ex)
