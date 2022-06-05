@@ -22,3 +22,15 @@ D:\AffilateSourceGithub_Ant\AffilateSource_antpro\AffilateSource\src\Shared\obj\
 D:\AffilateSourceGithub_Ant\AffilateSource_antpro\AffilateSource\src\Shared\obj\Debug\net6.0\refint\AffilateSource.Shared.dll
 D:\AffilateSourceGithub_Ant\AffilateSource_antpro\AffilateSource\src\Shared\obj\Debug\net6.0\AffilateSource.Shared.pdb
 D:\AffilateSourceGithub_Ant\AffilateSource_antpro\AffilateSource\src\Shared\obj\Debug\net6.0\ref\AffilateSource.Shared.dll
+D:\SourceAffilateAntDesignGit\SourceAffilateAntDesign\AffilateSource\src\Shared\bin\Debug\net6.0\AffilateSource.Shared.deps.json
+D:\SourceAffilateAntDesignGit\SourceAffilateAntDesign\AffilateSource\src\Shared\bin\Debug\net6.0\AffilateSource.Shared.dll
+D:\SourceAffilateAntDesignGit\SourceAffilateAntDesign\AffilateSource\src\Shared\bin\Debug\net6.0\AffilateSource.Shared.pdb
+D:\SourceAffilateAntDesignGit\SourceAffilateAntDesign\AffilateSource\src\Shared\obj\Debug\net6.0\AffilateSource.Shared.csproj.AssemblyReference.cache
+D:\SourceAffilateAntDesignGit\SourceAffilateAntDesign\AffilateSource\src\Shared\obj\Debug\net6.0\AffilateSource.Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\SourceAffilateAntDesignGit\SourceAffilateAntDesign\AffilateSource\src\Shared\obj\Debug\net6.0\AffilateSource.Shared.AssemblyInfoInputs.cache
+D:\SourceAffilateAntDesignGit\SourceAffilateAntDesign\AffilateSource\src\Shared\obj\Debug\net6.0\AffilateSource.Shared.AssemblyInfo.cs
+D:\SourceAffilateAntDesignGit\SourceAffilateAntDesign\AffilateSource\src\Shared\obj\Debug\net6.0\AffilateSource.Shared.csproj.CoreCompileInputs.cache
+D:\SourceAffilateAntDesignGit\SourceAffilateAntDesign\AffilateSource\src\Shared\obj\Debug\net6.0\AffilateSource.Shared.dll
+D:\SourceAffilateAntDesignGit\SourceAffilateAntDesign\AffilateSource\src\Shared\obj\Debug\net6.0\refint\AffilateSource.Shared.dll
+D:\SourceAffilateAntDesignGit\SourceAffilateAntDesign\AffilateSource\src\Shared\obj\Debug\net6.0\AffilateSource.Shared.pdb
+D:\SourceAffilateAntDesignGit\SourceAffilateAntDesign\AffilateSource\src\Shared\obj\Debug\net6.0\ref\AffilateSource.Shared.dll

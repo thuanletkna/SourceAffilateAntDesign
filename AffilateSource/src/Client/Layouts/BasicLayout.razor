@@ -3,7 +3,7 @@
 <TelerikRootComponent>
 <AntDesign.ProLayout.BasicLayout 
     Logo="@("https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg")"
-    MenuData="MenuData">
+    MenuData="_menuData">
     <RightContentRender>
         <AffilateSource.Components.RightContent />
     </RightContentRender>
@@ -18,13 +18,14 @@
 
 @code
 {
-    @inject HttpClient HttpClient
-    private MenuDataItem[] MenuData { get; set; } = { };
+    private MenuDataItem[] _menuData = { };
+
+    [Inject] public HttpClient HttpClient { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
-        MenuData = await HttpClient.GetFromJsonAsync<MenuDataItem[]>("data/menu.json");
+        _menuData = await HttpClient.GetFromJsonAsync<MenuDataItem[]>("data/menu.json");
     }
 
     public LinkItem[] Links { get; set; } =
