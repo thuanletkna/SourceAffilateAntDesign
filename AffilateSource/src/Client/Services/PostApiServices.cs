@@ -3,6 +3,7 @@ using AffilateSource.Shared.ViewModel.Category;
 using AffilateSource.Shared.ViewModel.Filter;
 using AffilateSource.Shared.ViewModel.Post;
 using AffilateSource.Shared.ViewModel.Product;
+using AffilateSource.Shared.ViewModel.Status;
 using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
@@ -103,6 +104,20 @@ namespace AffilateSource.Client.Services
             else
             {
                 return new List<PostHomeViewModel>();
+            }
+        }
+        public async Task<List<StatusVm>> GetDataSelectStatus(string controller, string action)
+        {
+            HttpResponseMessage response = await Http.GetAsync(controller + "/" + action);
+
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                var content = await response.Content.ReadFromJsonAsync<List<StatusVm>>();
+                return content;
+            }
+            else
+            {
+                return new List<StatusVm>();
             }
         }
         public async Task<List<PostDetailVm>> GetPostDetailById(string controller, string action)

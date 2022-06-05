@@ -5,57 +5,59 @@
 @inject PostApiServices postApi
 @inject NavigationManager NavigationManager
 
-<TelerikGrid TItem="@ProductHomeViewModel" OnRead=@ReadItems ScrollMode="@GridScrollMode.Scrollable"
-             FilterMode="@GridFilterMode.None"
-             SelectionMode="@selectionMode"
-             @bind-SelectedItems="@SelectedItems"
-             @ref="@DataSource"
-             Pageable="true"
-             @bind-PageSize="@PageSize" @bind-Page="@Page" Height="95vh">
-    <GridToolBar>
-        <Space>
-            @*<SpaceItem>
-                    <AntDesign.Button Icon="plus" Size="@ButtonSize.Large" Type="primary" @onclick="_=>open()">Thêm mới nhân viên</AntDesign.Button>
+<PageContainer Title="Danh sách sản phẩm">
+    <TelerikGrid TItem="@ProductHomeViewModel" OnRead=@ReadItems ScrollMode="@GridScrollMode.Scrollable"
+                 FilterMode="@GridFilterMode.None"
+                 SelectionMode="@selectionMode"
+                 @bind-SelectedItems="@SelectedItems"
+                 @ref="@DataSource"
+                 Pageable="true"
+                 @bind-PageSize="@PageSize" @bind-Page="@Page">
+        <GridToolBar>
+            <Space>
+                @*<SpaceItem>
+                <AntDesign.Button Icon="plus" Size="@ButtonSize.Large" Type="primary" @onclick="_=>open()">Thêm mới nhân viên</AntDesign.Button>
                 </SpaceItem>*@
-            @*<SpaceItem>
-                    <AntDesign.Button Style="background: #aa7ad0;border: #aa7ad0;" Icon="edit" Size="@ButtonSize.Large" Type="@AntDesign.ButtonType.Primary" OnClick=@btnUpdatePhongban>Cập nhật phòng ban</AntDesign.Button>
+                @*<SpaceItem>
+                <AntDesign.Button Style="background: #aa7ad0;border: #aa7ad0;" Icon="edit" Size="@ButtonSize.Large" Type="@AntDesign.ButtonType.Primary" OnClick=@btnUpdatePhongban>Cập nhật phòng ban</AntDesign.Button>
                 </SpaceItem>
                 <SpaceItem>
-                    <AntDesign.Button Style="background: #eab046;border: #eab046;" Icon="edit" Size="@ButtonSize.Large" Type="@AntDesign.ButtonType.Primary" OnClick=@btnUpdateKhuVuc>Cập nhật khu vực</AntDesign.Button>
+                <AntDesign.Button Style="background: #eab046;border: #eab046;" Icon="edit" Size="@ButtonSize.Large" Type="@AntDesign.ButtonType.Primary" OnClick=@btnUpdateKhuVuc>Cập nhật khu vực</AntDesign.Button>
                 </SpaceItem>
                 <SpaceItem>
-                    <AntDesign.Button Style="background: #7ad07b;border: #7ad07b;" Icon="edit" Size="@ButtonSize.Large" Type="edit" OnClick=@btnUpdateStatus>Cập nhật trạng thái</AntDesign.Button>
+                <AntDesign.Button Style="background: #7ad07b;border: #7ad07b;" Icon="edit" Size="@ButtonSize.Large" Type="edit" OnClick=@btnUpdateStatus>Cập nhật trạng thái</AntDesign.Button>
                 </SpaceItem>
                 <SpaceItem>
-                    <AntDesign.Button Style="background: #f7e32a;border: #f7e32a;" Icon="upload" Size="@ButtonSize.Large" Type="upload" OnClick=@(()=> WindowVisibleImportFile = true)>Upload nhân viên</AntDesign.Button>
+                <AntDesign.Button Style="background: #f7e32a;border: #f7e32a;" Icon="upload" Size="@ButtonSize.Large" Type="upload" OnClick=@(()=> WindowVisibleImportFile = true)>Upload nhân viên</AntDesign.Button>
                 </SpaceItem>*@
-        </Space>
-    </GridToolBar>
-    <GridColumns>
-        <GridCheckboxColumn SelectAll="@ShowSelectAll" Width="30px"></GridCheckboxColumn>
-        <GridColumn Field="@(nameof(ProductHomeViewModel.Id))" Editable="false" Title="ID" Width="120px">
-            <Template>
-                @{
-                    var product = context as ProductHomeViewModel;
-                    @product.Id;
-                }
-            </Template>
-        </GridColumn>
-        <GridColumn Field="@(nameof(ProductHomeViewModel.Title))" Editable="false" Title="Tên bài đăng" Width="120px" />
-        <GridColumn Field="@(nameof(ProductHomeViewModel.CategoryName))" Title="Danh mục" Width="120px" />
-        <GridColumn Field="@(nameof(ProductHomeViewModel.Id))" Title="Chỉnh sửa" Width="120px">
-            <Template>
-                @{
-                    var productId = context as ProductHomeViewModel;
-                    <AntDesign.Button Type="primary" >
-                        <a href="/product/update-product/@(productId.Id)"> Chỉnh sửa</a>
-                    </AntDesign.Button>
-                    
-                }
-            </Template>
-        </GridColumn>
-    </GridColumns>
-</TelerikGrid>
+            </Space>
+        </GridToolBar>
+        <GridColumns>
+            <GridCheckboxColumn SelectAll="@ShowSelectAll" Width="30px"></GridCheckboxColumn>
+            <GridColumn Field="@(nameof(ProductHomeViewModel.Id))" Editable="false" Title="ID" Width="120px">
+                <Template>
+                    @{
+                        var product = context as ProductHomeViewModel;
+                        @product.Id
+                        ;
+                    }
+                </Template>
+            </GridColumn>
+            <GridColumn Field="@(nameof(ProductHomeViewModel.Title))" Editable="false" Title="Tên sản phẩm" Width="120px" />
+            <GridColumn Field="@(nameof(ProductHomeViewModel.CategoryName))" Title="Danh mục" Width="120px" />
+            <GridColumn Field="@(nameof(ProductHomeViewModel.Price))" Title="Giá" Width="120px" />
+            @*<GridColumn Field="@(nameof(ProductHomeViewModel.StatusId))" Title="Trạng thái" Width="120px" />*@
+            <GridColumn Field="@(nameof(ProductHomeViewModel.Id))" Title="Chỉnh sửa" Width="120px">
+                <Template>
+                    @{
+                        var productId = context as ProductHomeViewModel;
+                        <AntDesign.Button Type="primary">
+                            <a href="/product/update-product/@(productId.Id)"> Chỉnh sửa</a>
+                        </AntDesign.Button>
 
-
-
+                    }
+                </Template>
+            </GridColumn>
+        </GridColumns>
+    </TelerikGrid>
+</PageContainer>
