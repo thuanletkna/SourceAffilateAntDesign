@@ -9,130 +9,130 @@
 @if (ShowWizard)
 {
     <PageContainer Title="Tạo mới bài đăng">
-    <div style="margin: 0 auto;">
-        <TelerikWizard @bind-Value="@Value" OnFinish="@OnFinishHandler">
-            <WizardSteps>
-                <WizardStep Label="Thêm mới bài đăng" Icon="user" OnChange="@OnRegistrationStepChangeAsync" Valid="@IsRegistrationValid">
-                    <Content>
-                        <TelerikForm Model="@postCreateViewModel"
+        <div style="margin: 0 auto;">
+            <TelerikWizard @bind-Value="@Value" OnFinish="@OnFinishHandler">
+                <WizardSteps>
+                    <WizardStep Label="Thêm mới bài đăng" Icon="user" OnChange="@OnRegistrationStepChangeAsync" Valid="@IsRegistrationValid">
+                        <Content>
+                            <TelerikForm Model="@postCreateViewModel"
                                      @ref="@RegisterForm">
-                            <FormValidation>
-                                <DataAnnotationsValidator></DataAnnotationsValidator>
-                            </FormValidation>
-                            <FormItems>
-                                <Telerik.Blazor.Components.FormItem LabelText="Tên bài đăng*:" Field="@nameof(postCreateViewModel.Title)"></Telerik.Blazor.Components.FormItem>
-                                <Telerik.Blazor.Components.FormItem LabelText="Danh mục bài đăng*:" Field="@nameof(postCreateViewModel.CategoryParentId)">
-                                    <Template>
-                                        <label for="images" class="k-label k-form-label">Danh mục cha bài đăng*:</label>
-                                        <TelerikDropDownList Data="@CategoryParent"
+                                <FormValidation>
+                                    <DataAnnotationsValidator></DataAnnotationsValidator>
+                                </FormValidation>
+                                <FormItems>
+                                    <Telerik.Blazor.Components.FormItem LabelText="Tên bài đăng*:" Field="@nameof(postCreateViewModel.Title)"></Telerik.Blazor.Components.FormItem>
+                                    <Telerik.Blazor.Components.FormItem LabelText="Danh mục bài đăng*:" Field="@nameof(postCreateViewModel.CategoryParentId)">
+                                        <Template>
+                                            <label for="images" class="k-label k-form-label">Danh mục cha bài đăng*:</label>
+                                            <TelerikDropDownList Data="@CategoryParent"
                                                              @bind-Value="@postCreateViewModel.CategoryParentId"
                                                              TextField="CategoryName"
                                                              ValueField="Id"
                                                              DefaultText="Chọn danh mục cha"
                                                              Width="100%">
-                                        </TelerikDropDownList>
-                                    </Template>
-                                </Telerik.Blazor.Components.FormItem>
-                                <Telerik.Blazor.Components.FormItem LabelText="Mô tả ngắn*:" Field="@nameof(postCreateViewModel.Description)">
-                                    <Template>
-                                        <label for="mail" class="k-label k-form-label">Mô tả ngắn*:</label>
-                                        <TelerikEditor Tools="@EditorToolSets.All"
-                                                       Height="200px"
+                                            </TelerikDropDownList>
+                                        </Template>
+                                    </Telerik.Blazor.Components.FormItem>
+                                    <Telerik.Blazor.Components.FormItem LabelText="Mô tả ngắn*:" Field="@nameof(postCreateViewModel.Description)">
+                                        <Template>
+                                            <label for="mail" class="k-label k-form-label">Mô tả ngắn*:</label>
+                                            <TelerikEditor Tools="@EditorToolSets.All"
+                                                       Height="500px"
                                                        @bind-Value="@postCreateViewModel.Description"></TelerikEditor>
-                                    </Template>
-                                </Telerik.Blazor.Components.FormItem>
-                                <Telerik.Blazor.Components.FormItem LabelText="Trạng thái*:" Field="@nameof(postCreateViewModel.StatusId)"></Telerik.Blazor.Components.FormItem>
-                                <Telerik.Blazor.Components.FormItem LabelText="Ảnh bài đăng*:" Field="@nameof(postCreateViewModel.Detail)">
-                                    <Template>
-                                        <label for="images" class="k-label k-form-label">Ảnh bài đăng*:</label>
-                                        <TelerikUpload SaveUrl="@SaveUrl"
+                                        </Template>
+                                    </Telerik.Blazor.Components.FormItem>
+                                    <Telerik.Blazor.Components.FormItem LabelText="Trạng thái*:" Field="@nameof(postCreateViewModel.StatusId)"></Telerik.Blazor.Components.FormItem>
+                                    <Telerik.Blazor.Components.FormItem LabelText="Ảnh bài đăng*:" Field="@nameof(postCreateViewModel.Detail)">
+                                        <Template>
+                                            <label for="images" class="k-label k-form-label">Ảnh bài đăng*:</label>
+                                            <TelerikUpload SaveUrl="@SaveUrl"
                                                        RemoveUrl="@RemoveUrl"
                                                        SaveField="file"
                                                        OnSuccess="@((UploadSuccessEventArgs arg) => OnSuccessHandler(arg, "images"))"
                                                        AllowedExtensions="@(new List<string>() {".jpg", ".png" })" MaxFileSize="1048576">
-                                        </TelerikUpload>
-                                        <div class="col-md-3 col-sm-12">
-                                            @if (!string.IsNullOrEmpty(postCreateViewModel.ImagePost))
-                                            {
-                                                <div class="img-inform">
-                                                    <img style="width: 500px;margin-top: 20px;" src="@postCreateViewModel.ImagePost">
-                                                </div>
-                                            }
-                                        </div>
-                                        <div class="col-md-3 col-sm-12 d-none">
-                                            <TelerikTextBox Enabled="false" @bind-Value="postCreateViewModel.ImagePost" PlaceHolder="VD: example.png" Width="100%" InputMode="text" Class="k-invalidx form-control" Id="images"></TelerikTextBox>
-                                        </div>
-                                    </Template>
-                                </Telerik.Blazor.Components.FormItem>
-                            </FormItems>
-                            <FormButtons></FormButtons>
-                        </TelerikForm>
-                    </Content>
-                </WizardStep>
-                <WizardStep Label="Chi tiết bài đăng" Icon="marker-pin-target" OnChange="@OnShippingStepChange">
-                    <Content>
-                        <AntDesign.Button Type="primary" OnClick="@(()=>{ _visible = true; })">
-                            Thêm mới chi tiết
-                        </AntDesign.Button>
-                        <Modal Title="@title"
+                                            </TelerikUpload>
+                                            <div class="col-md-3 col-sm-12">
+                                                @if (!string.IsNullOrEmpty(postCreateViewModel.ImagePost))
+                                                {
+                                                    <div class="img-inform">
+                                                        <img style="width: 500px;margin-top: 20px;" src="@postCreateViewModel.ImagePost">
+                                                    </div>
+                                                }
+                                            </div>
+                                            <div class="col-md-3 col-sm-12 d-none">
+                                                <TelerikTextBox Enabled="false" @bind-Value="postCreateViewModel.ImagePost" PlaceHolder="VD: example.png" Width="100%" InputMode="text" Class="k-invalidx form-control" Id="images"></TelerikTextBox>
+                                            </div>
+                                        </Template>
+                                    </Telerik.Blazor.Components.FormItem>
+                                </FormItems>
+                                <FormButtons></FormButtons>
+                            </TelerikForm>
+                        </Content>
+                    </WizardStep>
+                    <WizardStep Label="Chi tiết bài đăng" Icon="marker-pin-target" OnChange="@OnShippingStepChange">
+                        <Content>
+                            <AntDesign.Button Type="primary" OnClick="@(()=>{ _visible = true; })">
+                                Thêm mới chi tiết
+                            </AntDesign.Button>
+                            <Modal Title="@title"
                                Visible="@_visible"
                                OnOk="@HandleOkAsync"
                                OnCancel="@HandleCancel"
                                Width="1000">
-                            <TelerikForm Model="@DetailPostsModal">
-                                <FormValidation>
-                                    <DataAnnotationsValidator></DataAnnotationsValidator>
-                                </FormValidation>
-                                <FormItems>
-                                    <Telerik.Blazor.Components.FormItem LabelText="Tiêu đề*: " Field="@nameof(DetailPostsModal.TitleDetail)" />
-                                    <TelerikEditor Tools="@EditorToolSets.All"
+                                <TelerikForm Model="@DetailPostsModal">
+                                    <FormValidation>
+                                        <DataAnnotationsValidator></DataAnnotationsValidator>
+                                    </FormValidation>
+                                    <FormItems>
+                                        <Telerik.Blazor.Components.FormItem LabelText="Tiêu đề*: " Field="@nameof(DetailPostsModal.TitleDetail)" />
+                                        <TelerikEditor Tools="@EditorToolSets.All"
                                                    Height="300px"
                                                    @bind-Value="@DetailPostsModal.Content"></TelerikEditor>
-                                    <Telerik.Blazor.Components.FormItem LabelText="Sản phẩm Affilate*: " Field="@nameof(DetailPostsModal.ProductId)" ColSpan="1">
-                                        <Template>
-                                            <label for="images" class="k-label k-form-label">Sản phẩm Afilate*:</label>
-                                            <TelerikDropDownList Data="@productSelect"
+                                        <Telerik.Blazor.Components.FormItem LabelText="Sản phẩm Affilate*: " Field="@nameof(DetailPostsModal.ProductId)" ColSpan="1">
+                                            <Template>
+                                                <label for="images" class="k-label k-form-label">Sản phẩm Afilate*:</label>
+                                                <TelerikDropDownList Data="@productSelect"
                                                                  @bind-Value="@DetailPostsModal.ProductId"
                                                                  TextField="Title"
                                                                  ValueField="Id"
                                                                  DefaultText="Chọn sản phẩm afilate"
                                                                  Width="100%">
-                                            </TelerikDropDownList>
-                                        </Template>
-                                    </Telerik.Blazor.Components.FormItem>
-                                    <Telerik.Blazor.Components.FormItem LabelText="Trạng thái*: " Field="@nameof(DetailPostsModal.StatusIdDetail)" ColSpan="2" />
-                                    <Telerik.Blazor.Components.FormItem LabelText="Thứ tự chi tiết*: " Field="@nameof(DetailPostsModal.SortDetail)" ColSpan="2" />
-                                </FormItems>
-                                <FormButtons></FormButtons>
-                            </TelerikForm>
-                        </Modal>
+                                                </TelerikDropDownList>
+                                            </Template>
+                                        </Telerik.Blazor.Components.FormItem>
+                                        <Telerik.Blazor.Components.FormItem LabelText="Trạng thái*: " Field="@nameof(DetailPostsModal.StatusIdDetail)" ColSpan="2" />
+                                        <Telerik.Blazor.Components.FormItem LabelText="Thứ tự chi tiết*: " Field="@nameof(DetailPostsModal.SortDetail)" ColSpan="2" />
+                                    </FormItems>
+                                    <FormButtons></FormButtons>
+                                </TelerikForm>
+                            </Modal>
 
-                        <TelerikGrid Data="@GridData"
+                            <TelerikGrid Data="@GridData"
                                      Sortable="true">
-                            <GridColumns>
-                                <GridColumn Field=@nameof(DataPostLast.Id) Title="ID" Width="100px" />
-                                <GridColumn Field=@nameof(DataPostLast.Detail) Title="Hình ảnh" Width="100px">
-                                    @*<Template>
-                                            <img src="@DataPostLast.Detail" alt="@DataPostLast.Detail" width="55" height="35" />
-                                        </Template>*@
-                                </GridColumn>
-                                <GridColumn Field=@nameof(DataPostLast.Title) Title="Tên bài đăng" />
-                            </GridColumns>
-                            <DetailTemplate>
-                                @{
+                                <GridColumns>
+                                    <GridColumn Field=@nameof(DataPostLast.Id) Title="ID" Width="100px" />
+                                    <GridColumn Field=@nameof(DataPostLast.Detail) Title="Hình ảnh" Width="100px">
+                                        @*<Template>
+                                    <img src="@DataPostLast.Detail" alt="@DataPostLast.Detail" width="55" height="35" />
+                                    </Template>*@
+                                    </GridColumn>
+                                    <GridColumn Field=@nameof(DataPostLast.Title) Title="Tên bài đăng" />
+                                </GridColumns>
+                                <DetailTemplate>
+                                    @{
                                     <TelerikGrid Data="@DetailPost"
-                                                 Height="300px"
-                                                 Pageable="true"
-                                                 Sortable="true"
-                                                 PageSize="5">
+                                             Height="300px"
+                                             Pageable="true"
+                                             Sortable="true"
+                                             PageSize="5">
                                         <GridColumns>
                                             <GridColumn Field=@nameof(DetailPosts.SortDetail) Title="Thứ tự hiển thị" />
                                             <GridColumn Field=@nameof(DetailPosts.TitleDetail) Title="Tiêu đề" />
                                             @*<GridColumn Field=@nameof(DetailPosts.Content) Title="Chi tiết bài đăng">
-                                                    <AntDesign.Template>
-                                                        <span>@((MarkupString)DetailPosts.Content)</span>
-                                                    </AntDesign.Template>
-                                                </GridColumn>*@
+                                        <AntDesign.Template>
+                                        <span>@((MarkupString)DetailPosts.Content)</span>
+                                        </AntDesign.Template>
+                                        </GridColumn>*@
                                             <GridColumn Field=@nameof(DetailPosts.Title) Title="Sản phẩm Affilate" />
                                         </GridColumns>
                                     </TelerikGrid>
@@ -149,7 +149,7 @@
             </WizardSteps>
         </TelerikWizard>
     </div>
-    </PageContainer>
+</PageContainer>
 }
 
 

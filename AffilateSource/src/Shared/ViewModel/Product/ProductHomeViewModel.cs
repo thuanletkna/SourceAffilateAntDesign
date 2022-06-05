@@ -13,7 +13,7 @@ namespace AffilateSource.Shared.ViewModel.Product
         public string Title { get; set; }
         public string CategoryName { get; set; }
         public string ImageProducts { get; set; }
-        public string StatusName { get; set; }
+        public string StatusId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
 

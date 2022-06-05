@@ -5,6 +5,8 @@ using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
 using AffilateSource.Client.Services;
+using AffilateSource.Client.Services.Interface;
+using AffilateSource.Client.Services.Repository;
 using AntDesign.ProLayout;
 using Autofac;
 using Autofac.Core.Activators.Reflection;
@@ -27,6 +29,7 @@ namespace AffilateSource.Client
             builder.Services.AddAntDesign();
             builder.Services.Configure<ProSettings>(builder.Configuration.GetSection("ProSettings"));
             builder.Services.AddScoped<PostApiServices>();
+            //builder.Services.AddScoped<IStatusService, StatusService>();
             await builder.Build().RunAsync();
         }
         private static void ConfigureContainer(ContainerBuilder builder)

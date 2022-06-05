@@ -15,6 +15,7 @@ using AffilateSource.Shared.ViewModel.Filter;
 using Telerik.DataSource;
 using AffilateSource.Shared.ViewModel;
 using AffilateSource.Shared.Kendohelpers;
+using AffilateSource.Shared.ViewModel.Status;
 
 namespace AffilateSource.Client.Pages.Product
 {
@@ -24,6 +25,8 @@ namespace AffilateSource.Client.Pages.Product
 
         ProductCreateViewModel productUpdateModel = new ProductCreateViewModel();
         public List<CategoriesSelectViewModel> CategoryParent { get; set; } = new List<CategoriesSelectViewModel>();
+        public List<StatusVm> StatusViewModel { get; set; } = new List<StatusVm>();
+        public StatusVm statusVm { get; set; }
         public FilterRequest filtterRequest { get; set; } = new FilterRequest { };
         public class FilterRequest
         {
@@ -106,6 +109,7 @@ namespace AffilateSource.Client.Pages.Product
             await GetSelectListValue();
             productUpdateModel = await postApi.GetDetailProductByIdAdmin("Product", "GetDetailsProductUpdateById", id);
             CategoryParent = await postApi.GetdataSelectCategoryByParentId("Categories", "GetCategoriesByParentId", 2);
+            StatusViewModel = await postApi.GetDataSelectStatus("Status", "GetListSatatus");
         }
         async Task UpdateProductAsync()
         {

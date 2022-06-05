@@ -24,6 +24,7 @@ namespace AffilateSource.Data.Extensions
             services.AddTransient<ISequenceService, SequenceService>();
             services.AddTransient<IStorageService,FileStorageService>();
             services.AddTransient<IContactServices,ContactServices>();
+            services.AddTransient<IStatusServices,StatusServices>();
             var sqlConnectionConfiguration = new SqlConnectionConfiguration(Configuration.GetConnectionString("DefaultConnection"));
             services.AddSingleton(sqlConnectionConfiguration);
             return services;
