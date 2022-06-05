@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Telerik.DataSource;
 
 namespace AffilateSource.Server.Controllers
 {
@@ -19,9 +20,7 @@ namespace AffilateSource.Server.Controllers
         public CategoriesController(ICategoriesServices categoriesServices, ApplicationDbContext context)
         {
             _categoriesServices = categoriesServices;
-            //_sequenceService = sequenceService;
             _context = context;
-            //_storageService = storageService;
         }
         
         [HttpPost("GetCategoriesByParentId")]
@@ -36,6 +35,12 @@ namespace AffilateSource.Server.Controllers
             {
                 return Ok(categoryParents);
             }
+        }
+        [HttpPost("GetCategoryPagingFilterAdmin")]
+        public async Task<DataSourceResult> GetCategoryPagingFilterAdmin([FromBody] DataSourceRequest request)
+        {
+            var post = await _categoriesServices.GetCategoryPagingFilterAdmin(request);
+            return post;
         }
     }
 }
