@@ -1,0 +1,200 @@
+﻿@page "/post/update-post/{id:int}"
+@using AffilateSource.Client.Services
+@using AffilateSource.Shared.ViewModel.Filter
+@using AffilateSource.Shared.ViewModel.Post
+@using Telerik.Blazor.Components.Editor
+@inject HttpClient Http
+@inject PostApiServices postApi
+@inject NavigationManager NavigationManager
+@inject NotificationService _notice
+<style>
+    .ant-tabs {
+        margin: 42px 24px 50px;
+    }
+</style>
+<PageContainer Title="Chỉnh sửa bài đăng">
+<div class="card-container">
+    <Tabs @bind-ActiveKey="@activeKey" OnChange="OnTabChange" Animated>
+        <TabPane Key="1" Tab="Bài đăng">
+            <p>Content of Tab Pane 1</p>
+            <p>Content of Tab Pane 1</p>
+            <p>Content of Tab Pane 1</p>
+        </TabPane>
+        <TabPane Key="2" Tab="Chỉnh sửa bài đăng">
+            <Form Model="@postEditViewModel"
+                    Size="AntSizeLDSType.Large"
+                    OnFinish="UpdateEmployee">
+                <AntDesign.FormItem>
+                    <Text>ID</Text>
+                    <Input ReadOnly Placeholder="ID" @bind-Value="@context.Id" />
+                </AntDesign.FormItem>
+                <AntDesign.FormItem>
+                    <Text>Tên bài đăng</Text>
+                    <Input Style="margin-top: 10px;" Placeholder="Mã chấm công" @bind-Value="@context.Title" />
+                </AntDesign.FormItem>
+                <AntDesign.FormItem>
+                    <Text>Danh mục</Text>
+                    <Select DataSource="@filtterRequest.dataSelectCategoryFilter"
+                            @bind-Value="@context.CategoryParentId"
+                            LabelName="@nameof(SelectModel.DisplayText)"
+                            ValueName="@nameof(SelectModel.ValueText)"
+                            Placeholder="Chọn danh mục chỉnh sửa"
+                            AllowClear>
+                    </Select>
+                </AntDesign.FormItem>
+                <AntDesign.FormItem>
+                    <Template>
+                        <label for="mail" class="k-label k-form-label">Thông tin bài đăng:</label>
+                        <TelerikEditor Tools="@EditorToolSets.All"
+                                       Height="500px"
+                                       @bind-Value="@context.Description"></TelerikEditor>
+                    </Template>
+                </AntDesign.FormItem>
+                <AntDesign.FormItem>
+                    <Text>Trạng thái</Text>
+                    <Input Style="margin-top: 10px;" Placeholder="Mã chấm công" @bind-Value="@context.StatusId" />
+                </AntDesign.FormItem>
+                <AntDesign.FormItem>
+                    <Text>Hình ảnh</Text>
+                    <TelerikUpload SaveUrl="@SaveUrl"
+                                   RemoveUrl="@RemoveUrl"
+                                   SaveField="file"
+                                   OnSuccess="@((UploadSuccessEventArgs arg) => OnSuccessHandler(arg, "images"))"
+                                   AllowedExtensions="@(new List<string>() {".jpg", ".png" })" MaxFileSize="1048576">
+                    </TelerikUpload>
+                    <div class="col-md-3 col-sm-12">
+                        @if (!string.IsNullOrEmpty(context.ImagePost))
+                        {
+                            <div class="img-inform">
+                                <img style="width: 500px;margin-top: 20px;" src="@context.ImagePost">
+                            </div>
+                        }
+                    </div>
+                    <div class="col-md-3 col-sm-12 d-none">
+                        <TelerikTextBox Enabled="false" @bind-Value="context.ImagePost" PlaceHolder="VD: example.png" Width="100%" InputMode="text" Class="k-invalidx form-control" Id="images"></TelerikTextBox>
+                    </div>
+                    @*<Input Placeholder="Mã chấm công" @bind-Value="@context.ImagePost" />*@
+                </AntDesign.FormItem>
+                
+                <AntDesign.FormItem WrapperColOffset="8" WrapperColSpan="16" Style="margin-bottom: 0px;">
+                    <Button Type="@AntDesign.ButtonType.Primary" HtmlType="submit">
+                        Cập nhật
+                    </Button>
+                </AntDesign.FormItem>
+            </Form>
+        </TabPane>
+        <TabPane Key="3" Tab="Chỉnh sửa chi tiết bài đăng">
+            <TelerikGrid Data="@DetailPost"
+                         Pageable="true"
+                         Sortable="true"
+                         PageSize="5">
+                <GridColumns>
+                    <GridColumn Field=@nameof(PostDetailVm.SortDetail) Title="Thứ tự hiển thị" />
+                    <GridColumn Field=@nameof(PostDetailVm.TitleDetail) Title="Tiêu đề" />
+                    @*<GridColumn  Field=@nameof(DetailPosts.Content) Title="Chi tiết bài đăng">
+                        <AntDesign.Template>
+                        <span>@((MarkupString)DetailPosts.Content)</span>
+                        </AntDesign.Template>
+                        </GridColumn>*@
+                    <GridColumn Field=@nameof(PostDetailVm.Title) Title="Sản phẩm Affilate" />
+
+                    <GridColumn Field="@(nameof(PostDetailVm.Id))" Title="Chỉnh sửa" Width="120px">
+                        <Template>
+                            @{
+                                //var post = context as DetailPosts;
+                                var post = context as PostDetailVm;
+                                @*<AntDesign.Button Type="primary">
+                                    <a href="/admin/update-post/@(post.Id)"> Chỉnh sửa</a>
+                                    </AntDesign.Button>*@
+
+                                <TelerikButton Class="btn-update-employee" OnClick="@(()=>btnUpdatePostDetails(post.Id))">Chỉnh sửa</TelerikButton>
+                            }
+                        </Template>
+                    </GridColumn>
+                </GridColumns>
+            </TelerikGrid>
+        </TabPane>
+    </Tabs>
+</div>
+</PageContainer>
+<Modal Title="Chỉnh sửa chi tiết bài đăng"
+       Footer=null
+       OnCancel="@HandleCancelDetail"
+       DestroyOnClose="true"
+       Visible="@WindowVisible">
+    <Form Model="@detailUpdate"
+          OnFinish="UpdateDetail">
+        <AntDesign.FormItem Style="display: inline-block;width:472px ">
+            <Text>Mã chấm công</Text>
+            <Input ReadOnly Placeholder="ID" @bind-Value="@context.Id" />
+        </AntDesign.FormItem>
+        <AntDesign.FormItem Style="display: inline-block;width:472px ">
+            <Text>Tiêu đề</Text>
+            <Input Placeholder="ID" @bind-Value="@context.TitleDetail" />
+        </AntDesign.FormItem>
+        <AntDesign.FormItem Style="display: inline-block;width:472px ">
+            <Template>
+                <label for="mail" class="k-label k-form-label">Chi tiết*:</label>
+                <TelerikEditor Tools="@EditorToolSets.All"
+                               Height="500px"
+                               @bind-Value="@context.Content"></TelerikEditor>
+            </Template>
+        </AntDesign.FormItem>
+        <AntDesign.FormItem>
+                    <Text>Danh mục</Text>
+                    <Select DataSource="@productSelect"
+                            @bind-Value="@context.ProductId"
+                            LabelName="@nameof(productSelectViewModel.Title)"
+                            ValueName="@nameof(productSelectViewModel.Id)"
+                            Placeholder="Chọn danh mục chỉnh sửa"
+                            AllowClear>
+                    </Select>
+                </AntDesign.FormItem>
+        <AntDesign.FormItem Style="display: inline-block;width:472px ">
+            <Text>Trạng thái</Text>
+            <Input Placeholder="Trạng thái" @bind-Value="@context.StatusId" />
+        </AntDesign.FormItem>
+        <AntDesign.FormItem Style="display: inline-block;width:472px ">
+            <Text>Thứ tự hiển thị</Text>
+            <Input Placeholder="Trạng thái" @bind-Value="@context.SortDetail" />
+        </AntDesign.FormItem>
+        <AntDesign.FormItem WrapperColOffset="8" WrapperColSpan="16" Style="margin-bottom: 0px;">
+            <Button Type="@AntDesign.ButtonType.Primary" HtmlType="submit">
+                Cập nhật
+            </Button>
+        </AntDesign.FormItem>
+    </Form>
+</Modal>
+
+
+
+<style>
+    [data-theme='compact'] .card-container .ant-tabs-card .ant-tabs-content,
+    .card-container .ant-tabs-card .ant-tabs-content {
+        height: 120px;
+        margin-top: -16px;
+    }
+
+        [data-theme='compact'] .card-container .ant-tabs-card .ant-tabs-content .ant-tabs-tabpane,
+        .card-container .ant-tabs-card .ant-tabs-content .ant-tabs-tabpane {
+            background: #fff;
+            padding: 16px;
+        }
+
+    [data-theme='compact'] .card-container .ant-tabs-card .ant-tabs-bar,
+    .card-container .ant-tabs-card .ant-tabs-bar {
+        border-color: #fff;
+    }
+
+        [data-theme='compact'] .card-container .ant-tabs-card .ant-tabs-bar .ant-tabs-tab,
+        .card-container .ant-tabs-card .ant-tabs-bar .ant-tabs-tab {
+            border-color: transparent;
+            background: transparent;
+        }
+
+        [data-theme='compact'] .card-container .ant-tabs-card .ant-tabs-bar .ant-tabs-tab-active,
+        .card-container .ant-tabs-card .ant-tabs-bar .ant-tabs-tab-active {
+            border-color: #fff;
+            background: #fff;
+        }
+</style>

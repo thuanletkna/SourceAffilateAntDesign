@@ -1,0 +1,92 @@
+﻿@page "/product/create-product"
+@using AffilateSource.Client.Services
+@using Telerik.Blazor.Components.Editor
+@inject HttpClient Http
+@inject PostApiServices postApi
+@inject NavigationManager NavigationManager
+
+<Form Model="@productCreateViewModel"
+      OnFinish="CreateProductAsync">
+    <AntDesign.FormItem Style="margin-bottom: 0px;">
+        <AntDesign.FormItem Style="display: inline-block; width: calc(50% - 10px)">
+            <Text>Tên sản phẩm</Text>
+            <Input Placeholder="Nhập tên sản phẩm" @bind-Value="@productCreateViewModel.Title"></Input>
+        </AntDesign.FormItem>
+        <AntDesign.FormItem Style="display: inline-block; width: calc(50% - 10px)">
+            <Text>Danh mục sản phẩm</Text>
+            <TelerikDropDownList Data="@CategoryParent"
+                                 @bind-Value="@productCreateViewModel.CategoryParentId"
+                                 TextField="CategoryName"
+                                 ValueField="Id"
+                                 DefaultText="Chọn danh mục cha"
+                                 Width="100%">
+            </TelerikDropDownList>
+        </AntDesign.FormItem>
+    </AntDesign.FormItem>
+    <AntDesign.FormItem Style="margin-bottom: 0px;">
+            <Text>Thông tin sản phẩm</Text>
+            <Input Placeholder="Nhập mô tả khoảng 10-20 ký tự" @bind-Value="@productCreateViewModel.Description"></Input>
+    </AntDesign.FormItem>
+    <AntDesign.FormItem Style="margin-bottom: 0px;">
+            <Text>Mô tả chi tiết sản phẩm</Text>
+            <TelerikEditor Tools="@EditorToolSets.All"
+                           Height="200px"
+                           @bind-Value="@productCreateViewModel.Detail"></TelerikEditor>
+    </AntDesign.FormItem>
+    <AntDesign.FormItem Style="margin-bottom: 0px;">
+        <AntDesign.FormItem Style="display: inline-block; width: calc(50% - 10px)">
+            <Text>Giá sản phẩm</Text>
+            <Input Placeholder="Nhập giá sản phẩm" @bind-Value="@productCreateViewModel.Price"></Input>
+        </AntDesign.FormItem>
+        <AntDesign.FormItem Style="display: inline-block; width: calc(50% - 10px)">
+            <Text>Trạng thái</Text>
+            <Input Placeholder="Chọn trạng thái" @bind-Value="@productCreateViewModel.StatusId" />
+        </AntDesign.FormItem>
+    </AntDesign.FormItem>
+    <AntDesign.FormItem Style="margin-bottom: 0px;">
+        <AntDesign.FormItem Style="display: inline-block; width: calc(50% - 10px)">
+            <Text>Link Affilate Shopee</Text>
+            <Input Placeholder="Nhập link Affilate" @bind-Value="@productCreateViewModel.LinkAffilateShopee"></Input>
+        </AntDesign.FormItem>
+        <AntDesign.FormItem Style="display: inline-block; width: calc(50% - 10px)">
+            <Text>Link Affilate Lazada</Text>
+            <Input Placeholder="Chọn trạng thái" @bind-Value="@productCreateViewModel.LinkAffilateLazada" />
+        </AntDesign.FormItem>
+    </AntDesign.FormItem>
+    <AntDesign.FormItem Style="margin-bottom: 0px;">
+        <AntDesign.FormItem Style="display: inline-block; width: calc(50% - 10px)">
+            <Text>Link Affilate Tiki</Text>
+            <Input Placeholder="Nhập link Affilate" @bind-Value="@productCreateViewModel.LinkAffilateTiki"></Input>
+        </AntDesign.FormItem>
+        <AntDesign.FormItem Style="display: inline-block; width: calc(50% - 10px)">
+            <Text>Link Affilate Khác</Text>
+            <Input Placeholder="Chọn trạng thái" @bind-Value="@productCreateViewModel.LinkAffilateOther" />
+        </AntDesign.FormItem>
+    </AntDesign.FormItem>
+    <AntDesign.FormItem Style="margin-bottom: 0px;">
+        <TelerikUpload SaveUrl="@SaveUrl"
+                       RemoveUrl="@RemoveUrl"
+                       SaveField="file"
+                       OnSuccess="@((UploadSuccessEventArgs arg) => OnSuccessHandler(arg, "images"))"
+                       AllowedExtensions="@(new List<string>() {".jpg", ".png" })" MaxFileSize="1048576">
+        </TelerikUpload>
+        <div class="col-md-3 col-sm-12">
+            @if (!string.IsNullOrEmpty(productCreateViewModel.ImageProducts))
+            {
+                <div class="img-inform">
+                    <img style="width: 500px;margin-top: 20px;" src="@productCreateViewModel.ImageProducts">
+                </div>
+            }
+        </div>
+        <div class="col-md-3 col-sm-12 d-none">
+            <TelerikTextBox Enabled="false" @bind-Value="productCreateViewModel.ImageProducts" PlaceHolder="VD: example.png" Width="100%" InputMode="text" Class="k-invalidx form-control" Id="images"></TelerikTextBox>
+        </div>
+    </AntDesign.FormItem>
+
+    <AntDesign.FormItem WrapperColOffset="8" WrapperColSpan="16" Style="margin-bottom: 0px;">
+        <Button Type="@AntDesign.ButtonType.Primary" HtmlType="submit">
+            Thêm mới
+        </Button>
+    </AntDesign.FormItem>
+</Form>
+

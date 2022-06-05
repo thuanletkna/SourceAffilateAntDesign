@@ -1,0 +1,530 @@
+﻿@model HomeViewModel
+@using AffilateSource.Shared.ViewModel.Home
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@{
+    ViewData["Title"] = "Home Page";
+}
+<style>
+    .desriptions {
+        font-size: 14px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 2;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+    }
+</style>
+<div class="page-content">
+    <!-- Slider -->
+    <div class="main-slider style-two default-banner" id="home">
+        <div class="tp-banner-container">
+            <div class="tp-banner">
+                <div id="rev_slider_1164_1_wrapper" class="rev_slider_wrapper fullscreen-container" data-alias="exploration-header" data-source="gallery" style="background-color:transparent;padding:0px;">
+                    <!-- START REVOLUTION SLIDER 5.4.1 fullscreen mode -->
+                    <div id="rev_slider_1164_1" class="rev_slider fullscreenbanner" style="display:none;" data-version="5.4.1">
+                        <ul>
+                            <!-- SLIDE  -->
+                            <li data-index="rs-100" data-transition="slideoververtical" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="default" data-thumb="/portalstyle/images/main-slider/slidehome.png" data-rotate="0" data-fstransition="fade" data-fsmasterspeed="2000" data-fsslotamount="7" data-saveperformance="off" data-title="" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+                                <!-- MAIN IMAGE -->
+                                <img style="width:1920px;height:766px" src="/portalstyle/images/main-slider/slidehome.png" alt="" data-lazyload="/portalstyle/images/main-slider/slidehome.png" data-bgposition="right bottom" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="off" class="rev-slidebg" data-no-retina>
+                                <!-- LAYERS -->
+                                <!-- LAYER NR. 1 -->
+                                <!-- LAYERS -->
+                                <div class="tp-caption tp-shape tp-shapewrapper " id="slide-100-layer-1"
+                                     data-x="['center','center','center','center']"
+                                     data-hoffset="['0','0','0','0']"
+                                     data-y="['middle','middle','middle','middle']"
+                                     data-voffset="['0','0','0','0']"
+                                     data-width="full" data-height="full"
+                                     data-whitespace="nowrap"
+                                     data-type="shape"
+                                     data-basealign="slide"
+                                     data-responsive_offset="off"
+                                     data-responsive="off"
+                                     data-frames='[{"from":"opacity:0;","speed":1000,"to":"o:1;","delay":0,"ease":"Power4.easeOut"},{"delay":"wait","speed":1000,"to":"opacity:0;","ease":"Power4.easeOut"}]'
+                                     data-textAlign="['left','left','left','left']"
+                                     data-paddingtop="[0,0,0,0]"
+                                     data-paddingright="[0,0,0,0]"
+                                     data-paddingbottom="[0,0,0,0]"
+                                     data-paddingleft="[0,0,0,0]"
+                                     style="z-index: 2;background-color:rgba(0, 0, 0, 0.35);border-color:rgba(0, 0, 0, 0);border-width:0px;"> </div>
+                                <!-- LAYER NR. 1 -->
+                                <div class="tp-caption   rs-parallaxlevel-4"
+                                     id="slide-100-layer-2"
+                                     data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
+                                     data-y="['middle','middle','middle','middle']" data-voffset="['-70','-70','-70','-100']"
+                                     data-fontsize="['45','45','35','24']"
+                                     data-lineheight="['65','65','65','36']"
+                                     data-width="['720','640','480','300']"
+                                     data-height="none"
+                                     data-whitespace="normal"
+                                     data-type="text"
+                                     data-responsive_offset="off"
+                                     data-responsive="off"
+                                     data-frames='[{"from":"y:20px;sX:0.9;sY:0.9;opacity:0;","speed":1000,"to":"o:1;","delay":500,"ease":"Power4.easeOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]'
+                                     data-textAlign="['center','center','center','center']"
+                                     data-paddingtop="[0,0,0,0]"
+                                     data-paddingright="[0,0,0,0]"
+                                     data-paddingbottom="[0,0,0,0]"
+                                     data-paddingleft="[0,0,0,0]"
+                                     @*style="z-index: 5; min-width: 720px; max-width: 720px; white-space: normal; font-size: 60px; line-height: 70px;  color: rgba(255, 255, 255, 1.00);font-family:'lora',sans-serif;border-width:0px;letter-spacing:0px; font-weight:700;">
+                                    WE ARE <span class="">CERTIFIED</span><br /> INSURED LANDSCAPERS*@
+                                </div>
+
+                                <!-- LAYER NR. 2 -->
+                                <div class="tp-caption rs-parallaxlevel-4"
+                                     id="slide-100-layer-3"
+                                     data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
+                                     data-y="['middle','middle','middle','middle']" data-voffset="['44','57','39','0']"
+                                     data-fontsize="['17','17','17','15']"
+                                     data-lineheight="['26','26','26','24']"
+                                     data-width="['720','480','480','300']"
+                                     data-height="none"
+                                     data-whitespace="normal"
+                                     data-type="text"
+                                     data-responsive_offset="off"
+                                     data-responsive="off"
+                                     data-frames='[{"from":"y:10px;sX:0.9;sY:0.9;opacity:0;","speed":1000,"to":"o:1;","delay":700,"ease":"Power4.easeOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]'
+                                     data-textAlign="['center','center','center','center']"
+                                     data-paddingtop="[0,0,0,0]"
+                                     data-paddingright="[0,0,0,0]"
+                                     data-paddingbottom="[0,0,0,0]"
+                                     data-paddingleft="[0,0,0,0]"
+                                    @* style="z-index: 6; min-width: 720px; max-width: 720px; white-space: normal; font-size: 17px; line-height: 26px; font-weight: 400; color: rgba(255, 255, 255, 1.00);font-family:'roboto',sans-serif;border-width:0px;">
+                                    Post-ironic authentic drinking vinegar chambray quinoa. VHS letterpress sriracha, tacos skateboard migas farm-to-table artisan kombucha.*@
+                                </div>
+
+                                <!-- LAYER NR. 3 -->
+                                <div class="tp-caption"
+                                     id="slide-100-layer-4"
+                                     data-x="['center','center','center','center']"
+                                     data-hoffset="['0','0','0','0']"
+                                     data-y="['middle','middle','middle','middle']"
+                                     data-voffset="['133','159','141','102']"
+                                     data-width="none"
+                                     data-height="none"
+                                     data-whitespace="nowrap"
+                                     data-type="button"
+                                     data-actions='[{"event":"click","action":"scrollbelow","offset":"px","delay":""}]'
+                                     data-responsive_offset="off"
+                                     data-responsive="off"
+                                     data-frames='[{"from":"y:20px;sX:0.9;sY:0.9;opacity:0;","speed":1000,"to":"o:1;","delay":900,"ease":"Power4.easeOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"},{"frame":"hover","speed":"0","ease":"Linear.easeNone","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(0, 0, 0, 1.00);bg:rgba(238, 238, 238, 0.0);bs:0;"}]'
+                                     data-textAlign="['left','left','left','left']"
+                                     data-paddingtop="[0,0,0,0]"
+                                     data-paddingright="[0,0,0,0]"
+                                     data-paddingbottom="[0,0,0,0]"
+                                     data-paddingleft="[0,0,0,0]"
+                                     style="z-index: 7; background-color:rgba(0,0,0,0) !important;">
+                                    <a class="site-button m-r10" href="javascript:void(0);">READ MORE </a>
+                                    <a class="site-button white outline" href="javascript:void(0);">CONTACT US</a>
+                                </div>
+                            </li>
+                            <!-- SLIDE  -->
+                            <li data-index="rs-200" data-transition="slideoververtical" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="default" data-thumb="/portalstyle/images/main-slider/slidehome1.png" data-rotate="0" data-fstransition="fade" data-fsmasterspeed="2000" data-fsslotamount="7" data-saveperformance="off" data-title="" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+                                <!-- MAIN IMAGE -->
+                                <img style="width:1920px;height:766px" src="/portalstyle/images/main-slider/slidehome1.png" alt="" data-lazyload="/portalstyle/images/main-slider/slidehome1.png" data-bgposition="right bottom" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="off" class="rev-slidebg" data-no-retina>
+                                <!-- LAYERS -->
+                                <!-- LAYER NR. 1 -->
+                                <!-- LAYERS -->
+                                <div class="tp-caption tp-shape tp-shapewrapper " id="slide-100-layer-1"
+                                     data-x="['center','center','center','center']"
+                                     data-hoffset="['0','0','0','0']"
+                                     data-y="['middle','middle','middle','middle']"
+                                     data-voffset="['0','0','0','0']"
+                                     data-width="full" data-height="full"
+                                     data-whitespace="nowrap"
+                                     data-type="shape"
+                                     data-basealign="slide"
+                                     data-responsive_offset="off"
+                                     data-responsive="off"
+                                     data-frames='[{"from":"opacity:0;","speed":1000,"to":"o:1;","delay":0,"ease":"Power4.easeOut"},{"delay":"wait","speed":1000,"to":"opacity:0;","ease":"Power4.easeOut"}]'
+                                     data-textAlign="['left','left','left','left']"
+                                     data-paddingtop="[0,0,0,0]"
+                                     data-paddingright="[0,0,0,0]"
+                                     data-paddingbottom="[0,0,0,0]"
+                                     data-paddingleft="[0,0,0,0]"
+                                     style="z-index: 2;background-color:rgba(0, 0, 0, 0.35);border-color:rgba(0, 0, 0, 0);border-width:0px;"> </div>
+                                <!-- LAYER NR. 1 -->
+                                <div class="tp-caption   rs-parallaxlevel-4"
+                                     id="slide-100-layer-2"
+                                     data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
+                                     data-y="['middle','middle','middle','middle']" data-voffset="['-70','-70','-70','-100']"
+                                     data-fontsize="['45','45','35','24']"
+                                     data-lineheight="['65','65','65','36']"
+                                     data-width="['720','640','480','300']"
+                                     data-height="none"
+                                     data-whitespace="normal"
+                                     data-type="text"
+                                     data-responsive_offset="off"
+                                     data-responsive="off"
+                                     data-frames='[{"from":"y:20px;sX:0.9;sY:0.9;opacity:0;","speed":1000,"to":"o:1;","delay":500,"ease":"Power4.easeOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]'
+                                     data-textAlign="['center','center','center','center']"
+                                     data-paddingtop="[0,0,0,0]"
+                                     data-paddingright="[0,0,0,0]"
+                                     data-paddingbottom="[0,0,0,0]"
+                                     data-paddingleft="[0,0,0,0]"
+                                    @* style="z-index: 5; min-width: 720px; max-width: 720px; white-space: normal; font-size: 60px; line-height: 70px;  color: rgba(255, 255, 255, 1.00);font-family:'lora',sans-serif;border-width:0px;letter-spacing:0px; font-weight:700;">
+                                    WE ARE <span class="">CERTIFIED</span><br /> INSURED LANDSCAPERS*@
+                                </div>
+
+                                <!-- LAYER NR. 2 -->
+                                <div class="tp-caption rs-parallaxlevel-4"
+                                     id="slide-100-layer-3"
+                                     data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
+                                     data-y="['middle','middle','middle','middle']" data-voffset="['44','57','39','0']"
+                                     data-fontsize="['17','17','17','15']"
+                                     data-lineheight="['26','26','26','24']"
+                                     data-width="['720','480','480','300']"
+                                     data-height="none"
+                                     data-whitespace="normal"
+                                     data-type="text"
+                                     data-responsive_offset="off"
+                                     data-responsive="off"
+                                     data-frames='[{"from":"y:10px;sX:0.9;sY:0.9;opacity:0;","speed":1000,"to":"o:1;","delay":700,"ease":"Power4.easeOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]'
+                                     data-textAlign="['center','center','center','center']"
+                                     data-paddingtop="[0,0,0,0]"
+                                     data-paddingright="[0,0,0,0]"
+                                     data-paddingbottom="[0,0,0,0]"
+                                     data-paddingleft="[0,0,0,0]"
+                                    @* style="z-index: 6; min-width: 720px; max-width: 720px; white-space: normal; font-size: 17px; line-height: 26px; font-weight: 400; color: rgba(255, 255, 255, 1.00);font-family:'roboto',sans-serif;border-width:0px;">
+                                    Post-ironic authentic drinking vinegar chambray quinoa. VHS letterpress sriracha, tacos skateboard migas farm-to-table artisan kombucha.*@
+                                </div>
+
+                                <!-- LAYER NR. 3 -->
+                                <div class="tp-caption"
+                                     id="slide-100-layer-4"
+                                     data-x="['center','center','center','center']"
+                                     data-hoffset="['0','0','0','0']"
+                                     data-y="['middle','middle','middle','middle']"
+                                     data-voffset="['133','159','141','102']"
+                                     data-width="none"
+                                     data-height="none"
+                                     data-whitespace="nowrap"
+                                     data-type="button"
+                                     data-actions='[{"event":"click","action":"scrollbelow","offset":"px","delay":""}]'
+                                     data-responsive_offset="off"
+                                     data-responsive="off"
+                                     data-frames='[{"from":"y:20px;sX:0.9;sY:0.9;opacity:0;","speed":1000,"to":"o:1;","delay":900,"ease":"Power4.easeOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"},{"frame":"hover","speed":"0","ease":"Linear.easeNone","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(0, 0, 0, 1.00);bg:rgba(238, 238, 238, 0.0);bs:0;"}]'
+                                     data-textAlign="['left','left','left','left']"
+                                     data-paddingtop="[0,0,0,0]"
+                                     data-paddingright="[0,0,0,0]"
+                                     data-paddingbottom="[0,0,0,0]"
+                                     data-paddingleft="[0,0,0,0]"
+                                     style="z-index: 7; background-color:rgba(0,0,0,0) !important;">
+                                    <a class="site-button m-r10" href="javascript:void(0);">READ MORE </a>
+                                    <a class="site-button white outline" href="javascript:void(0);">CONTACT US</a>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div>
+                    </div>
+                </div><!-- END REVOLUTION SLIDER -->
+            </div>
+        </div>
+    </div>
+    <!-- Slider END -->
+    <!-- About Us -->
+    <div class="section-full bg-white content-inner-1 garden-tabs">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-4">
+                    <div class="garden-service-tabs">
+                        <ul class="nav nav-tabs" id="loadCategoryPost">
+                            @*<li class="nav-item">
+                                <a class="nav-link active" data-bs-toggle="tab" href="#landscaping">Chăm sóc cây</a>
+                                </li>
+                                <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#mowing">Chăm sóc hoa</a>
+                                </li>
+                                <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#spring-clean">Mã giảm giá Lazada</a>
+                                </li>
+                                <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#fall-clean">Mã giảm giá Sendo</a>
+                                </li>
+                                <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#tree-removal">Mã giảm giá Grab</a>
+                                </li>
+                                <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#lawn-care">Mã giảm giá ShopeeFood</a>
+                                </li>
+                                <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#planting">Mã giảm giá Now</a>
+                                </li>*@
+                        </ul>
+                        <div class="widget widget_gallery" style="margin-bottom: 10px; margin-top: 40px;">
+                            <h4 class="widget-title">Vẻ đẹp hoa lá</h4>
+                            <ul>
+                                <li>
+                                    <a href="javascript:void(0);">
+                                        <div class="dez-post-thum dez-img-overlay1 dez-img-effect zoom-slow">
+                                            <img style="width:87.98px;height:78.81px;" src="/portalstyle/images/gallery/bgr1.jpg" alt="">
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">
+                                        <div class="dez-post-thum dez-img-overlay1 dez-img-effect zoom-slow">
+                                            <img style="width:87.98px;height:78.81px;" src="/portalstyle/images/gallery/bgr2.jpg" alt="">
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">
+                                        <div class="dez-post-thum dez-img-overlay1 dez-img-effect zoom-slow">
+                                            <img style="width:87.98px;height:78.81px;" src="/portalstyle/images/gallery/bgr3.jpg" alt="">
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">
+                                        <div class="dez-post-thum dez-img-overlay1 dez-img-effect zoom-slow">
+                                            <img style="width:87.98px;height:78.81px;" src="/portalstyle/images/gallery/bgr4.jpg" alt="">
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">
+                                        <div class="dez-post-thum dez-img-overlay1 dez-img-effect zoom-slow">
+                                            <img style="width:87.98px;height:78.81px;" src="/portalstyle/images/gallery/bgr5.jpg" alt="">
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">
+                                        <div class="dez-post-thum dez-img-overlay1 dez-img-effect zoom-slow">
+                                            <img style="width:87.98px;height:78.81px;" src="/portalstyle/images/gallery/bgr6.jpg" alt="">
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="p-tb30">
+                            <a href="javascript:void(0);"><img style="width:276px;height:283px;" src="/portalstyle/images/gallery/bannerhomebody1.jpg" alt="" /></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-8">
+                    <div class="tab-content">
+                        <div id="landscaping" class="tab-pane active">
+                            <div class="clearfix">
+                                <div id="masonryV1" class="row dez-blog-grid-2">
+                                    @*@foreach (var item in Model.GetPostCreateDate)
+                                        {
+                                        <div class="blog-post blog-md clearfix">
+                                        <div class="dez-post-media-style dez-img-effect zoom-slow"> <a href="/details/@item.SeoAlias-@item.Id"><img src="@(Configuration["BackendApiUrl"]+ item.ImagePost)" style="width:250px; height:150px" alt="@item.Title"></a> </div>
+                                        <div class="dez-post-info" style="width: 596px;">
+                                        <div class="dez-post-title ">
+                                        <h5 style="overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp: 1;display: -webkit-box;-webkit-box-orient: vertical;" class="post-title"><a href="/details/@item.SeoAlias-@item.Id">@item.Title</a></h5>
+                                        </div>
+                                        <div class="dez-post-meta ">
+                                        <ul>
+                                        <li class="post-date"> <i class="far fa-calendar-alt"></i>@item.CreateDate </li>
+                                        </ul>
+                                        </div>
+                                        <div class="dez-post-text">
+                                        <p style=" font-size: 14px;overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp: 2;display: -webkit-box;-webkit-box-orient: vertical;">@Html.Raw(item.Description)</p>
+                                        </div>
+                                        <div class="dez-post-readmore">
+                                        <a href="/details/@item.SeoAlias-@item.Id" title="@item.Title" rel="bookmark" class="site-button-link">Xem thêm...</a>
+                                        </div>
+
+                                        </div>
+                                        </div>
+
+                                        }*@
+                                    @*<button style="width: 134px;height: 39px;margin-left: 488.5px;background-color:#198754;" class="site-button blue m-r5" type="button"><span class="site-button-inr"><a style="color: #fff;font-weight: 600;" href="/blog/cham-soc-cay-40">Xem thêm</a> </span></button>*@
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- About Us END -->
+    <!-- Services -->
+    <div class="content-area" style="background-image: url(/portalstyle/images/background/bgrhome.jpg);background-position: bottom;background-size: cover;">
+        <div class="container sortcodes-gallery">
+            <div class="Section-full">
+                <div class="section-head text-center">
+                    <h3 class="h3 text-uppercase">Sản phẩm <span class="text-primary">Khuyến mãi</span></h3>
+                    <p>Muôn loài hoa tự tin là cửa hàng cung cấp tất cả sản phẩm xanh sạch phù hợp với nhu cầu và sở thích của tất cả mọi người.</p>
+                </div>
+                <div class="section-content">
+                    <div class="site-filters clearfix center m-b40">
+                        <ul id="loadCategoryProduct" class="filters1" data-bs-toggle="buttons">
+                            @*<li data-filter="home" class="btn active">
+                                <input type="radio">
+                                <a href="javascript:void(0);" class="site-button-secondry"><span>Tất cả</span></a>
+                                </li>*@
+                        </ul>
+                    </div>
+                    <div style="position: relative;height: auto">
+                        <ul id="masonryV2" style="position: relative;height: auto;" class="row dez-gallery-listing gallery-grid-4 m-lr0 mfp-gallery">
+                        </ul>
+                    </div>
+                    @*<button style="margin-left: 488.5px;width: 134px;height: 39px;background-color:#198754;" class="site-button blue m-r5" type="button"><span class="site-button-inr"><a style="color: #fff;font-weight: 600;" href="/mua-sam">Xem thêm</a> </span></button>*@
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Services END -->
+    <!-- Latest blog -->
+
+    <div class="section-full content-inner-1 bg-white">
+        <div class="container">
+            <div class="section-head text-center">
+                <h3 class="h3 text-uppercase">kho báu <span class="text-primary">kinh nghiệm</span></h3>
+                <p>Chúng tôi luôn tìm hiểu, cập nhật những kiến thức hay, bổ ích để tất cả mọi người cùng biết tới.</p>
+            </div>
+
+            <div class="section-content owl-none latest-blog-1">
+                <div class="blog-carousel owl-carousel">
+                    @foreach (var item in Model.GetPostHome)
+                    {
+                        <div class="item">
+                            <div class="dez-box">
+                                <div class="dez-media">
+                                    <a href="/details/@item.SeoAlias-@item.Id" class="text-primary"><img style="width:372px;height:234px;" src="@(Configuration["BackendApiUrl"]+ item.ImagePost)" alt="@item.Title"></a>
+                                </div>
+                                <div class="dez-info p-a20 border-1">
+                                    <ul class="blog-info text-primary">
+                                        <li>Đăng bởi <a href="javascript:void(0);" title="@item.Title" rel="author">@item.FirstName &nbsp; @item.LastName</a> </li>
+                                        <li><span>@item.CreateDate</span> </li>
+                                    </ul>
+                                    <h4 style="overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp: 3;display: -webkit-box;-webkit-box-orient: vertical;" class="dez-title m-t0"><a href="/details/@item.SeoAlias-@item.Id">@item.Title </a></h4>
+                                    <div style="overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp: 2;display: -webkit-box;-webkit-box-orient: vertical;" class="m-a0">@Html.Raw(item.Description)</div>
+                                    <a href="/details/@item.SeoAlias-@item.Id" class="site-button-link m-t15">Đọc thêm <i class="fa fa-long-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Latest blog END -->
+    <!-- Customers and Partners -->
+    <div class="section-full bg-white content-inner" style="padding-top: 0px;">
+        <div class="container">
+            <div class="section-head text-center">
+               <h3 class="h3 text-uppercase">Sự trải nghiệm với <span class="text-primary">Vườn Hoa Lá</span></h3>
+                <p>Sự hài lòng của khách hàng luôn là yếu tố mà chúng tôi dành thời gian đặc biệt quan tâm tới.</p>
+            </div>
+            @*<div class="section-head style1 text-center">
+                <h3 class="h3">Sự trải nghiệm với <span class="text-primary">Vườn Hoa Lá</span></h3>
+                <h6 class="h6">Sự hài lòng của khách hàng luôn là yếu tố mà chúng tôi dành thời gian đặc biệt quan tâm tới.</h6>
+
+                <div class="dez-separator bg-primary"></div>
+            </div>*@
+            <div class="row">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="2s">
+                    <div class="testimonial-one testimonial-8-area owl-carousel owl-none">
+                        <div class="item">
+                            <div class="testimonial-8">
+                                <div class="testimonial-detail clearfix info">
+                                    <div class="testimonial-pic"><img src="/portalstyle/images/feedback.jpg" style="width:90px;height:90px" alt="" width="100" height="100"></div>
+                                    <p class="testimonial-position">
+                                        <strong>Chị Thu Lan</strong>
+                                        <span>Công Ty HDNET</span>
+                                    </p>
+                                </div>
+                                <div class="testimonial-text">
+                                    <p>“Chúng tôi luôn chọn Vườn hoa lá là nơi cung cấp hoa cho các sự kiện của công ty. Rất hài lòng về những bó hoa đẹp, tỉ mỉ từ các bạn.”</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="testimonial-8">
+                                <div class="testimonial-detail clearfix info">
+                                    <div class="testimonial-pic"><img src="/portalstyle/images/feedback.jpg" style="width:90px;height:90px" alt="" width="100" height="100"></div>
+                                    <p class="testimonial-position">
+                                        <strong>Chị Huyền</strong>
+                                        <span>Nhân viên Sale BĐS</span>
+                                    </p>
+                                </div>
+                                <div class="testimonial-text">
+                                    <p>“Thực sự cảm ơn Vườn hoa lá về những chia sẻ kinh nghiệm hữu ích trong cách chăm sóc hoa cũng như lựa chọn hoa tươi tại cửa hàng.”</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row client-logos">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-6 wow fadeInUp" data-wow-delay="0.1s" data-wow-duration="2s">
+                            <div class="client-logo">
+                                <a href="javascript:void(0);" class="site-button gradient wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="2s" style="visibility: visible; animation-duration: 2s; animation-delay: 0.8s; animation-name: fadeInUp;">Get a Free Quote</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-6 wow fadeInUp" data-wow-delay="0.1s" data-wow-duration="2s">
+                            <div class="client-logo">
+                                <a href="javascript:void(0);" class="site-button gradient wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="2s" style="visibility: visible; animation-duration: 2s; animation-delay: 0.8s; animation-name: fadeInUp;">Get a Free Quote</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-6 wow fadeInUp" data-wow-delay="0.1s" data-wow-duration="2s">
+                            <div class="client-logo">
+                                <a href="javascript:void(0);" class="site-button gradient wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="2s" style="visibility: visible; animation-duration: 2s; animation-delay: 0.8s; animation-name: fadeInUp;">Get a Free Quote</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Customers and Partners END -->
+    <!-- Client logo -->
+    <div class="section-full dez-we-find bg-img-fix p-t50 p-b50 ">
+        <div class="container">
+            <div class="section-content">
+                <div class="client-logo-carousel owl-carousel  mfp-gallery gallery owl-btn-center-lr">
+                    <div class="item">
+                        <div class="ow-client-logo">
+                            <div class="client-logo"><a href="javascript:void(0);"><img src="/portalstyle/images/client-logo/logo1.jpg" alt=""></a></div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="ow-client-logo">
+                            <div class="client-logo"> <a href="javascript:void(0);"><img src="/portalstyle/images/client-logo/logo2.jpg" alt=""></a> </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="ow-client-logo">
+                            <div class="client-logo"> <a href="javascript:void(0);"><img src="/portalstyle/images/client-logo/logo1.jpg" alt=""></a> </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="ow-client-logo">
+                            <div class="client-logo"> <a href="javascript:void(0);"><img src="/portalstyle/images/client-logo/logo3.jpg" alt=""></a> </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="ow-client-logo">
+                            <div class="client-logo"> <a href="javascript:void(0);"><img src="/portalstyle/images/client-logo/logo4.jpg" alt=""></a> </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="ow-client-logo">
+                            <div class="client-logo"> <a href="javascript:void(0);"><img src="/portalstyle/images/client-logo/logo3.jpg" alt=""></a> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Client logo END -->
+</div>
+<style>
+    .blog-md .dez-post-media-style {
+        min-width: 250px;
+        float: left;
+        margin-right: 30px;
+    }
+</style>
+<script src="/portalstyle/js/jquery.min.js"></script><!-- JQUERY.MIN JS -->
+<script src="/js/AfilateSourceHome.js"></script>

@@ -1,0 +1,143 @@
+﻿@using AffilateSource.Shared.ViewModel.Category
+@model NavigationViewModel
+@{
+    Layout = null;
+}
+
+<header class="site-header header header-style-1 mo-left">
+    <!-- top bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="dez-topbar-left col-auto">
+                    <ul class="social-bx list-inline d-flex float-right">
+                        <li><a href="javascript:void(0);" class="fab fa-facebook-f"></a></li>
+                        <li><a href="javascript:void(0);" class="fab fa-twitter"></a></li>
+                        <li><a href="javascript:void(0);" class="fab fa-linkedin-in"></a></li>
+                        <li><a href="javascript:void(0);" class="fab fa-google-plus-g"></a></li>
+                    </ul>
+                </div>
+                <div class="dez-topbar-right col-auto list-unstyled e-p-bx ">
+                    <ul>
+                        <li><i class="fa fa-envelope"></i><span>info@example.com</span></li>
+                        <li><i class="fas fa-phone-alt"></i><span>+141 1234 567 890</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- top bar END-->
+    <!-- main header -->
+    <div class="sticky-header header-curve main-bar-wraper navbar-expand-lg ">
+        <div class="main-bar bg-primary clearfix ">
+
+            <div class="container clearfix">
+                <!-- website logo -->
+                <div class="logo-header mostion"><a href="/"><img style="width:200px;height:45px" src="/portalstyle/images/logovuonhoala.png" width="193" height="89" alt=""></a></div>
+                <!-- nav toggle button -->
+                <button class="navbar-toggler collapsed navicon justify-content-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <!-- extra nav -->
+                @*<partial name="_LoginPartial" />*@
+                <!-- main nav -->
+                <div class="header-nav navbar-collapse collapse justify-content-end" id="navbarNavDropdown">
+                    <ul class="nav navbar-nav">
+                        @if (Model.ListcategoryHome != null)
+                        {
+                            var lstMenu = Model.ListcategoryHome.Where(x => x.Level == 1).OrderBy(t => t.SortOrder).ToList();
+                            @if (lstMenu != null && lstMenu.Any())
+                            {
+                                @foreach (var item in lstMenu)
+                                {
+                                    var lstSubMenu = Model.ListcategoryHome.Where(x => x.Level == 2 && x.ParentId == @item.Id).OrderBy(t => t.SortOrder).ToList();
+                                    if (lstSubMenu != null && lstSubMenu.Any())
+                                    {
+                                        <li>
+                                            <a href="@item.SeoAlias">@item.CategoryName</a>
+                                            <ul class="sub-menu">
+                                                @foreach (var items in lstSubMenu)
+                                                {
+                                                    var lstSubMenu3 = Model.ListcategoryHome.Where(x => x.Level == 3 && x.ParentId == @items.Id).OrderBy(t => t.SortOrder).ToList();
+                                                <li>
+                                                    @if (items.ParentId == 2)
+                                                    {
+                                                        <a href="/sanpham/@items.SeoAlias-@items.Id">@items.CategoryName</a>
+
+                                                    }
+                                                    @if (items.ParentId == 3)
+                                                    {
+                                                        <a href="/blog/@items.SeoAlias-@items.Id">@items.CategoryName</a>
+
+                                                    }
+                                                    @foreach (var itemss in lstSubMenu3)
+                                                    {
+                                                        @if (itemss.CategoryName != null)
+                                                        {
+                                                            <ul class="sub-menu">
+                                                                @foreach (var it in lstSubMenu3)
+                                                                {
+                                                                    <li><a href="header-style-1.html">@it.CategoryName</a></li>
+                                                                }
+                                                            </ul>
+                                                        }
+
+                                                    }
+                                                    @* @if (lstSubMenu3 != null)
+        {
+        <ul class="sub-menu">
+        @foreach (var it in lstSubMenu3)
+        {
+        <li><a href="header-style-1.html">@it.CategoryName</a></li>
+        }
+        </ul>
+        }*@
+
+                                                </li>
+                                                    @*@if (items.ParentId == 2)
+                                                        {
+                                                        var lstSubMenu3 = Model.ListcategoryHome.Where(x => x.Level == 3 && x.ParentId == @item.Id).OrderBy(t => t.SortOrder).ToList();
+                                                        <li>
+                                                        <a href="/sanpham/@items.SeoAlias-@items.Id">@items.CategoryName</a>
+                                                        <ul class="sub-menu">
+                                                        @if (lstSubMenu3 != null && lstSubMenu3.Any())
+                                                        {
+                                                        @foreach (var it in lstSubMenu3)
+                                                        {
+                                                        <li><a href="header-style-1.html">@it.CategoryName</a></li>
+                                                        }
+                                                        }
+
+                                                        </ul>
+                                                        </li>
+
+                                                        }
+                                                        @if (items.ParentId == 3)
+                                                        {
+                                                        <li><a href="/blog/@items.SeoAlias-@items.Id">@items.CategoryName</a> </li>
+                                                        }*@
+                                                }
+                                            </ul>
+
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li>
+                                            <a href="@item.SeoAlias">@item.CategoryName</a>
+                                        </li>
+                                    }
+
+                                }
+                            }
+                        }
+                        @*<partial name="_LoginPartial" />*@
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- main header END -->
+</header>

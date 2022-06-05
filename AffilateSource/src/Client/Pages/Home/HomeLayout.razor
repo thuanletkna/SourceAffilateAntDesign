@@ -1,0 +1,69 @@
+﻿@page "/"
+@using AffilateSource.Client.Services
+@using AffilateSource.Shared.ViewModel.Post
+@using Telerik.Blazor.Components
+@inject HttpClient Http
+@inject PostApiServices postApi
+@inject NavigationManager NavigationManager
+
+<PageContainer Title="Danh sách bài đăng">
+<TelerikGrid TItem="@PostHomeViewModel" OnRead=@ReadItems ScrollMode="@GridScrollMode.Scrollable"
+             FilterMode="@GridFilterMode.None"
+             SelectionMode="@selectionMode"
+             @bind-SelectedItems="@SelectedItems"
+             @ref="@DataSource"
+             Pageable="true"
+             @bind-PageSize="@PageSize" @bind-Page="@Page" >
+    <GridToolBar>
+        <Space>
+            @*<SpaceItem>
+                    <AntDesign.Button Icon="plus" Size="@ButtonSize.Large" Type="primary" @onclick="_=>open()">Thêm mới nhân viên</AntDesign.Button>
+                </SpaceItem>*@
+            @*<SpaceItem>
+                    <AntDesign.Button Style="background: #aa7ad0;border: #aa7ad0;" Icon="edit" Size="@ButtonSize.Large" Type="@AntDesign.ButtonType.Primary" OnClick=@btnUpdatePhongban>Cập nhật phòng ban</AntDesign.Button>
+                </SpaceItem>
+                <SpaceItem>
+                    <AntDesign.Button Style="background: #eab046;border: #eab046;" Icon="edit" Size="@ButtonSize.Large" Type="@AntDesign.ButtonType.Primary" OnClick=@btnUpdateKhuVuc>Cập nhật khu vực</AntDesign.Button>
+                </SpaceItem>
+                <SpaceItem>
+                    <AntDesign.Button Style="background: #7ad07b;border: #7ad07b;" Icon="edit" Size="@ButtonSize.Large" Type="edit" OnClick=@btnUpdateStatus>Cập nhật trạng thái</AntDesign.Button>
+                </SpaceItem>
+                <SpaceItem>
+                    <AntDesign.Button Style="background: #f7e32a;border: #f7e32a;" Icon="upload" Size="@ButtonSize.Large" Type="upload" OnClick=@(()=> WindowVisibleImportFile = true)>Upload nhân viên</AntDesign.Button>
+                </SpaceItem>*@
+        </Space>
+    </GridToolBar>
+    <GridColumns>
+        <GridCheckboxColumn SelectAll="@ShowSelectAll" Width="30px"></GridCheckboxColumn>
+        <GridColumn Field="@(nameof(PostHomeViewModel.Id))" Editable="false" Title="ID" Width="120px">
+            <Template>
+                @{
+                    var product = context as PostHomeViewModel;
+                    @product.Id;
+                }
+            </Template>
+        </GridColumn>
+        <GridColumn Field="@(nameof(PostHomeViewModel.Title))" Editable="false" Title="Tên bài đăng" Width="120px" />
+        <GridColumn Field="@(nameof(PostHomeViewModel.CategoryName))" Title="Danh mục" Width="120px" />
+        <GridColumn Field="@(nameof(PostHomeViewModel.Id))" Title="Chỉnh sửa" Width="120px">
+            <Template>
+                @{
+                    var post = context as PostHomeViewModel;
+                    <AntDesign.Button Type="primary" >
+                        <a href="/post/update-post/@(post.Id)"> Chỉnh sửa</a>
+                    </AntDesign.Button>
+                }
+            </Template>
+        </GridColumn>
+    </GridColumns>
+</TelerikGrid>
+</PageContainer>
+<style>
+    .pre {
+  margin: 12px 0;
+  padding: 12px 20px;
+  background: #fff;
+  box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.16),
+    0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09);
+}
+</style>

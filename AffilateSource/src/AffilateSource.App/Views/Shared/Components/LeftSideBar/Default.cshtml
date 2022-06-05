@@ -1,0 +1,128 @@
+﻿@using AffilateSource.Shared.ViewModel.Component
+@using Microsoft.Extensions.Configuration
+@model LeftSideBarViewModel
+@inject IConfiguration Configuration
+
+@{
+    Layout = null;
+}
+<!-- Side bar start -->
+<div class="col-lg-3 col-md-5">
+    <aside class="side-bar">
+        <div class="widget">
+            <h4 class="widget-title">Tìm kiếm bài đăng</h4>
+            <div class="search-bx">
+                <form role="search" method="post">
+                    <div class="input-group">
+                        <input name="text" type="text" class="form-control" placeholder="Nhập từ khóa...">
+                        <span class="input-group-btn">
+                            <button type="submit" class="site-button"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="widget widget_categories">
+            <h4 class="widget-title">Danh mục kinh nghiệm</h4>
+            <ul>
+                @foreach (var item in Model.ListcategoryPostSidebar)
+                {
+                    <li><a href="/blog/@item.SeoAlias-@item.Id">@item.CategoryName </a>(10)</li>
+                }
+
+            </ul>
+        </div>
+        <div class="widget recent-posts-entry">
+            <h4 class="widget-title">Bài đăng phổ biến</h4>
+            <div class="widget-post-bx">
+                @foreach (var item in Model.ListPostViewCount)
+                {
+                    <div class="widget-post clearfix">
+                        <div class="dez-post-media"> <img style="width:90px;height:72px" src="@(Configuration["BackendApiUrl"]+ item.ImagePost)" alt="@item.Title" width="200" height="143"> </div>
+                        <div class="dez-post-info">
+                            <div class="dez-post-header">
+                                <h6 style="overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp: 2;display: -webkit-box;-webkit-box-orient: vertical;" class="post-title text-uppercase"><a href="/details/@item.SeoAlias-@item.Id">@item.Title</a></h6>
+                            </div>
+                            <div class="dez-post-meta">
+                                <ul>
+                                    <li class="post-author">Đăng bởi <a href="javascript:void(0);">@item.FirstName @item.LastName</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+        <div class="widget">
+            <img src="/portalstyle/images/ads/add.png" alt="" />
+        </div>
+
+        <div class="widget widget_gallery">
+            <h4 class="widget-title">Our services</h4>
+            <ul>
+                <li>
+                    <a href="javascript:void(0);">
+                        <div class="dez-post-thum dez-img-overlay1 dez-img-effect zoom-slow">
+                            <img src="/portalstyle/images/gallery/small/pic2.jpg" alt="">
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);">
+                        <div class="dez-post-thum dez-img-overlay1 dez-img-effect zoom-slow">
+                            <img src="/portalstyle/images/gallery/small/pic1.jpg" alt="">
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);">
+                        <div class="dez-post-thum dez-img-overlay1 dez-img-effect zoom-slow">
+                            <img src="/portalstyle/images/gallery/small/pic5.jpg" alt="">
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);">
+                        <div class="dez-post-thum dez-img-overlay1 dez-img-effect zoom-slow">
+                            <img src="/portalstyle/images/gallery/small/pic7.jpg" alt="">
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);">
+                        <div class="dez-post-thum dez-img-overlay1 dez-img-effect zoom-slow">
+                            <img src="/portalstyle/images/gallery/small/pic8.jpg" alt="">
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);">
+                        <div class="dez-post-thum dez-img-overlay1 dez-img-effect zoom-slow">
+                            <img src="/portalstyle/images/gallery/small/pic9.jpg" alt="">
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="widget widget_tag_cloud">
+            <h4 class="widget-title">Tags</h4>
+            <div class="tagcloud">
+                <a href="javascript:void(0);">Design</a>
+                <a href="javascript:void(0);">User interface</a>
+                <a href="javascript:void(0);">SEO</a>
+                <a href="javascript:void(0);">WordPress</a>
+                <a href="javascript:void(0);">Development</a>
+                <a href="javascript:void(0);">Joomla</a>
+                <a href="javascript:void(0);">Design</a>
+                <a href="javascript:void(0);">User interface</a>
+                <a href="javascript:void(0);">SEO</a>
+                <a href="javascript:void(0);">WordPress</a>
+                <a href="javascript:void(0);">Development</a>
+                <a href="javascript:void(0);">Joomla</a>
+                <a href="javascript:void(0);">Design</a>
+            </div>
+        </div>
+    </aside>
+</div>
+<!-- Side bar END -->

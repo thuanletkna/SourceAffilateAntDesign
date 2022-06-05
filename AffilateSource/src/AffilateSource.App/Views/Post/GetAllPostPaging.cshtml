@@ -1,0 +1,73 @@
+﻿@using AffilateSource.Shared.ViewModel.Post
+@using Microsoft.Extensions.Configuration
+@model PostViewModel
+@inject IConfiguration Configuration
+@{
+    ViewData["Title"] = "GetAllPostPaging";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-content bg-white">
+    <!-- inner page banner -->
+    <div class="dez-bnr-inr overlay-black-middle" style="background-image:url(/portalstyle/images/banner/banner.png);">
+        <div class="container">
+            <div class="dez-bnr-inr-entry">
+                <h1 class="text-white">Bài đăng kinh nghiệm</h1>
+            </div>
+        </div>
+    </div>
+    <!-- inner page banner END -->
+    <!-- Breadcrumb row -->
+    <div class="breadcrumb-row">
+        <div class="container">
+            <ul class="list-inline">
+                @* <li><a href="javascript:void(0);">Home</a></li>
+                    <li>Blog large image left sidebar</li>*@
+            </ul>
+        </div>
+    </div>
+    <!-- Breadcrumb row END -->
+    <div class="section-full content-inner">
+        <div class="container">
+            <div class="row">
+                @await Component.InvokeAsync("LeftSideBar")
+                <!-- Left part start -->
+                <div class="col-lg-9 col-md-7">
+                    @foreach (var item in Model.GetAllPostByCategoryIdPaging.Data)
+                    {
+                        <div class="blog-post blog-md clearfix">
+                            <div class="dez-post-media dez-img-effect zoom-slow"> <a href="/details/@item.SeoAlias-@item.Id"><img src="@(Configuration["BackendApiUrl"]+ item.ImagePost)" style="width:350px; height:250px" alt="@item.Title"></a> </div>
+                            <div class="dez-post-info">
+                                <div class="dez-post-title ">
+                                    <h4 style="overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp: 1;display: -webkit-box;-webkit-box-orient: vertical;" class="post-title"><a href="/details/@item.SeoAlias-@item.Id">@item.Title</a></h4>
+                                </div>
+                                <div class="dez-post-meta ">
+                                    <ul>
+                                        <li class="post-date"> <i class="far fa-calendar-alt"></i>@item.CreateDate </li>
+                                        <li class="post-author"><i class="fa fa-user"></i>Đăng bởi <a href="javascript:void(0);">@item.FirstName @item.LastName</a> </li>
+                                        <li class="post-comment"><i class="fa fa-comments"></i> <a href="javascript:void(0);">0 Comments</a> </li>
+                                    </ul>
+                                </div>
+                                <div class="dez-post-text">
+                                    <div style="overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp: 3;display: -webkit-box;-webkit-box-orient: vertical;">@Html.Raw(item.Description)</div>
+                                </div>
+                                <div class="dez-post-readmore">
+                                    <a href="/details/@item.SeoAlias-@item.Id" title="@item.Title" rel="bookmark" class="site-button-link">Xem thêm...</a>
+                                </div>
+                                <div class="dez-post-tags">
+                                    <div class="post-tags">
+                                        <a href="javascript:void(0);">Child </a> <a href="javascript:void(0);">Eduction </a>
+                                        <a href="javascript:void(0);">Money </a> <a href="javascript:void(0);">Resturent </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <!-- Pagination start -->
+                    @(await Component.InvokeAsync("Pager", Model.GetAllPostByCategoryIdPaging))
+                    <!-- Pagination END -->
+                </div>
+                <!-- Left part END -->
+            </div>
+        </div>
+    </div>
+</div>

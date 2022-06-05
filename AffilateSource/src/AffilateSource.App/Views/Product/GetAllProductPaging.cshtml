@@ -1,0 +1,113 @@
+﻿@using AffilateSource.Shared.ViewModel.Product
+@using Microsoft.Extensions.Configuration
+@model ProductViewModel
+@inject IConfiguration Configuration
+@{
+    ViewData["Title"] = "GetAllProductPaging";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-content">
+    <!-- inner page banner -->
+    <div class="dez-bnr-inr overlay-black-middle" style="background-image:url(/portalstyle/images/banner/banner.png);">
+        <div class="container">
+            <div class="dez-bnr-inr-entry">
+                <h1 class="text-white">Sản phẩm khuyến mãi</h1>
+            </div>
+        </div>
+    </div>
+    <!-- inner page banner END -->
+    <!-- Breadcrumb row -->
+    <div class="breadcrumb-row">
+        <div class="container">
+            <ul class="list-inline">
+                @*<li><a href="javascript:void(0);">Home</a></li>
+                <li>Products</li>*@
+            </ul>
+        </div>
+    </div>
+    <!-- Breadcrumb row END -->
+    <!-- contact area -->
+    <div class="content-inner section-full bg-white">
+        <!-- Product -->
+        <div class="container">
+
+            <div class="row">
+                @await Component.InvokeAsync("LeftSideBarProduct")
+                <div class="col-lg-9 col-md-8 col-sm-6">
+                    <div class="text-center m-b50">
+                        <h2 class="m-t0">Sản phẩm khuyến mãi</h2>
+                        <div class="dez-separator-outer "><div class="dez-separator bg-primary style-skew"></div> </div>
+                    </div>
+                    <div class="row" id="masonry">
+                        @foreach (var item in Model.ProductListAllByCategoryid.Data)
+                        {
+                            <div class="col-lg-4 col-sm-12 m-b30 product-item card-container">
+                                <div class="dez-box">
+                                    <div class="dez-media"> <a  href="/chi-tiet/@item.SeoAlias-@item.Id"><img style="width:376px;height:236px;" src="@(Configuration["BackendApiUrl"]+ item.ImageProducts)" alt="@item.Title"></a> </div>
+                                    <div class="dez-info p-a20 text-center bg-gray" style="background-color: #daeded;">
+                                        <h4 class="dez-title m-t0"><a href="/chi-tiet/@item.SeoAlias-@item.Id" style="overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp: 2;display: -webkit-box;-webkit-box-orient: vertical;">@item.Title</a></h4>
+                                        @*<p style="overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp: 2;display: -webkit-box;-webkit-box-orient: vertical;" class="m-b0">@item.Description</p>*@
+                                        <div style="font-size: initial;" class="m-b0"><span>Giá gốc: </span> <del style="font-size: initial;" class="m-r10"><span >@item.Price VNĐ</span></del> </div>
+                                        <h3 class="m-b0"><span>Giá KM:</span> <span style="font-size:20px; color:red">@item.Price VNĐ</span> </h3>
+                                        <div class="m-t20">
+                                            <a href="@item.LinkAffilateOther" class="site-button radius-xl">Mua ngay</a>
+                                        </div>
+                                    </div>
+                                    <div class="sale">
+                                    <span class="site-button button-sm red">Sale</span>
+                                </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                   
+                </div>
+            </div>
+            <div class="row m-t30 product-service">
+                <div class="col-lg-4 col-md-6 m-b30">
+                    <div class="icon-bx-wraper bx-style-1 p-a20 left bg-primary clearfix text-white">
+                        <div class="icon-bx-md  bg-white text-primary"> <a href="javascript:void(0);" class="icon-cell "><i class="fa fa-plane"></i></a> </div>
+                        <div class="icon-content">
+                            <h3 class="dez-tilte text-uppercase m-b5">Free Shipping</h3>
+                            <p>Lorem ipsum dolor sit elit nonummy dolor is euismod end...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 m-b30">
+                    <div class="icon-bx-wraper bx-style-1 p-a20 left bg-primary clearfix text-white">
+                        <div class="icon-bx-md bg-white text-primary">
+                            <a href="javascript:void(0);" class="icon-cell "><i class="fa fa-briefcase"></i></a>
+                        </div>
+                        <div class="icon-content">
+                            <h3 class="dez-tilte text-uppercase m-b5">Warehouse</h3>
+                            <p>Lorem ipsum dolor sit elit nonummy dolor is euismod end...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 m-b30">
+                    <div class="icon-bx-wraper bx-style-1 p-a20 left bg-primary clearfix text-white">
+                        <div class="icon-bx-md bg-white text-primary">
+                            <a href="javascript:void(0);" class="icon-cell"><i class="fa fa-cogs"></i></a>
+                        </div>
+                        <div class="icon-content">
+                            <h3 class="dez-tilte text-uppercase m-b5">Secure Shopping</h3>
+                            <p>Lorem ipsum dolor sit elit nonummy dolor is euismod end...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="add-plat text-white shop-add" style="background-image:url(/portalstyle/images/banner/bnr4.jpg); background-size:100%;
+						background-position:center;">
+                        <h2 class="m-b0">Gardener, Complete Solution for Your Landscaping Vision</h2>
+                        <a href="javascript:void(0);" class="site-button outline yellow">Get Free Estimate</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Product END -->
+    </div>
+    <!-- contact area  END -->
+</div>

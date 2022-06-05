@@ -1,0 +1,134 @@
+﻿@using AffilateSource.Shared.ViewModel.Post
+@using Microsoft.Extensions.Configuration
+@model PostViewModel
+@inject IConfiguration Configuration
+@{
+    ViewData["Title"] = "GetPostById";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="/cssdetail/style.css">
+@*<link rel="stylesheet" href="/cssdetail/bootstrap.min.css">*@
+@*<script src="~/js/LoadProduct.js"></script>*@
+<div class="page-content bg-white">
+    <!-- inner page banner -->
+    <div class="dez-bnr-inr overlay-black-middle" style="background-image:url(/portalstyle/images/banner/banner.png);">
+        <div class="container">
+            <div class="dez-bnr-inr-entry">
+                <h1 class="text-white">Thông tin bài đăng</h1>
+            </div>
+        </div>
+    </div>
+    <!-- inner page banner END -->
+    <!-- Breadcrumb row -->
+    <div class="breadcrumb-row">
+        <div class="container">
+            <ul class="list-inline">
+                @*<li><a href="javascript:void(0);">Home</a></li>
+                    <li>Blog single with left sidebar</li>*@
+            </ul>
+        </div>
+    </div>
+    <!-- Breadcrumb row END -->
+    <div class="section-full content-inner">
+        <div class="container">
+            <div class="row">
+                <!-- Side bar start -->
+                @await Component.InvokeAsync("LeftSideBar")
+
+                <!-- Side bar END -->
+                <!-- Left part start -->
+                <div class="col-lg-9 col-md-7 m-b30" style="padding-left: 30px;">
+                    <!-- blog start -->
+                    <div class="blog-post blog-single">
+                        <div class="dez-post-title ">
+                            <h3 class="post-title"><a href="javascript:void(0);">@Model.GetPostById.Title</a></h3>
+                        </div>
+                        <div class="dez-post-meta m-b20">
+                            <ul>
+                                <li class="post-date"> <i class="far fa-calendar-alt"></i><strong>@Model.GetPostById.CreateDate</strong> </li>
+                                <li class="post-author"><i class="fa fa-user"></i>Đăng bởi <a href="javascript:void(0);">@Model.GetPostById.FirstName &nbsp; @Model.GetPostById.LastName</a> </li>
+                                <li class="post-comment"><i class="fa fa-comments"></i> <a href="javascript:void(0);">0 Comments</a> </li>
+                            </ul>
+                        </div>
+                        <div class="dez-post-media dez-img-effect zoom-slow"> <a href="javascript:void(0);"><img style="width:876px;height:526px;" src="@(Configuration["BackendApiUrl"]+ @Model.GetPostById.ImagePost)" alt=""></a> </div>
+                        <div class="dez-post-text">
+
+                            <h5>@Model.GetPostById.Title</h5>
+                            @foreach (var item in Model.DetailPostbyId)
+                            {
+                                <p>
+                                    @Html.Raw(item.Content)
+                                    @if (@item.ProductId > 0)
+                                    {
+                                        <div class="strip_list">
+                                            <div class="ribbon_1">
+                                                Popular
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <div class="desc">
+                                                        <div class="thumb_strip">
+                                                            <a href="detail_page.html"><img src="@(Configuration["BackendApiUrl"]+ @item.ImageProducts)" alt=""></a>
+                                                        </div>
+                                                        <div class="rating">
+                                                            <i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i> (<small><a href="#0">98 reviews</a></small>)
+                                                        </div>
+                                                        <h3>@item.Title</h3>
+                                                        <div class="type">
+                                                            @item.CategoryName
+                                                        </div>
+                                                        <div class="location">
+                                                            @item.Description
+                                                        </div>
+                                                        <ul>
+                                                            <li>Giá gốc: @item.Price</li>
+                                                            <li>Giá bán: @item.Price</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <div class="go_to">
+                                                        <div>
+                                                            @if (@item.LinkAffilateLazada != null)
+                                                            {
+                                                                <a style="width: 261.79px;background-color: #ff008b;color: white;" href="@item.LinkAffilateLazada" class="btn_listing">Xem chi tiết sản phẩm tại Lazada</a>
+
+                                                            }
+                                                            @if (@item.LinkAffilateShopee != null)
+                                                            {
+                                                                <a style="width: 261.79px;background-color: #f5824c;color: white;" href="@item.LinkAffilateShopee" class="btn_listing">Xem chi tiết sản phẩm tại Shopee</a>
+
+                                                            }
+                                                            @if (@item.LinkAffilateTiki != null)
+                                                            {
+                                                                <a style="width: 261.79px;background-color: #1fa65d;color: white;" href="@item.LinkAffilateTiki" class="btn_listing">Xem chi tiết sản phẩm tại Tiki</a>
+
+                                                            }
+                                                            @*@if(@item.LinkAffilateOther!=null)
+                                                                {
+                                                                <a onclick="onHtmlClick('Pizza', 1)" class="btn_listing">View on Map</a>
+                                                                }*@
+                                                            @*<a href="detail_page.html" class="btn_1">View Menu</a>*@
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div><!-- End row-->
+                                </div>
+                                    }
+
+                                </p>
+                            }
+                        </div>
+                        <div class="dez-post-tags clear">
+                            <div class="post-tags"> <a href="javascript:void(0);">Child </a> <a href="javascript:void(0);">Eduction </a> <a href="javascript:void(0);">Money </a> <a href="javascript:void(0);">Resturent </a> </div>
+                        </div>
+                    </div>
+                    
+                    <!-- blog END -->
+                </div>
+                <!-- Left part END -->
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,92 @@
+﻿@using AffilateSource.Shared.ViewModel.Component
+@using Microsoft.Extensions.Configuration
+@model FooterViewModel
+@inject IConfiguration Configuration
+@{
+    Layout = null;
+}
+
+<footer class="site-footer">
+    <!-- footer top part -->
+    <div class="footer-top" style="background-image:url(/portalstyle/images/background/footer.png);">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="widget widget_about">
+                        <div class="logo-footer"><img src="/portalstyle/images/logovuonhoala.png" alt=""></div>
+                        <p><strong>Muonloaihoa.vn</strong>  tự hào mang đến cho bạn nhiều trải nghiệm thú vị trong cuộc sống, bằng những kinh nghiệm thực tế cũng như sản phẩm chất lượng sẽ giúp mọi người không phải băn khoăn trong việc lựa chọn sản phẩm cũng như thiếu kiến thức về sản phẩm...</p>
+                        <ul class="dez-social-icon">
+                            <li class="border"><a class="fab fa-facebook-f" href="javascript:void(0);"></a></li>
+                            <li class="border"><a class="fab fa-twitter" href="javascript:void(0);"></a></li>
+                            <li class="border"><a class="fab fa-linkedin-in" href="javascript:void(0);"></a></li>
+                            <li class="border"><a class="fab fa-facebook-f" href="javascript:void(0);"></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="widget recent-posts-entry">
+                        <h4 class="m-b15 text-uppercase">bài đăng phổ biến</h4>
+                        <div class="dez-separator-outer m-b10">
+                            <div class="dez-separator bg-white style-skew"></div>
+                        </div>
+                        <div class="widget-post-bx">
+                            @foreach (var item in Model.ListPostViewCount)
+                            {
+                                <div class="widget-post clearfix">
+                                    <div class="dez-post-media"> <img style="width:90px;height:72px" src="@(Configuration["BackendApiUrl"]+ item.ImagePost)" alt="@item.Title" width="200" height="143"> </div>
+                                    <div class="dez-post-info">
+                                        <div class="dez-post-header">
+                                            <h6 style="overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp: 2;display: -webkit-box;-webkit-box-orient: vertical;"  class="post-title text-uppercase"><a href="/details/@item.SeoAlias-@item.Id">@item.Title</a></h6>
+                                        </div>
+                                        <div class="dez-post-meta">
+                                            <ul>
+                                                <li class="post-author">Đăng bởi <a href="javascript:void(0);">@item.FirstName @item.LastName</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="widget widget_services">
+                        <h4 class="m-b15 text-uppercase">Hỗ trợ</h4>
+                        <div class="dez-separator-outer m-b10">
+                            <div class="dez-separator bg-white style-skew"></div>
+                        </div>
+                        <ul>
+                            <li><a href="gioi-thieu">Giới thiệu</a></li>
+                            <li><a href="lien-he">Liên hệ</a></li>
+                            <li><a href="services-1.html">Hướng dẫn sử dụng mã giảm giá</a></li>
+                            <li><a href="services-1.html">Câu hỏi thường gặp</a></li>
+                            <li><a href="services-1.html">Điều kiện và điều khoản </a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="widget widget_getintuch">
+                        <h4 class="m-b15 text-uppercase">Liên hệ</h4>
+                        <div class="dez-separator-outer m-b10">
+                            <div class="dez-separator bg-white style-skew"></div>
+                        </div>
+                        <ul>
+                            <li><i class="fas fa-map-marker-alt"></i><strong>Địa chỉ</strong> Thành phố Hồ Chí Minh, VietNam</li>
+                            <li><i class="fas fa-phone-alt"></i><strong>Điện thoại</strong>0800-123456 (24/7 Support Line)</li>
+                            @*<li><i class="fa fa-fax"></i><strong>FAX</strong>(123) 123-4567</li>*@
+                            <li><i class="fa fa-envelope"></i><strong>Email</strong>info_vuonhoala@gmail.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer bottom part -->
+    <div class="footer-bottom ">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center"> <span>© copyright 2022  by Lê Xuân Thuận. All Rights Reserved.</span> </div>
+            </div>
+        </div>
+    </div>
+</footer>

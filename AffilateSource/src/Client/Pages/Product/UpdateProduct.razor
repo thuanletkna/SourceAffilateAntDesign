@@ -1,0 +1,109 @@
+﻿@page "/product/update-product/{id:int}"
+@using AffilateSource.Client.Services
+@using AffilateSource.Shared.ViewModel.Filter
+@using Telerik.Blazor.Components.Editor
+@inject HttpClient Http
+@inject PostApiServices postApi
+@inject NavigationManager NavigationManager
+
+<style>
+.ant-spin-container {
+    position: relative;
+    transition: opacity .3s;
+    padding: 42px 24px 50px;
+}
+</style>
+<Form Model="@productUpdateModel"
+      OnFinish="UpdateProductAsync">
+    <AntDesign.FormItem Style="margin-bottom: 0px;">
+        <AntDesign.FormItem Style="display: inline-block; width: calc(50% - 10px)">
+            <Text>Tên sản phẩm</Text>
+            <Input Placeholder="Nhập tên sản phẩm" @bind-Value="@productUpdateModel.Title"></Input>
+        </AntDesign.FormItem>
+        <AntDesign.FormItem Style="display: inline-block; width: calc(50% - 10px)">
+            <Text>Danh mục sản phẩm</Text>
+            <TelerikDropDownList Data="@CategoryParent"
+                                 @bind-Value="@context.CategoryParentId"
+                                 TextField="CategoryName"
+                                 ValueField="Id"
+                                 DefaultText="Chọn danh mục cha"
+                                 Width="100%">
+            </TelerikDropDownList>
+        </AntDesign.FormItem>
+        @*<AntDesign.FormItem Style="display: inline-block; width: calc(50% - 10px)">
+            <Text>Danh mục</Text>
+            <Select DataSource="@filtterRequest.dataSelectCategoryFilter"
+                    @bind-Value="@context.CategoryParentId"
+                    LabelName="@nameof(SelectModel.DisplayText)"
+                    ValueName="@nameof(SelectModel.ValueText)"
+                    Placeholder="Chọn danh mục chỉnh sửa"
+                    AllowClear>
+            </Select>
+        </AntDesign.FormItem>*@
+    </AntDesign.FormItem>
+    <AntDesign.FormItem Style="margin-bottom: 0px;">
+        <Text>Thông tin sản phẩm</Text>
+        <Input Placeholder="Nhập mô tả khoảng 10-20 ký tự" @bind-Value="@productUpdateModel.Description"></Input>
+    </AntDesign.FormItem>
+    <AntDesign.FormItem Style="margin-bottom: 0px;">
+        <Text>Mô tả chi tiết sản phẩm</Text>
+        <TelerikEditor Tools="@EditorToolSets.All"
+                       Height="200px"
+                       @bind-Value="@productUpdateModel.Detail"></TelerikEditor>
+    </AntDesign.FormItem>
+    <AntDesign.FormItem Style="margin-bottom: 0px;">
+        <AntDesign.FormItem Style="display: inline-block; width: calc(50% - 10px)">
+            <Text>Giá sản phẩm</Text>
+            <Input Placeholder="Nhập giá sản phẩm" @bind-Value="@productUpdateModel.Price"></Input>
+        </AntDesign.FormItem>
+        <AntDesign.FormItem Style="display: inline-block; width: calc(50% - 10px)">
+            <Text>Trạng thái</Text>
+            <Input Placeholder="Chọn trạng thái" @bind-Value="@productUpdateModel.StatusId" />
+        </AntDesign.FormItem>
+    </AntDesign.FormItem>
+    <AntDesign.FormItem Style="margin-bottom: 0px;">
+        <AntDesign.FormItem Style="display: inline-block; width: calc(50% - 10px)">
+            <Text>Link Affilate Shopee</Text>
+            <Input Placeholder="Nhập link Affilate" @bind-Value="@productUpdateModel.LinkAffilateShopee"></Input>
+        </AntDesign.FormItem>
+        <AntDesign.FormItem Style="display: inline-block; width: calc(50% - 10px)">
+            <Text>Link Affilate Lazada</Text>
+            <Input Placeholder="Chọn trạng thái" @bind-Value="@productUpdateModel.LinkAffilateLazada" />
+        </AntDesign.FormItem>
+    </AntDesign.FormItem>
+    <AntDesign.FormItem Style="margin-bottom: 0px;">
+        <AntDesign.FormItem Style="display: inline-block; width: calc(50% - 10px)">
+            <Text>Link Affilate Tiki</Text>
+            <Input Placeholder="Nhập link Affilate" @bind-Value="@productUpdateModel.LinkAffilateTiki"></Input>
+        </AntDesign.FormItem>
+        <AntDesign.FormItem Style="display: inline-block; width: calc(50% - 10px)">
+            <Text>Link Affilate Khác</Text>
+            <Input Placeholder="Chọn trạng thái" @bind-Value="@productUpdateModel.LinkAffilateOther" />
+        </AntDesign.FormItem>
+    </AntDesign.FormItem>
+    <AntDesign.FormItem Style="margin-bottom: 0px;">
+        <TelerikUpload SaveUrl="@SaveUrl"
+                       RemoveUrl="@RemoveUrl"
+                       SaveField="file"
+                       OnSuccess="@((UploadSuccessEventArgs arg) => OnSuccessHandler(arg, "images"))"
+                       AllowedExtensions="@(new List<string>() {".jpg", ".png" })" MaxFileSize="1048576">
+        </TelerikUpload>
+        <div class="col-md-3 col-sm-12">
+            @if (!string.IsNullOrEmpty(productUpdateModel.ImageProducts))
+            {
+                <div class="img-inform">
+                    <img style="width: 500px;margin-top: 20px;" src="@productUpdateModel.ImageProducts">
+                </div>
+            }
+        </div>
+        <div class="col-md-3 col-sm-12 d-none">
+            <TelerikTextBox Enabled="false" @bind-Value="productUpdateModel.ImageProducts" PlaceHolder="VD: example.png" Width="100%" InputMode="text" Class="k-invalidx form-control" Id="images"></TelerikTextBox>
+        </div>
+    </AntDesign.FormItem>
+
+    <AntDesign.FormItem WrapperColOffset="8" WrapperColSpan="16" Style="margin-bottom: 0px;">
+        <Button Type="@AntDesign.ButtonType.Primary" HtmlType="submit">
+            Chỉnh sửa
+        </Button>
+    </AntDesign.FormItem>
+</Form>
