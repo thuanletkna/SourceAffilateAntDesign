@@ -15,21 +15,24 @@ using AffilateSource.Shared.ViewModel.Filter;
 using Telerik.DataSource;
 using AffilateSource.Shared.ViewModel;
 using AffilateSource.Shared.Kendohelpers;
+using AffilateSource.Shared.ViewModel.Status;
 
 namespace AffilateSource.Client.Pages.Product
 {
     public partial class ProductIndex
     {
-
-
         TelerikGrid<ProductHomeViewModel> DataSource { get; set; }
         GridReadEventArgs args = new GridReadEventArgs();
         ProductCreateViewModel productCreateModel = new ProductCreateViewModel();
         GridSelectionMode selectionMode { get; set; } = GridSelectionMode.Multiple;
         bool ShowSelectAll => selectionMode == GridSelectionMode.Multiple;
         public IEnumerable<ProductHomeViewModel> SelectedItems { get; set; } = Enumerable.Empty<ProductHomeViewModel>();
-        int PageSize { get; set; } = 50;
+        int PageSize { get; set; } = 2;
         int Page { get; set; } = 1;
+
+        bool Visible { get; set; }
+        bool isVisible { get; set; }
+
 
         public FilterRequest filtterRequest { get; set; } = new FilterRequest { };
         public class FilterRequest
@@ -39,14 +42,47 @@ namespace AffilateSource.Client.Pages.Product
                 get { return this.GetType().GetProperty(propertyName).GetValue(this, null); }
                 set { this.GetType().GetProperty(propertyName).SetValue(this, value, null); }
             }
-            public string Category { get; set; }
+            public string CategoryParentId { get; set; }
             public string StatusId { get; set; } = "1";
             //public string MaCongTy { get; set; } = "CT00001";
-            //public IEnumerable<Status> dataSelectStatus { get; set; } = new List<Status>();
+            public IEnumerable<StatusVm> dataSelectStatus { get; set; } = new List<StatusVm>();
             public List<SelectModel> dataSelectCategoryFilter { get; set; } = new List<SelectModel>();
-
+            public List<CategoriesSelectViewModel> CategoryProduct { get; set; } = new List<CategoriesSelectViewModel>();
         }
 
+        async Task SelectChangeHandlerCategory(string theUserInput, string paramFilter)
+        {
+            filtterRequest[paramFilter] = theUserInput;
+            StateHasChanged();
+            await UpdateReadData();
+            StateHasChanged();
+        }
+        async Task SelectChangeHandlerStatus(string theUserInput, string paramFilter)
+        {
+            filtterRequest[paramFilter] = theUserInput;
+            StateHasChanged();
+            await UpdateReadData();
+            StateHasChanged();
+        }
+        async Task RefreshGrid()
+        {
+            await RefreshThroughState();
+        }
+        async Task UpdateReadData()
+        {
+            if (Page != 1)
+            {
+                Page = 1;
+                return;
+            }
+            Page = 1; args.Request.Page = 1;
+            await RefreshThroughState();
+        }
+        async Task RefreshThroughState()
+        {
+            await Task.Delay(1);
+            await DataSource.SetState(DataSource.GetState());
+        }
         protected async Task ReadItems(GridReadEventArgs argsz)
         {
             args = argsz;
@@ -59,8 +95,9 @@ namespace AffilateSource.Client.Pages.Product
             try
             {
                 var getDataSelect = await postApi.GetDataSelectFilterAdmin("Admin", "GetSelectListFilter");
-                filtterRequest.dataSelectCategoryFilter = getDataSelect.ListCategory;
-                //filtterRequest.dataSelectStatus = await StatusServices.GetStatusAsync();
+                var getDataDanhMuc = await postApi.GetdataSelectCategoryByParentId("Categories", "GetCategoriesByParentId", 2);
+                filtterRequest.CategoryProduct = getDataDanhMuc;
+                filtterRequest.dataSelectStatus = await postApi.GetDataSelectStatus("Status", "GetListSatatus");
                 var uri = NavigationManager.ToAbsoluteUri(NavigationManager.Uri);
             }
             catch (Exception e)
@@ -74,8 +111,8 @@ namespace AffilateSource.Client.Pages.Product
             CompositeFilterDescriptor _filter = new CompositeFilterDescriptor();
             _filter.LogicalOperator = FilterCompositionLogicalOperator.And;
 
-            if (!string.IsNullOrEmpty(filtterRequest.Category))
-                _filter.FilterDescriptors.Add(new FilterDescriptor("Category", FilterOperator.IsEqualTo, filtterRequest.Category));
+            if (!string.IsNullOrEmpty(filtterRequest.CategoryParentId))
+                _filter.FilterDescriptors.Add(new FilterDescriptor("CategoryParentId", FilterOperator.IsEqualTo, filtterRequest.CategoryParentId));
             if (!string.IsNullOrEmpty(filtterRequest.StatusId))
                 _filter.FilterDescriptors.Add(new FilterDescriptor("StatusId", FilterOperator.IsEqualTo, filtterRequest.StatusId));
 

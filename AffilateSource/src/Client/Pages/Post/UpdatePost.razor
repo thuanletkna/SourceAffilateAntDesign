@@ -2,6 +2,7 @@
 @using AffilateSource.Client.Services
 @using AffilateSource.Shared.ViewModel.Filter
 @using AffilateSource.Shared.ViewModel.Post
+@using AffilateSource.Shared.ViewModel.Status
 @using Telerik.Blazor.Components.Editor
 @inject HttpClient Http
 @inject PostApiServices postApi
@@ -52,7 +53,13 @@
                     </AntDesign.FormItem>
                     <AntDesign.FormItem>
                         <Text>Trạng thái</Text>
-                        <Input Style="margin-top: 10px;" Placeholder="Mã chấm công" @bind-Value="@context.StatusId" />
+                        <Select DataSource="@StatusViewModel"
+                                @bind-Value="@context.StatusId"
+                                LabelName="@nameof(StatusVm.StatusName)"
+                                ValueName="@nameof(StatusVm.StatusId)"
+                                Placeholder="Chọn trạng thái cần chỉnh sửa"
+                                AllowClear>
+                        </Select>
                     </AntDesign.FormItem>
                     <AntDesign.FormItem>
                         <Text>Hình ảnh</Text>
@@ -124,7 +131,7 @@
        Visible="@WindowVisible">
     <Form Model="@detailUpdate"
           OnFinish="UpdateDetail">
-        <AntDesign.FormItem Style="display: inline-block;width:472px ">
+        <AntDesign.FormItem Style="display: inline-block;width:100px ">
             <Text>Mã chấm công</Text>
             <Input ReadOnly Placeholder="ID" @bind-Value="@context.Id" />
         </AntDesign.FormItem>
@@ -132,7 +139,7 @@
             <Text>Tiêu đề</Text>
             <Input Placeholder="ID" @bind-Value="@context.TitleDetail" />
         </AntDesign.FormItem>
-        <AntDesign.FormItem Style="display: inline-block;width:472px ">
+        <AntDesign.FormItem Style="display: inline-block">
             <Template>
                 <label for="mail" class="k-label k-form-label">Chi tiết*:</label>
                 <TelerikEditor Tools="@EditorToolSets.All"

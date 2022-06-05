@@ -9,6 +9,7 @@ using AffilateSource.Shared.ViewModel.Post;
 using AffilateSource.Shared.ViewModel.Filter;
 using AffilateSource.Shared.ViewModel;
 using AffilateSource.Shared.Kendohelpers;
+using AffilateSource.Shared.ViewModel.Status;
 
 namespace AffilateSource.Client.Pages.Home
 {
@@ -21,7 +22,8 @@ namespace AffilateSource.Client.Pages.Home
         public IEnumerable<PostHomeViewModel> SelectedItems { get; set; } = Enumerable.Empty<PostHomeViewModel>();
         int PageSize { get; set; } = 50;
         int Page { get; set; } = 1;
-
+        bool Visible { get; set; }
+        bool isVisible { get; set; }
         public FilterRequest filtterRequest { get; set; } = new FilterRequest { };
         public class FilterRequest
         {
@@ -30,14 +32,34 @@ namespace AffilateSource.Client.Pages.Home
                 get { return this.GetType().GetProperty(propertyName).GetValue(this, null); }
                 set { this.GetType().GetProperty(propertyName).SetValue(this, value, null); }
             }
-            public string Category { get; set; }
+            public string CategoryParentId { get; set; }
             public string StatusId { get; set; } = "1";
             //public string MaCongTy { get; set; } = "CT00001";
-            //public IEnumerable<Status> dataSelectStatus { get; set; } = new List<Status>();
+            public IEnumerable<StatusVm> dataSelectStatus { get; set; } = new List<StatusVm>();
             public List<SelectModel> dataSelectCategoryFilter { get; set; } = new List<SelectModel>();
 
         }
-
+       
+        #region Lọc dữ liệu Grid
+        async Task RefreshGrid()
+        {
+            await RefreshThroughState();
+        }
+        async Task UpdateReadData()
+        {
+            if (Page != 1)
+            {
+                Page = 1;
+                return;
+            }
+            Page = 1; args.Request.Page = 1;
+            await RefreshThroughState();
+        }
+        async Task RefreshThroughState()
+        {
+            await Task.Delay(1);
+            await DataSource.SetState(DataSource.GetState());
+        }
         protected async Task ReadItems(GridReadEventArgs argsz)
         {
             args = argsz;
@@ -45,12 +67,31 @@ namespace AffilateSource.Client.Pages.Home
             await GetData();
             await GetSelectListValue();
         }
+
+        async Task SelectChangeHandlerCategory(string theUserInput, string paramFilter)
+        {
+            filtterRequest[paramFilter] = theUserInput;
+            StateHasChanged();
+            await UpdateReadData();
+            StateHasChanged();
+        }
+        async Task SelectChangeHandlerStatus(string theUserInput, string paramFilter)
+        {
+            filtterRequest[paramFilter] = theUserInput;
+            StateHasChanged();
+            await UpdateReadData();
+            StateHasChanged();
+        }
+        #endregion Lọc dữ liệu Grid
+
+        #region Get data DropdownList
         private async Task GetSelectListValue()
         {
             try
             {
                 var getDataSelect = await postApi.GetDataSelectFilterAdmin("Admin", "GetSelectListFilter");
                 filtterRequest.dataSelectCategoryFilter = getDataSelect.ListCategory;
+                filtterRequest.dataSelectStatus = await postApi.GetDataSelectStatus("Status", "GetListSatatus");
                 //filtterRequest.dataSelectStatus = await StatusServices.GetStatusAsync();
                 var uri = NavigationManager.ToAbsoluteUri(NavigationManager.Uri);
             }
@@ -59,14 +100,18 @@ namespace AffilateSource.Client.Pages.Home
                 Console.WriteLine(e);
             }
         }
+
+        #endregion Get data DropdownList
+
+        #region Get data Grid
         async Task GetData()
         {
             args.Request.Filters.Clear();
             CompositeFilterDescriptor _filter = new CompositeFilterDescriptor();
             _filter.LogicalOperator = FilterCompositionLogicalOperator.And;
 
-            if (!string.IsNullOrEmpty(filtterRequest.Category))
-                _filter.FilterDescriptors.Add(new FilterDescriptor("Category", FilterOperator.IsEqualTo, filtterRequest.Category));
+            if (!string.IsNullOrEmpty(filtterRequest.CategoryParentId))
+                _filter.FilterDescriptors.Add(new FilterDescriptor("CategoryParentId", FilterOperator.IsEqualTo, filtterRequest.CategoryParentId));
             if (!string.IsNullOrEmpty(filtterRequest.StatusId))
                 _filter.FilterDescriptors.Add(new FilterDescriptor("StatusId", FilterOperator.IsEqualTo, filtterRequest.StatusId));
 
@@ -94,5 +139,6 @@ namespace AffilateSource.Client.Pages.Home
             args.Total = result.Total;
             StateHasChanged();
         }
+        #endregion Get data Grid
     }
 }

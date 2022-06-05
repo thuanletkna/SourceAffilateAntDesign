@@ -267,6 +267,7 @@ namespace AffilateSource.Data.Services.Repository
                     ObjParm.Add("@ImageProducts", request.ImageProducts);
                     ObjParm.Add("@StatusId", request.StatusId);
                     ObjParm.Add("@Details",request.Detail);
+                    ObjParm.Add("@Price", request.Price);
                     ObjParm.Add("@LinkAffilateLazada", request.LinkAffilateLazada);
                     ObjParm.Add("@LinkAffilateOther", request.LinkAffilateOther);
                     ObjParm.Add("@LinkAffilateShopee", request.LinkAffilateShopee);

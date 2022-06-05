@@ -61,63 +61,63 @@
                                                 @foreach (var items in lstSubMenu)
                                                 {
                                                     var lstSubMenu3 = Model.ListcategoryHome.Where(x => x.Level == 3 && x.ParentId == @items.Id).OrderBy(t => t.SortOrder).ToList();
-                                                <li>
-                                                    @if (items.ParentId == 2)
-                                                    {
-                                                        <a href="/sanpham/@items.SeoAlias-@items.Id">@items.CategoryName</a>
-
-                                                    }
-                                                    @if (items.ParentId == 3)
-                                                    {
-                                                        <a href="/blog/@items.SeoAlias-@items.Id">@items.CategoryName</a>
-
-                                                    }
-                                                    @foreach (var itemss in lstSubMenu3)
-                                                    {
-                                                        @if (itemss.CategoryName != null)
+                                                    <li>
+                                                        @if (items.ParentId == 2)
                                                         {
-                                                            <ul class="sub-menu">
-                                                                @foreach (var it in lstSubMenu3)
-                                                                {
-                                                                    <li><a href="header-style-1.html">@it.CategoryName</a></li>
-                                                                }
-                                                            </ul>
-                                                        }
-
-                                                    }
-                                                    @* @if (lstSubMenu3 != null)
-        {
-        <ul class="sub-menu">
-        @foreach (var it in lstSubMenu3)
-        {
-        <li><a href="header-style-1.html">@it.CategoryName</a></li>
-        }
-        </ul>
-        }*@
-
-                                                </li>
-                                                    @*@if (items.ParentId == 2)
-                                                        {
-                                                        var lstSubMenu3 = Model.ListcategoryHome.Where(x => x.Level == 3 && x.ParentId == @item.Id).OrderBy(t => t.SortOrder).ToList();
-                                                        <li>
-                                                        <a href="/sanpham/@items.SeoAlias-@items.Id">@items.CategoryName</a>
-                                                        <ul class="sub-menu">
-                                                        @if (lstSubMenu3 != null && lstSubMenu3.Any())
-                                                        {
-                                                        @foreach (var it in lstSubMenu3)
-                                                        {
-                                                        <li><a href="header-style-1.html">@it.CategoryName</a></li>
-                                                        }
-                                                        }
-
-                                                        </ul>
-                                                        </li>
+                                                            <a href="/sanpham/@items.SeoAlias-@items.Id">@items.CategoryName</a>
 
                                                         }
                                                         @if (items.ParentId == 3)
                                                         {
-                                                        <li><a href="/blog/@items.SeoAlias-@items.Id">@items.CategoryName</a> </li>
-                                                        }*@
+                                                            <a href="/blog/@items.SeoAlias-@items.Id">@items.CategoryName</a>
+
+                                                        }
+                                                        @foreach (var itemss in lstSubMenu3)
+                                                        {
+                                                            @if (itemss.CategoryName != null)
+                                                            {
+                                                                <ul class="sub-menu">
+                                                                    @foreach (var it in lstSubMenu3)
+                                                                    {
+                                                                        <li><a href="header-style-1.html">@it.CategoryName</a></li>
+                                                                    }
+                                                                </ul>
+                                                            }
+
+                                                        }
+                                                        @* @if (lstSubMenu3 != null)
+                                    {
+                                    <ul class="sub-menu">
+                                    @foreach (var it in lstSubMenu3)
+                                    {
+                                    <li><a href="header-style-1.html">@it.CategoryName</a></li>
+                                    }
+                                    </ul>
+                                    }*@
+
+                                                    </li>
+                                                    @*@if (items.ParentId == 2)
+                                {
+                                var lstSubMenu3 = Model.ListcategoryHome.Where(x => x.Level == 3 && x.ParentId == @item.Id).OrderBy(t => t.SortOrder).ToList();
+                                <li>
+                                <a href="/sanpham/@items.SeoAlias-@items.Id">@items.CategoryName</a>
+                                <ul class="sub-menu">
+                                @if (lstSubMenu3 != null && lstSubMenu3.Any())
+                                {
+                                @foreach (var it in lstSubMenu3)
+                                {
+                                <li><a href="header-style-1.html">@it.CategoryName</a></li>
+                                }
+                                }
+
+                                </ul>
+                                </li>
+
+                                }
+                                @if (items.ParentId == 3)
+                                {
+                                <li><a href="/blog/@items.SeoAlias-@items.Id">@items.CategoryName</a> </li>
+                                }*@
                                                 }
                                             </ul>
 

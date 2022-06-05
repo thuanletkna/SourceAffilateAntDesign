@@ -1,11 +1,12 @@
 ﻿@page "/post/create-post"
 @using AffilateSource.Client.Services
+@using AffilateSource.Shared.ViewModel.Status
 @using Telerik.Blazor.Components
 @using Telerik.Blazor.Components.Editor
 @inject HttpClient Http
 @inject PostApiServices postApi
 @inject NavigationManager NavigationManager
-
+@inject NotificationService _notice
 @if (ShowWizard)
 {
     <PageContainer Title="Tạo mới bài đăng">
@@ -41,7 +42,18 @@
                                                        @bind-Value="@postCreateViewModel.Description"></TelerikEditor>
                                         </Template>
                                     </Telerik.Blazor.Components.FormItem>
-                                    <Telerik.Blazor.Components.FormItem LabelText="Trạng thái*:" Field="@nameof(postCreateViewModel.StatusId)"></Telerik.Blazor.Components.FormItem>
+                                    <Telerik.Blazor.Components.FormItem LabelText="Trạng thái*:" Field="@nameof(postCreateViewModel.StatusId)">
+                                        <Template>
+                                            <label for="mail" class="k-label k-form-label">Trạng thái*:</label>
+                                            <Select DataSource="@StatusViewModel"
+                                                @bind-Value="@postCreateViewModel.StatusId"
+                                                LabelName="@nameof(StatusVm.StatusName)"
+                                                ValueName="@nameof(StatusVm.StatusId)"
+                                                Placeholder="Chọn trạng thái cần chỉnh sửa"
+                                                AllowClear>
+                                            </Select>
+                                        </Template>
+                                    </Telerik.Blazor.Components.FormItem>
                                     <Telerik.Blazor.Components.FormItem LabelText="Ảnh bài đăng*:" Field="@nameof(postCreateViewModel.Detail)">
                                         <Template>
                                             <label for="images" class="k-label k-form-label">Ảnh bài đăng*:</label>

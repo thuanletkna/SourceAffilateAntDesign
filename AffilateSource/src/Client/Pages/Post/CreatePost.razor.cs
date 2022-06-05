@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Components.Web;
 using AffilateSource.Shared.ViewModel.Post;
 using AffilateSource.Shared.ViewModel.Category;
 using AffilateSource.Shared.ViewModel.Product;
+using AntDesign;
+using AffilateSource.Shared.ViewModel.Status;
 
 namespace AffilateSource.Client.Pages.Post
 {
@@ -25,6 +27,7 @@ namespace AffilateSource.Client.Pages.Post
         public CategoriesSelectViewModel categoryQuickVM { get; set; }
         public ProductSelectViewModel productSelectViewModel { get; set; }
         public PostHomeViewModel DataPostLast { get; set; }
+        public List<StatusVm> StatusViewModel { get; set; } = new List<StatusVm>();
 
         // file upload image
         public string SaveUrl => ToAbsoluteUrl("api/upload/Save");
@@ -100,6 +103,7 @@ namespace AffilateSource.Client.Pages.Post
             ShowWizard = false;
 
             await Dialog.AlertAsync("The Registration was submitted successfully", "Done");
+            NavigationManager.NavigateTo("/");
         }
 
         public bool? IsRegistrationValid { get; set; }
@@ -119,6 +123,7 @@ namespace AffilateSource.Client.Pages.Post
         protected override async Task OnInitializedAsync()
         {
             CategoryParent = await postApi.GetdataSelectCategoryByParentId("Categories", "GetCategoriesByParentId",3);
+            StatusViewModel = await postApi.GetDataSelectStatus("Status", "GetListSatatus");
         }
 
         public async Task OnRegistrationStepChangeAsync(WizardStepChangeEventArgs args)

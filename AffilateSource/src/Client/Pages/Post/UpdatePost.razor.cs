@@ -13,6 +13,7 @@ using AffilateSource.Shared.ViewModel.Product;
 using AntDesign;
 using System.Text.Json;
 using AffilateSource.Shared.ViewModel.Filter;
+using AffilateSource.Shared.ViewModel.Status;
 
 namespace AffilateSource.Client.Pages.Post
 {
@@ -28,17 +29,10 @@ namespace AffilateSource.Client.Pages.Post
         public List<ProductSelectViewModel> productSelect { get; set; } = new List<ProductSelectViewModel>();
         public ProductSelectViewModel productSelectViewModel { get; set; }
         string activeKey { get; set; } = "1";
+        public List<StatusVm> StatusViewModel { get; set; } = new List<StatusVm>();
 
         //Thông báo thành công sau khi chỉnh sửa
-        private async Task NoticeWithIcon(NotificationType type)
-        {
-            await _notice.Open(new NotificationConfig()
-            {
-                Message = "Chỉnh sửa bài đăng thành công",
-                //Description = "This is the content of the notification. This is the content of the notification. This is the content of the notification.",
-                NotificationType = type
-            });
-        }
+
         public FilterRequest filtterRequest { get; set; } = new FilterRequest { };
         public class FilterRequest
         {
@@ -73,6 +67,7 @@ namespace AffilateSource.Client.Pages.Post
         {
             await GetSelectListValue();
             DetailPost = await postApi.GetListPostDetailByIdAdmin("Post", "GetPostDetailByIdAdmin", id);
+            StatusViewModel = await postApi.GetDataSelectStatus("Status", "GetListSatatus");
         }
         async Task<PostCreateViewModel> OnTabChange(string key)
         {
