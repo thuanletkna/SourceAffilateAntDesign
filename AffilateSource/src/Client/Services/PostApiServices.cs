@@ -180,5 +180,16 @@ namespace AffilateSource.Client.Services
                 return new PostDetailVm();
             }
         }
+
+        #region Categories
+        public async Task<DataEnvelope<CategoryQuickVM>> GetDataCategoryAdminAsync(string controller, string action, DataSourceRequest Request)
+        {
+            HttpResponseMessage response = await Http.PostAsJsonAsync(controller + "/" + action, Request);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                return await response.Content.ReadFromJsonAsync<DataEnvelope<CategoryQuickVM>>();
+
+            throw new Exception($"The service returned with status {response.StatusCode}");
+        }
+        #endregion Categories
     }
 }
