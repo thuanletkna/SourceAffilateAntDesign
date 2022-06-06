@@ -1,4 +1,5 @@
 ﻿using AffilateSource.Shared.ViewModel;
+using AffilateSource.Shared.ViewModel.BannerImages;
 using AffilateSource.Shared.ViewModel.Category;
 using AffilateSource.Shared.ViewModel.Filter;
 using AffilateSource.Shared.ViewModel.Post;
@@ -191,5 +192,17 @@ namespace AffilateSource.Client.Services
             throw new Exception($"The service returned with status {response.StatusCode}");
         }
         #endregion Categories
+
+
+        #region Slide
+        public async Task<DataEnvelope<SlideImageVm>> GetDataSlideAdminAsync(string controller, string action, DataSourceRequest Request)
+        {
+            HttpResponseMessage response = await Http.PostAsJsonAsync(controller + "/" + action, Request);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                return await response.Content.ReadFromJsonAsync<DataEnvelope<SlideImageVm>>();
+
+            throw new Exception($"The service returned with status {response.StatusCode}");
+        }
+        #endregion Slide
     }
 }

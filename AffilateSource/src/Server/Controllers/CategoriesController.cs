@@ -42,5 +42,6 @@ namespace AffilateSource.Server.Controllers
             var post = await _categoriesServices.GetCategoryPagingFilterAdmin(request);
             return post;
         }
+       
     }
 }

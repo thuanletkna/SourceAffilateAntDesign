@@ -1,10 +1,12 @@
 ﻿using AffilateSource.Data.Configuration;
+using AffilateSource.Data.DataEntity;
 using AffilateSource.Data.Services.Interface;
 using AffilateSource.Shared.Kendohelpers;
 using AffilateSource.Shared.ViewModel.Category;
 using AffilateSource.Shared.ViewModel.Filter;
 using Dapper;
 using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -17,9 +19,11 @@ namespace AffilateSource.Data.Services.Repository
     public class CategoriesServices : ICategoriesServices
     {
         private readonly SqlConnectionConfiguration _configuration;
-        public CategoriesServices(SqlConnectionConfiguration configuration)
+        public readonly ApplicationDbContext _context;
+        public CategoriesServices(SqlConnectionConfiguration configuration, ApplicationDbContext context)
         {
             _configuration = configuration;
+            _context = context;
         }
 
         public async Task<IEnumerable<CategoryQuickVM>> GetCategoryByParentId(int parentId)
@@ -80,7 +84,7 @@ namespace AffilateSource.Data.Services.Repository
             }
         }
 
-        
+
         public async Task<IEnumerable<CategoriesSelectViewModel>> GetCategoriesByParentId(int parentId)
         {
             try
@@ -155,5 +159,6 @@ namespace AffilateSource.Data.Services.Repository
                 return result;
             }
         }
+
     }
 }

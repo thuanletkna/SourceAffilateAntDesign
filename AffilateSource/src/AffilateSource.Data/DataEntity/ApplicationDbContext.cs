@@ -43,6 +43,7 @@ namespace AffilateSource.Data.DataEntity
 
         }
         public DbSet<Command> Commands { set; get; }
+        public DbSet<Slide> Slides { set; get; }
         public DbSet<CommandInFunction> CommandInFunctions { set; get; }
         public DbSet<ActivityLog> ActivityLogs { set; get; }
         public DbSet<Category> Categories { set; get; }
