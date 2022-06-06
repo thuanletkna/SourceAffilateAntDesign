@@ -42,5 +42,20 @@ namespace AffilateSource.Server.Controllers
             var post = await _categoriesServices.GetCategoryPagingFilterAdmin(request);
             return post;
         }
+
+        [HttpPost("GetCategoriesByParentIdAdmin")]
+        public async Task<IActionResult> GetCategoriesByParentIdAdmin([FromBody] int parentId)
+        {
+            var categoryParents = await _categoriesServices.GetCategoriesByParentIdAdmin(parentId);
+            if (categoryParents == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(categoryParents);
+            }
+        }
+
     }
 }

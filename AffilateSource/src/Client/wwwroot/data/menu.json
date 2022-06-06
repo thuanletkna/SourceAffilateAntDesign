@@ -36,41 +36,24 @@
       
     ]
   },
-  
   {
-    "path": "/profile",
+    "path": "/categories",
     "name": "Danh mục",
     "key": "profile",
-    "icon": "profile",
-    "children": [
-      {
-        "path": "/categories/post",
-        "name": "Danh mục sản phẩm",
-        "key": "profile.basic"
-      },
-      {
-        "path": "/categories/product",
-        "name": "Danh mục bài đăng",
-        "key": "profile.advanced"
-      }
-    ]
+    "icon": "profile"
   },
   {
     "path": "/result",
-    "name": "Result Pages",
+    "name": "Hình ảnh Banner",
     "key": "result",
     "icon": "check-circle",
     "children": [
       {
-        "path": "/result/success",
-        "name": "Success Page",
+        "path": "/banner",
+        "name": "Danh sách banner",
         "key": "result.success"
-      },
-      {
-        "path": "/result/fail",
-        "name": "Failed page",
-        "key": "result.fail"
       }
+      
     ]
   },
   {

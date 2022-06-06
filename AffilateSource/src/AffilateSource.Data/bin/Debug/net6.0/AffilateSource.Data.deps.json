@@ -1092,6 +1092,7 @@
       "AffilateSource.Shared/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Http.Features": "5.0.17",
+          "Microsoft.EntityFrameworkCore": "6.0.5",
           "Telerik.UI.for.Blazor": "3.0.0"
         },
         "runtime": {

@@ -1,0 +1,128 @@
+﻿@page "/banner"
+@using AffilateSource.Client.Services
+@using AffilateSource.Shared.ViewModel.BannerImages
+@using AffilateSource.Shared.ViewModel.Status
+@using Telerik.Blazor.Components
+@using Telerik.Blazor.Components.Editor
+@inject HttpClient Http
+@inject PostApiServices postApi
+@inject NavigationManager NavigationManager
+@inject NotificationService _notice
+
+<PageContainer Title="Hình ảnh trang chủ">
+    <div class="demo-section">
+        <TelerikTabStrip TabPosition=@tabPosition>
+            <TabStripTab Title="Banner Slide">
+                <TelerikGrid TItem="@SlideImageVm" OnRead=@ReadItems ScrollMode="@GridScrollMode.Scrollable"
+                             FilterMode="@GridFilterMode.None"
+                             SelectionMode="@selectionMode"
+                             @bind-SelectedItems="@SelectedItems"
+                             @ref="@DataSource"
+                             Pageable="true"
+                             @bind-PageSize="@PageSize" @bind-Page="@Page">
+                    <GridToolBar>
+                        <Space>
+                            <SpaceItem>
+                                <AntDesign.Button Icon="plus" Size="@ButtonSize.Large" Type="primary" @onclick="_=>ShowModal()">Thêm mới</AntDesign.Button>
+                            </SpaceItem>
+                            @*<SpaceItem>
+                                <AntDesign.Button Style="background: #aa7ad0;border: #aa7ad0;" Icon="edit" Size="@ButtonSize.Large" Type="@AntDesign.ButtonType.Primary" OnClick=@btnUpdatePhongban>Cập nhật phòng ban</AntDesign.Button>
+                                </SpaceItem>
+                                <SpaceItem>
+                                <AntDesign.Button Style="background: #eab046;border: #eab046;" Icon="edit" Size="@ButtonSize.Large" Type="@AntDesign.ButtonType.Primary" OnClick=@btnUpdateKhuVuc>Cập nhật khu vực</AntDesign.Button>
+                                </SpaceItem>
+                                <SpaceItem>
+                                <AntDesign.Button Style="background: #7ad07b;border: #7ad07b;" Icon="edit" Size="@ButtonSize.Large" Type="edit" OnClick=@btnUpdateStatus>Cập nhật trạng thái</AntDesign.Button>
+                                </SpaceItem>
+                                <SpaceItem>
+                                <AntDesign.Button Style="background: #f7e32a;border: #f7e32a;" Icon="upload" Size="@ButtonSize.Large" Type="upload" OnClick=@(()=> WindowVisibleImportFile = true)>Upload nhân viên</AntDesign.Button>
+                                </SpaceItem>*@
+                        </Space>
+                    </GridToolBar>
+                    <GridColumns>
+                        <GridCheckboxColumn SelectAll="@ShowSelectAll" Width="30px"></GridCheckboxColumn>
+                        <GridColumn Field="@(nameof(SlideImageVm.Id))" Editable="false" Title="ID" Width="120px">
+                            <Template>
+                                @{
+                                    var product = context as SlideImageVm;
+                                    @product.Id;
+                                }
+                            </Template>
+                        </GridColumn>
+                        <GridColumn Field=@nameof(SlideImageVm.ImageSlide) Width="100px">
+                            <HeaderTemplate>
+                                <span class="k-display-flex k-align-items-center">
+                                    <TelerikIcon Icon="image" />&nbsp;
+                                    Image
+                                </span>
+                            </HeaderTemplate>
+                            <Template>
+                                @{
+                                    var article = context as SlideImageVm;
+                                    <img src="@(article.ImageSlide)" alt="" width="125" height="95" />
+                                }
+                            </Template>
+                        </GridColumn>
+                        <GridColumn Field="@(nameof(SlideImageVm.SlideName))" Editable="false" Title="Tên Banner Slide" Width="120px" />
+                        <GridColumn Field="@(nameof(SlideImageVm.StatusId))" Title="Trạng thái" Width="120px" />
+                        <GridColumn Field="@(nameof(SlideImageVm.Id))" Title="Chỉnh sửa" Width="120px">
+                            <Template>
+                                @{
+                                    var post = context as SlideImageVm;
+                                    <AntDesign.Button Type="primary">
+                                        <a href="/post/update-post/@(post.Id)"> Chỉnh sửa</a>
+                                    </AntDesign.Button>
+                                }
+                            </Template>
+                        </GridColumn>
+                    </GridColumns>
+                </TelerikGrid>
+            </TabStripTab>
+            <TabStripTab Title="Banner HeaderBlog">
+                cvbc
+            </TabStripTab>
+            <TabStripTab Title="Banner Footer">
+                bcvb
+            </TabStripTab>
+        </TelerikTabStrip>
+    </div>
+</PageContainer>
+
+
+<Modal Title="@("Thêm mới Banner Slides")"
+       Visible="@_visible"
+       OnOk="@HandleOk"
+       OnCancel="@HandleCancel">
+    <Form Loading="loading" Model="@model"
+          OnFinish="OnFinish"
+          OnFinishFailed="OnFinishFailed"
+          @ref="@_form">
+        <AntDesign.FormItem Label="Tên Slide">
+            <Input @bind-Value="@context.SlideName" />
+        </AntDesign.FormItem>
+        <AntDesign.FormItem Label="Trạng thái">
+            <InputPassword @bind-Value="@context.StatusId" />
+        </AntDesign.FormItem>
+        <AntDesign.FormItem Label="Hình ảnh" Style="margin-bottom: 0px">
+            <TelerikUpload SaveUrl="@SaveUrl"
+                           RemoveUrl="@RemoveUrl"
+                           SaveField="file"
+                           OnSuccess="@((UploadSuccessEventArgs arg) => OnSuccessHandler(arg, "images"))"
+                           AllowedExtensions="@(new List<string>() {".jpg", ".png" })" MaxFileSize="1048576">
+            </TelerikUpload>
+            <div class="col-md-3 col-sm-12">
+                @if (!string.IsNullOrEmpty(context.ImageSlide))
+                {
+                    <div class="img-inform">
+                        <img style="width: 300px;margin-top: 20px;" src="@context.ImageSlide">
+                    </div>
+                }
+            </div>
+            <div class="col-md-3 col-sm-12 d-none">
+                <TelerikTextBox Enabled="false" @bind-Value="context.ImageSlide" PlaceHolder="VD: example.png" Width="100%" InputMode="text" Class="k-invalidx form-control" Id="images"></TelerikTextBox>
+            </div>
+        </AntDesign.FormItem>
+    </Form>
+</Modal>
+
+

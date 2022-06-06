@@ -10,3 +10,15 @@ D:\SourceAffilateAntDesignGit\SourceAffilateAntDesign\AffilateSource\src\Shared\
 D:\SourceAffilateAntDesignGit\SourceAffilateAntDesign\AffilateSource\src\Shared\obj\Debug\net6.0\refint\AffilateSource.Shared.dll
 D:\SourceAffilateAntDesignGit\SourceAffilateAntDesign\AffilateSource\src\Shared\obj\Debug\net6.0\AffilateSource.Shared.pdb
 D:\SourceAffilateAntDesignGit\SourceAffilateAntDesign\AffilateSource\src\Shared\obj\Debug\net6.0\ref\AffilateSource.Shared.dll
+D:\SourceAffilateGit_AntDesign\SourceAffilateAntDesign\AffilateSource\src\Shared\bin\Debug\net6.0\AffilateSource.Shared.deps.json
+D:\SourceAffilateGit_AntDesign\SourceAffilateAntDesign\AffilateSource\src\Shared\bin\Debug\net6.0\AffilateSource.Shared.dll
+D:\SourceAffilateGit_AntDesign\SourceAffilateAntDesign\AffilateSource\src\Shared\bin\Debug\net6.0\AffilateSource.Shared.pdb
+D:\SourceAffilateGit_AntDesign\SourceAffilateAntDesign\AffilateSource\src\Shared\obj\Debug\net6.0\AffilateSource.Shared.csproj.AssemblyReference.cache
+D:\SourceAffilateGit_AntDesign\SourceAffilateAntDesign\AffilateSource\src\Shared\obj\Debug\net6.0\AffilateSource.Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\SourceAffilateGit_AntDesign\SourceAffilateAntDesign\AffilateSource\src\Shared\obj\Debug\net6.0\AffilateSource.Shared.AssemblyInfoInputs.cache
+D:\SourceAffilateGit_AntDesign\SourceAffilateAntDesign\AffilateSource\src\Shared\obj\Debug\net6.0\AffilateSource.Shared.AssemblyInfo.cs
+D:\SourceAffilateGit_AntDesign\SourceAffilateAntDesign\AffilateSource\src\Shared\obj\Debug\net6.0\AffilateSource.Shared.csproj.CoreCompileInputs.cache
+D:\SourceAffilateGit_AntDesign\SourceAffilateAntDesign\AffilateSource\src\Shared\obj\Debug\net6.0\AffilateSource.Shared.dll
+D:\SourceAffilateGit_AntDesign\SourceAffilateAntDesign\AffilateSource\src\Shared\obj\Debug\net6.0\refint\AffilateSource.Shared.dll
+D:\SourceAffilateGit_AntDesign\SourceAffilateAntDesign\AffilateSource\src\Shared\obj\Debug\net6.0\AffilateSource.Shared.pdb
+D:\SourceAffilateGit_AntDesign\SourceAffilateAntDesign\AffilateSource\src\Shared\obj\Debug\net6.0\ref\AffilateSource.Shared.dll

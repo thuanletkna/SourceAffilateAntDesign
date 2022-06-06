@@ -1,10 +1,12 @@
 ﻿using AffilateSource.Data.Configuration;
+using AffilateSource.Data.DataEntity;
 using AffilateSource.Data.Services.Interface;
 using AffilateSource.Shared.Kendohelpers;
 using AffilateSource.Shared.ViewModel.Category;
 using AffilateSource.Shared.ViewModel.Filter;
 using Dapper;
 using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -17,9 +19,11 @@ namespace AffilateSource.Data.Services.Repository
     public class CategoriesServices : ICategoriesServices
     {
         private readonly SqlConnectionConfiguration _configuration;
-        public CategoriesServices(SqlConnectionConfiguration configuration)
+        public readonly ApplicationDbContext _context;
+        public CategoriesServices(SqlConnectionConfiguration configuration, ApplicationDbContext context)
         {
             _configuration = configuration;
+            _context = context;
         }
 
         public async Task<IEnumerable<CategoryQuickVM>> GetCategoryByParentId(int parentId)
@@ -80,7 +84,7 @@ namespace AffilateSource.Data.Services.Repository
             }
         }
 
-        
+
         public async Task<IEnumerable<CategoriesSelectViewModel>> GetCategoriesByParentId(int parentId)
         {
             try
@@ -135,9 +139,9 @@ namespace AffilateSource.Data.Services.Repository
                 conn.Open();
                 try
                 {
-                    string where = " 1=1  ";
-                    //if (request.Filters.Any())
-                    //    where += KendoApplyFilter.ApplyFilter(request.Filters[0], "");
+                    string where = " 1=1 and ";
+                    if (request.Filters.Any())
+                        where += KendoApplyFilter.ApplyFilter(request.Filters[0], "");
                     string sort = KendoApplyFilter.GetSorts<CategoryQuickVM>(request);
                     result.Data = await conn.QueryAsync<CategoryQuickVM>("[CATEGORIES_GetAllCategoryFilterAdmin]",
                         new { @pageSize = request.PageSize, @page = request.Page, @where = where, @orderBy = sort }, commandType: CommandType.StoredProcedure);
@@ -155,5 +159,27 @@ namespace AffilateSource.Data.Services.Repository
                 return result;
             }
         }
+
+        public async Task<IEnumerable<CategoryQuickVM>> GetCategoriesByParentIdAdmin(int parentId)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(_configuration.Value))
+                {
+
+                    IEnumerable<CategoryQuickVM> productQuickViewModel;
+                    DynamicParameters ObjParm = new DynamicParameters();
+                    ObjParm.Add("@ParentId", parentId);
+                    productQuickViewModel = await conn.QueryAsync<CategoryQuickVM>("[CATEGORIES_GetCategoryByParentId]", ObjParm, commandType: CommandType.StoredProcedure);
+                    conn.Close();
+                    return productQuickViewModel;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 }

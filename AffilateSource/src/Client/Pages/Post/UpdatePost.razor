@@ -8,21 +8,13 @@
 @inject PostApiServices postApi
 @inject NavigationManager NavigationManager
 @inject NotificationService _notice
-<style>
-    .ant-tabs {
-        margin: 42px 24px 50px;
-    }
-</style>
-<PageContainer Title="Chỉnh sửa bài đăng">
-    <div class="card-container">
 
-        <Tabs @bind-ActiveKey="@activeKey" OnChange="OnTabChange" Animated>
-            <TabPane Key="1" Tab="Bài đăng">
-                <p>Content of Tab Pane 1</p>
-                <p>Content of Tab Pane 1</p>
-                <p>Content of Tab Pane 1</p>
-            </TabPane>
-            <TabPane Key="2" Tab="Chỉnh sửa bài đăng">
+<PageContainer Title="Chỉnh sửa bài đăng">
+
+    <div class="demo-section">
+        <TelerikTabStrip>
+            <TabStripTab Visible="@TabLondonVisible"
+                         Title="Bài đăng">
                 <Form Model="@postEditViewModel"
                       Size="AntSizeLDSType.Large"
                       OnFinish="UpdateEmployee">
@@ -81,7 +73,6 @@
                         <div class="col-md-3 col-sm-12 d-none">
                             <TelerikTextBox Enabled="false" @bind-Value="context.ImagePost" PlaceHolder="VD: example.png" Width="100%" InputMode="text" Class="k-invalidx form-control" Id="images"></TelerikTextBox>
                         </div>
-                        @*<Input Placeholder="Mã chấm công" @bind-Value="@context.ImagePost" />*@
                     </AntDesign.FormItem>
 
                     <AntDesign.FormItem WrapperColOffset="8" WrapperColSpan="16" Style="margin-bottom: 0px;">
@@ -90,8 +81,9 @@
                         </Button>
                     </AntDesign.FormItem>
                 </Form>
-            </TabPane>
-            <TabPane Key="3" Tab="Chỉnh sửa chi tiết bài đăng">
+            </TabStripTab>
+            <TabStripTab Visible="@TabParisVisible"
+                         Title="Chi tiết bài đăng">
                 <TelerikGrid Data="@DetailPost"
                              Pageable="true"
                              Sortable="true"
@@ -99,36 +91,30 @@
                     <GridColumns>
                         <GridColumn Field=@nameof(PostDetailVm.SortDetail) Title="Thứ tự hiển thị" />
                         <GridColumn Field=@nameof(PostDetailVm.TitleDetail) Title="Tiêu đề" />
-                        @*<GridColumn  Field=@nameof(DetailPosts.Content) Title="Chi tiết bài đăng">
-                        <AntDesign.Template>
-                        <span>@((MarkupString)DetailPosts.Content)</span>
-                        </AntDesign.Template>
-                        </GridColumn>*@
                         <GridColumn Field=@nameof(PostDetailVm.Title) Title="Sản phẩm Affilate" />
 
                         <GridColumn Field="@(nameof(PostDetailVm.Id))" Title="Chỉnh sửa" Width="120px">
                             <Template>
                                 @{
-                                    //var post = context as DetailPosts;
                                     var post = context as PostDetailVm;
-                                    @*<AntDesign.Button Type="primary">
-                                <a href="/admin/update-post/@(post.Id)"> Chỉnh sửa</a>
-                                </AntDesign.Button>*@
-
                                     <TelerikButton Class="btn-update-employee" OnClick="@(()=>btnUpdatePostDetails(post.Id))">Chỉnh sửa</TelerikButton>
                                 }
                             </Template>
                         </GridColumn>
                     </GridColumns>
                 </TelerikGrid>
-            </TabPane>
-        </Tabs>
+            </TabStripTab>
+        </TelerikTabStrip>
     </div>
+
+
+
 </PageContainer>
 <Modal Title="Chỉnh sửa chi tiết bài đăng"
        Footer=null
        OnCancel="@HandleCancelDetail"
        DestroyOnClose="true"
+       Width="1000"
        Visible="@WindowVisible">
     <Form Model="@detailUpdate"
           OnFinish="UpdateDetail">
@@ -173,36 +159,3 @@
         </AntDesign.FormItem>
     </Form>
 </Modal>
-
-
-
-<style>
-    [data-theme='compact'] .card-container .ant-tabs-card .ant-tabs-content,
-    .card-container .ant-tabs-card .ant-tabs-content {
-        height: 120px;
-        margin-top: -16px;
-    }
-
-        [data-theme='compact'] .card-container .ant-tabs-card .ant-tabs-content .ant-tabs-tabpane,
-        .card-container .ant-tabs-card .ant-tabs-content .ant-tabs-tabpane {
-            background: #fff;
-            padding: 16px;
-        }
-
-    [data-theme='compact'] .card-container .ant-tabs-card .ant-tabs-bar,
-    .card-container .ant-tabs-card .ant-tabs-bar {
-        border-color: #fff;
-    }
-
-        [data-theme='compact'] .card-container .ant-tabs-card .ant-tabs-bar .ant-tabs-tab,
-        .card-container .ant-tabs-card .ant-tabs-bar .ant-tabs-tab {
-            border-color: transparent;
-            background: transparent;
-        }
-
-        [data-theme='compact'] .card-container .ant-tabs-card .ant-tabs-bar .ant-tabs-tab-active,
-        .card-container .ant-tabs-card .ant-tabs-bar .ant-tabs-tab-active {
-            border-color: #fff;
-            background: #fff;
-        }
-</style>
