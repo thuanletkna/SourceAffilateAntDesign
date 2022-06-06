@@ -20,7 +20,6 @@ namespace AffilateSource.Client.Pages.Post
     public partial class UpdatePost : ComponentBase
     {
         [Parameter] public int id { get; set; }
-
         TelerikGrid<PostDetailVm> DataSource { get; set; }
         PostCreateViewModel postEditViewModel { get; set; } = new PostCreateViewModel();
         public List<PostDetailVm> DetailPost { get; set; }
@@ -32,7 +31,6 @@ namespace AffilateSource.Client.Pages.Post
         public List<StatusVm> StatusViewModel { get; set; } = new List<StatusVm>();
 
         //Thông báo thành công sau khi chỉnh sửa
-
         public FilterRequest filtterRequest { get; set; } = new FilterRequest { };
         public class FilterRequest
         {
@@ -46,7 +44,6 @@ namespace AffilateSource.Client.Pages.Post
             //public string MaCongTy { get; set; } = "CT00001";
             //public IEnumerable<Status> dataSelectStatus { get; set; } = new List<Status>();
             public List<SelectModel> dataSelectCategoryFilter { get; set; } = new List<SelectModel>();
-
         }
         private async Task GetSelectListValue()
         {
@@ -68,13 +65,12 @@ namespace AffilateSource.Client.Pages.Post
             await GetSelectListValue();
             DetailPost = await postApi.GetListPostDetailByIdAdmin("Post", "GetPostDetailByIdAdmin", id);
             StatusViewModel = await postApi.GetDataSelectStatus("Status", "GetListSatatus");
-        }
-        async Task<PostCreateViewModel> OnTabChange(string key)
-        {
             postEditViewModel = await postApi.GetPostDetailByIdAdmin("Post", "GetPostByIdAdminEdit", id);
-            return postEditViewModel;
         }
-        
+       
+        bool TabLondonVisible = true; // Show tab
+        bool TabParisVisible = true; // Show tab
+
         //Update bài đăng
 
         async Task UpdateEmployee()
@@ -119,8 +115,6 @@ namespace AffilateSource.Client.Pages.Post
         }
         async Task UpdateDetail()
         {
-
-            
             // hub realtime signalR
 
             var checkname = await Http.PostAsJsonAsync("/Post/UpdatePostDetail", detailUpdate);
@@ -142,7 +136,6 @@ namespace AffilateSource.Client.Pages.Post
                     NotificationType = NotificationType.Error
                 });
             }
-
         }
         // file upload image
         #region Upload image

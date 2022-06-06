@@ -2,8 +2,6 @@
 @inject HttpClient Http
 @inject PostApiServices postApi
 @inject NavigationManager NavigationManager
-
-
 @using AffilateSource.Client.Services
 @using AffilateSource.Shared.Kendohelpers
 @using AffilateSource.Shared.ViewModel
@@ -17,14 +15,19 @@
              @ref="@DataSource"
              Pageable="true"
              @bind-PageSize="@PageSize" @bind-Page="@Page">
+    <DetailTemplate>
+        @{
+            CategoryQuickVM employee = context as CategoryQuickVM;
+            <CategoryParent EmployeeId="@employee.Id" />
+        }
+    </DetailTemplate>
     <GridColumns>
         @*<GridCheckboxColumn SelectAll="@ShowSelectAll" Width="30px"></GridCheckboxColumn>*@
         <GridColumn Field="@(nameof(CategoryQuickVM.Id))" Editable="false" Title="ID" Width="120px">
             <Template>
                 @{
                     var product = context as CategoryQuickVM;
-                    @product.Id
-                    ;
+                    @product.Id;
                 }
             </Template>
         </GridColumn>
@@ -40,23 +43,6 @@
             </Template>
         </GridColumn>
     </GridColumns>
-    <DetailTemplate>
-        @{
-            <div>njkdvnj</div>
-            //var category = context as categoryQuickVM;
-            //<TelerikGrid Data="@categoryQuickVM"
-            //         Height="300px"
-            //         Pageable="true"
-            //         Sortable="true"
-            //         PageSize="5">
-            //    <GridColumns>
-            //        <GridColumn Field=@nameof(CategoryQuickVM.Id) Title="Product ID" />
-            //        <GridColumn Field=@nameof(CategoryQuickVM.CategoryName) Title="Product Name" />
-            //        <GridColumn Field=@nameof(CategoryQuickVM.ParentId) Title="Unit Price" />
-            //    </GridColumns>
-            //</TelerikGrid>
-        }
-    </DetailTemplate>
 </TelerikGrid>
 
 
@@ -74,10 +60,10 @@
         CompositeFilterDescriptor _filter = new CompositeFilterDescriptor();
         _filter.LogicalOperator = FilterCompositionLogicalOperator.And;
 
-        //if (!string.IsNullOrEmpty(filtterRequest.CategoryParentId))
-        //    _filter.FilterDescriptors.Add(new FilterDescriptor("CategoryParentId", FilterOperator.IsEqualTo, filtterRequest.CategoryParentId));
-        //if (!string.IsNullOrEmpty(filtterRequest.StatusId))
-        //    _filter.FilterDescriptors.Add(new FilterDescriptor("StatusId", FilterOperator.IsEqualTo, filtterRequest.StatusId));
+        if (!string.IsNullOrEmpty(filtterRequest.Level))
+            _filter.FilterDescriptors.Add(new FilterDescriptor("Level", FilterOperator.IsEqualTo, filtterRequest.Level));
+        if (!string.IsNullOrEmpty(filtterRequest.StatusId))
+            _filter.FilterDescriptors.Add(new FilterDescriptor("StatusId", FilterOperator.IsEqualTo, filtterRequest.StatusId));
 
         //if (!string.IsNullOrEmpty(filtterRequest.NhanVien))
         //    _filter.FilterDescriptors.Add(new FilterDescriptor("MaNhanVien", FilterOperator.IsEqualTo, filtterRequest.NhanVien));
@@ -111,4 +97,19 @@
         await GetData();
         //await GetSelectListValue();
     }
+    public FilterRequest filtterRequest { get; set; } = new FilterRequest { };
+        public class FilterRequest
+        {
+            public object this[string propertyName]
+            {
+                get { return this.GetType().GetProperty(propertyName).GetValue(this, null); }
+                set { this.GetType().GetProperty(propertyName).SetValue(this, value, null); }
+            }
+            public string Level { get; set; } = "1";
+            public string StatusId { get; set; } = "1";
+            //public string MaCongTy { get; set; } = "CT00001";
+            //public IEnumerable<StatusVm> dataSelectStatus { get; set; } = new List<StatusVm>();
+            //public List<SelectModel> dataSelectCategoryFilter { get; set; } = new List<SelectModel>();
+
+        }
 }

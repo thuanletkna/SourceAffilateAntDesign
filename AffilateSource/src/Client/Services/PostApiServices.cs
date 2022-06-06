@@ -191,6 +191,21 @@ namespace AffilateSource.Client.Services
 
             throw new Exception($"The service returned with status {response.StatusCode}");
         }
+        public async Task<List<CategoryQuickVM>> GetCategoriesByParentIdAdmin(string controller, string action, int categoryId)
+        {
+
+            HttpResponseMessage response = await Http.PostAsJsonAsync(controller + "/" + action, categoryId);
+
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                var content = await response.Content.ReadFromJsonAsync<List<CategoryQuickVM>>();
+                return content;
+            }
+            else
+            {
+                return new List<CategoryQuickVM>();
+            }
+        }
         #endregion Categories
 
 

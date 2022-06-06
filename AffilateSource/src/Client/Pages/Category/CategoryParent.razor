@@ -1,0 +1,28 @@
+﻿@using AffilateSource.Client.Services
+@using AffilateSource.Shared.ViewModel.Category
+@inject PostApiServices postApi
+@if (ProjectsData == null)
+{
+    <div>Hệ thống đang tải dữ liệu</div>
+}
+else
+{
+    <TelerikGrid Data="@ProjectsData"
+                 Pageable="true"
+                 PageSize="5">
+        <GridColumns>
+            <GridColumn Field="@nameof(CategoryQuickVM.Id)"></GridColumn>
+            <GridColumn Field="@nameof(CategoryQuickVM.CategoryName)"></GridColumn>
+            <GridColumn Field="@nameof(CategoryQuickVM.ParentId)"></GridColumn>
+        </GridColumns>
+    </TelerikGrid>
+}
+@code {
+    [Parameter] public int EmployeeId { get; set; }
+    public List<CategoryQuickVM> ProjectsData { get; set; }
+    protected override async Task OnParametersSetAsync()
+    {
+        await Task.Delay(1000);//simulate database delay, remove this in a real app
+        ProjectsData = await postApi.GetCategoriesByParentIdAdmin("Categories", "GetCategoriesByParentIdAdmin", EmployeeId);
+    }
+}
