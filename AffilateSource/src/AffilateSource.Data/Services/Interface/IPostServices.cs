@@ -28,5 +28,6 @@ namespace AffilateSource.Data.Services.Interface
         Task<List<PostDetailVm>> GetPostDetailById();
         Task<PostDetailVm> UpdatePostDetail(PostDetailVm request);
         Task<Telerik.DataSource.DataSourceResult> GetPostPagingFilterAdmin(DataSourceRequest request);
+        Task<DeleteViewModel> DeletePost(DeleteViewModel objEmp);
     }
 }

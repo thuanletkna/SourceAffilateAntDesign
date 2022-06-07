@@ -468,5 +468,17 @@ namespace AffilateSource.Data.Services.Repository
                 return result;
             }
         }
+        public async Task<DeleteViewModel> DeletePost(DeleteViewModel objEmp)
+        {
+            using (var conn = new SqlConnection(_configuration.Value))
+            {
+                //Nếu user hoạt động thì nghỉ việc tạm thời sẽ bằng false và ngược lại. Set cứng ở frontend
+                DynamicParameters ObjParm = new DynamicParameters();
+                ObjParm.Add("@Id", objEmp.Id);
+                await conn.ExecuteAsync("[POST_Delete]", ObjParm, commandType: CommandType.StoredProcedure);
+                conn.Close();
+                return objEmp;
+            }
+        }
     }
 }

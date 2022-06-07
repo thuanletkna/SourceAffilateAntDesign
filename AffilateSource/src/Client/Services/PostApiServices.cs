@@ -206,6 +206,23 @@ namespace AffilateSource.Client.Services
                 return new List<CategoryQuickVM>();
             }
         }
+
+        public async Task<CategoryQuickVM> GetCategoryDetailByIdAdmin(string controller, string action, int id)
+        {
+
+            HttpResponseMessage response = await Http.PostAsJsonAsync(controller + "/" + action, id);
+
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                var content = await response.Content.ReadFromJsonAsync<CategoryQuickVM>();
+                return content;
+            }
+            else
+            {
+                return new CategoryQuickVM();
+            }
+        }
+
         #endregion Categories
 
 
@@ -217,6 +234,21 @@ namespace AffilateSource.Client.Services
                 return await response.Content.ReadFromJsonAsync<DataEnvelope<SlideImageVm>>();
 
             throw new Exception($"The service returned with status {response.StatusCode}");
+        }
+        public async Task<SlideImageVm> GetSlideDetailByIdAdmin(string controller, string action, int id)
+        {
+
+            HttpResponseMessage response = await Http.PostAsJsonAsync(controller + "/" + action, id);
+
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                var content = await response.Content.ReadFromJsonAsync<SlideImageVm>();
+                return content;
+            }
+            else
+            {
+                return new SlideImageVm();
+            }
         }
         #endregion Slide
     }

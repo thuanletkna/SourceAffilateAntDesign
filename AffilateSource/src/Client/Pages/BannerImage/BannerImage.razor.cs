@@ -29,7 +29,8 @@ namespace AffilateSource.Client.Pages.BannerImage
         GridReadEventArgs args = new GridReadEventArgs();
         int PageSize { get; set; } = 50;
         int Page { get; set; } = 1;
-
+        public SlideImageVm DetailSlide { get; set; }
+        [Parameter] public int id { get; set; }
 
         #region Get data Slide Grid
 
@@ -42,6 +43,11 @@ namespace AffilateSource.Client.Pages.BannerImage
             args = argsz;
             Page = args.Request.Page;
             await GetData();
+        }
+        async Task RefreshThroughState()
+        {
+            await Task.Delay(1);
+            await DataSource.SetState(DataSource.GetState());
         }
         async Task GetData()
         {
@@ -130,6 +136,82 @@ namespace AffilateSource.Client.Pages.BannerImage
         }
         #endregion Modal Thêm mới Slide
 
+
+        #region Chỉnh sửa slide
+        bool _visibleUpdate = false;
+        bool loadingUpdate = false;
+        void toggleUpdate(bool value) => loadingUpdate = value;
+        private Form<SlideImageVm> _formUpdate;
+        private SlideImageVm modelUpdate = new SlideImageVm();
+        async Task<SlideImageVm> btnUpdate(int id)
+        {
+            modelUpdate = await postApi.GetSlideDetailByIdAdmin("BannerImage", "GetDetailSlideUpdateById", id);
+            _visibleUpdate = true;
+            return modelUpdate;
+        }
+
+        private void HandleCancelUpdate(MouseEventArgs e)
+        {
+            _visibleUpdate = false;
+        }
+        private void HandleOkUpdate(MouseEventArgs e)
+        {
+            _formUpdate.Submit();
+        }
+        async Task OnFinishUpdate()
+        {
+            var checkname = await Http.PostAsJsonAsync("/BannerImage/UpdateSlide", modelUpdate);
+            if (checkname.IsSuccessStatusCode)
+            {
+                await _notice.Open(new NotificationConfig()
+                {
+                    Message = "Chỉnh sửa slide thành công",
+                    NotificationType = NotificationType.Success
+                });
+                await RefreshThroughState();
+                _visibleUpdate = false;
+
+            }
+            else
+            {
+                await _notice.Open(new NotificationConfig()
+                {
+                    Message = "Lỗi",
+                    NotificationType = NotificationType.Error
+                });
+            }
+            _visibleUpdate = false;
+        }
+        private void OnFinishFailedUpdate(EditContext editContext)
+        {
+            Console.WriteLine($"Failed:{JsonSerializer.Serialize(modelUpdate)}");
+        }
+        private async Task OnSuccessHandlerUpdate(UploadSuccessEventArgs e, string field)
+        {
+            if (e.Operation == UploadOperationType.Upload)
+            {
+                string content = e.Request.ResponseText;
+                foreach (var file in e.Files)
+                {
+
+                    //postCreateViewModel.Detail = content;
+                    modelUpdate.ImageSlide = content;
+
+                    if (!string.IsNullOrEmpty(modelUpdate.ImageSlide))
+                    {
+                        modelUpdate.ImageSlide = "/Uploads/PostImages/" + modelUpdate.ImageSlide;
+                    }
+
+                }
+            }
+            await Task.CompletedTask;
+
+        }
+        #endregion Chỉnh sửa slide
+
+
+        #region Upload Ảnh
+
         public string SaveUrl => ToAbsoluteUrl("api/upload/Save");
 
         public string RemoveUrl => ToAbsoluteUrl("api/upload/remove");
@@ -158,5 +240,7 @@ namespace AffilateSource.Client.Pages.BannerImage
             }
 
         }
+
+        #endregion Upload Ảnh
     }
 }

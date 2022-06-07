@@ -104,15 +104,14 @@
                 <Template>
                     @{
                         var product = context as ProductHomeViewModel;
-                        @product.Id
-                        ;
+                        @product.Id;
                     }
                 </Template>
             </GridColumn>
             <GridColumn Field="@(nameof(ProductHomeViewModel.Title))" Editable="false" Title="Tên sản phẩm" Width="120px" />
             <GridColumn Field="@(nameof(ProductHomeViewModel.CategoryName))" Title="Danh mục" Width="120px" />
             <GridColumn Field="@(nameof(ProductHomeViewModel.Price))" Title="Giá" Width="120px" />
-            @*<GridColumn Field="@(nameof(ProductHomeViewModel.StatusId))" Title="Trạng thái" Width="120px" />*@
+            <GridColumn Field="@(nameof(ProductHomeViewModel.StatusName))" Title="Trạng thái" Width="120px" />
             <GridColumn Field="@(nameof(ProductHomeViewModel.Id))" Title="Chỉnh sửa" Width="120px">
                 <Template>
                     @{
@@ -120,7 +119,6 @@
                         <AntDesign.Button Type="primary">
                             <a href="/product/update-product/@(productId.Id)"> Chỉnh sửa</a>
                         </AntDesign.Button>
-
                     }
                 </Template>
             </GridColumn>

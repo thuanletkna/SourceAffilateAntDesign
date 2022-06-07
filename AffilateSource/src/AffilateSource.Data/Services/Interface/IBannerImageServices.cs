@@ -13,5 +13,7 @@ namespace AffilateSource.Data.Services.Interface
         Task<SlideImageVm> CreateImageSlides(SlideImageVm slideImageVm);
         Task<BannerImageViewModel> GetBannerSlide();
         Task<DataSourceResult> GetBannerSlidePagingFilterAdmin(DataSourceRequest request);
+        Task<SlideImageVm> UpdateSlide(SlideImageVm objEmp);
+        Task<SlideImageVm> GetSlideById(int id);
     }
 }

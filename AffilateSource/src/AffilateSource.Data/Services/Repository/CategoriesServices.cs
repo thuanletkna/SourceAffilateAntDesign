@@ -1,5 +1,6 @@
 ﻿using AffilateSource.Data.Configuration;
 using AffilateSource.Data.DataEntity;
+using AffilateSource.Data.Helpers;
 using AffilateSource.Data.Services.Interface;
 using AffilateSource.Shared.Kendohelpers;
 using AffilateSource.Shared.ViewModel.Category;
@@ -181,5 +182,50 @@ namespace AffilateSource.Data.Services.Repository
             }
         }
 
+        public async Task<CategoryQuickVM> GetCategoryDetailById(int id)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(_configuration.Value))
+                {
+                    CategoryQuickVM productQuickViewModel;
+                    DynamicParameters ObjParm = new DynamicParameters();
+                    ObjParm.Add("@id", id);
+                    productQuickViewModel = await conn.QuerySingleOrDefaultAsync<CategoryQuickVM>("[CATEGORIES_GetCategoryDetailById]", ObjParm, commandType: CommandType.StoredProcedure);
+                    conn.Close();
+                    return productQuickViewModel;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public async Task<CategoryQuickVM> UpdateCategories(CategoryQuickVM objEmp)
+        {
+            using (var conn = new SqlConnection(_configuration.Value))
+            {
+                //Nếu user hoạt động thì nghỉ việc tạm thời sẽ bằng false và ngược lại. Set cứng ở frontend
+                DynamicParameters ObjParm = new DynamicParameters();
+                ObjParm.Add("@Id", objEmp.Id);
+                ObjParm.Add("@CategoryName", objEmp.CategoryName);
+                ObjParm.Add("@ParentId", objEmp.ParentId);
+                if (!string.IsNullOrEmpty(objEmp.SeoAlias))
+                {
+                    objEmp.SeoAlias = TextHelper.ToUnsignString(objEmp.CategoryName);
+                }
+                ObjParm.Add("@SeoAlias", objEmp.SeoAlias);
+                ObjParm.Add("@SortOrder", objEmp.SortOrder);
+                ObjParm.Add("@StatusId", objEmp.StatusId);
+                if(objEmp.ParentId != null && objEmp.ParentId > 0)
+                {
+                    objEmp.Level = 2;
+                }
+                ObjParm.Add("@Level", objEmp.Level);
+                await conn.ExecuteAsync("[CATEGORIES_update]", ObjParm, commandType: CommandType.StoredProcedure);
+                conn.Close();
+                return objEmp;
+            }
+        }
     }
 }
