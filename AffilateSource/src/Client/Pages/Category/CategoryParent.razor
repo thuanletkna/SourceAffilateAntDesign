@@ -1,6 +1,10 @@
 ﻿@using AffilateSource.Client.Services
 @using AffilateSource.Shared.ViewModel.Category
+@using System.Text.Json
 @inject PostApiServices postApi
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+@inject NotificationService _notice
 @if (ProjectsData == null)
 {
     <div>Hệ thống đang tải dữ liệu</div>
@@ -8,15 +12,52 @@
 else
 {
     <TelerikGrid Data="@ProjectsData"
-                 Pageable="true"
-                 PageSize="5">
+             Pageable="true"
+             PageSize="5">
         <GridColumns>
             <GridColumn Field="@nameof(CategoryQuickVM.Id)"></GridColumn>
             <GridColumn Field="@nameof(CategoryQuickVM.CategoryName)"></GridColumn>
             <GridColumn Field="@nameof(CategoryQuickVM.ParentId)"></GridColumn>
-        </GridColumns>
-    </TelerikGrid>
+            <GridColumn Field="@(nameof(CategoryQuickVM.Id))" Title="Chỉnh sửa" Width="120px">
+                <Template>
+                    @{
+                    var post = context as CategoryQuickVM;
+                    <Button Type="primary" OnClick="@(()=>btnUpdateCategoryParent(post.Id))">
+                        Chỉnh sửa
+                    </Button>
+                }
+            </Template>
+        </GridColumn>
+    </GridColumns>
+</TelerikGrid>
 }
+
+
+<Modal Title="@("Chỉnh sửa danh mục")"
+       Visible="@_visibleUpdate"
+       OnOk="@HandleOkUpdate"
+       OnCancel="@HandleCancelUpdate">
+    <Form Loading="loadingUpdate" Model="@modelUpdate"
+          OnFinish="OnFinishUpdate"
+          OnFinishFailed="OnFinishFailedUpdate"
+          @ref="@_formUpdate">
+        <AntDesign.FormItem Label="Tên Slide">
+            <Input @bind-Value="@context.CategoryName" />
+        </AntDesign.FormItem>
+        <AntDesign.FormItem Label="Danh mục cha">
+            <Input @bind-Value="@context.ParentId" />
+        </AntDesign.FormItem>
+         <AntDesign.FormItem Label="Thứ tự hiển thị">
+            <Input @bind-Value="@context.SortOrder" />
+        </AntDesign.FormItem>
+        <AntDesign.FormItem Label="Trạng thái">
+            <Input @bind-Value="@context.StatusId" />
+        </AntDesign.FormItem>
+    </Form>
+</Modal>
+
+
+
 @code {
     [Parameter] public int EmployeeId { get; set; }
     public List<CategoryQuickVM> ProjectsData { get; set; }
@@ -25,4 +66,54 @@ else
         await Task.Delay(1000);//simulate database delay, remove this in a real app
         ProjectsData = await postApi.GetCategoriesByParentIdAdmin("Categories", "GetCategoriesByParentIdAdmin", EmployeeId);
     }
+
+    bool _visibleUpdate = false;
+        bool loadingUpdate = false;
+        void toggleUpdate(bool value) => loadingUpdate = value;
+        private Form<CategoryQuickVM> _formUpdate;
+        private CategoryQuickVM modelUpdate = new CategoryQuickVM();
+        async Task<CategoryQuickVM> btnUpdateCategoryParent(int id)
+        {
+            modelUpdate = await postApi.GetCategoryDetailByIdAdmin("Categories", "GetCategoryDetailById", id);  // get thông tin chi tiết của 1 danh mục
+            _visibleUpdate = true;
+            return modelUpdate;
+        }
+
+        private void HandleCancelUpdate(MouseEventArgs e)
+        {
+            _visibleUpdate = false;
+        }
+        private void HandleOkUpdate(MouseEventArgs e)
+        {
+            _formUpdate.Submit();
+        }
+        async Task OnFinishUpdate()
+        {
+            var checkname = await Http.PostAsJsonAsync("/Categories/UpdateCategories", modelUpdate);
+            if (checkname.IsSuccessStatusCode)
+            {
+                await _notice.Open(new NotificationConfig()
+                {
+                    Message = "Chỉnh sửa danh mục thành công",
+                    NotificationType = NotificationType.Success
+                });
+                //await RefreshThroughState();
+                _visibleUpdate = false;
+
+            }
+            else
+            {
+                await _notice.Open(new NotificationConfig()
+                {
+                    Message = "Lỗi",
+                    NotificationType = NotificationType.Error
+                });
+            }
+            _visibleUpdate = false;
+        }
+        private void OnFinishFailedUpdate(EditContext editContext)
+        {
+            Console.WriteLine($"Failed:{JsonSerializer.Serialize(modelUpdate)}");
+        }
+        
 }

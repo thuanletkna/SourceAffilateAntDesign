@@ -20,6 +20,7 @@ namespace AffilateSource.Shared.ViewModel.Category
         public string SeoDescription { get; set; }
 
         public int SortOrder { get; set; }
+        public int StatusId { get; set; }
 
         public int? ParentId { get; set; }
         public int? Level { get; set; }

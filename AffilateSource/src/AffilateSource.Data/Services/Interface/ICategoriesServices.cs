@@ -15,5 +15,7 @@ namespace AffilateSource.Data.Services.Interface
         Task<IEnumerable<CategoriesSelectViewModel>> GetCategoriesByParentId(int parentId);  // Lấy danh sách danh mục con từ id cha dùng cho dropdownlist
         Task<DataSourceResult> GetCategoryPagingFilterAdmin(DataSourceRequest request);
         Task<IEnumerable<CategoryQuickVM>> GetCategoriesByParentIdAdmin(int parentId);
+        Task<CategoryQuickVM> UpdateCategories(CategoryQuickVM objEmp);
+        Task<CategoryQuickVM> GetCategoryDetailById(int id);   // Lấy chi tiết thông tin của 1 danh mục dùng cho update 
     }
 }

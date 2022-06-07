@@ -11,7 +11,7 @@ namespace AffilateSource.Data.DataEntity.Entities
     public class Category
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [MaxLength(200)]

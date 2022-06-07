@@ -1,4 +1,5 @@
 ﻿using AffilateSource.Data.Services.Interface;
+using AffilateSource.Shared.ViewModel;
 using AffilateSource.Shared.ViewModel.Post;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace AffilateSource.Server.Controllers
             _postServices = postServices;
         }
         [HttpPost("GetPostPagingFilterAdmin")]
-        public async Task<DataSourceResult> GetPostPagingFilterAdmin([FromBody] DataSourceRequest request)
+        public async Task<Telerik.DataSource.DataSourceResult> GetPostPagingFilterAdmin([FromBody] DataSourceRequest request)
         {
             var post = await _postServices.GetPostPagingFilterAdmin(request);
             return post;
@@ -89,6 +90,12 @@ namespace AffilateSource.Server.Controllers
         public async Task<IActionResult> GetDetailsByPostDetails([FromBody] int id)
         {
             var post = await _postServices.GetDetailsByPostDetails(id);
+            return Ok(post);
+        }
+        [HttpPost("DeletePost")]
+        public async Task<IActionResult> DeletePost([FromBody] DeleteViewModel id)
+        {
+            var post = await _postServices.DeletePost(id);
             return Ok(post);
         }
     }

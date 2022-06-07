@@ -10,6 +10,10 @@ using AffilateSource.Shared.ViewModel.Filter;
 using AffilateSource.Shared.ViewModel;
 using AffilateSource.Shared.Kendohelpers;
 using AffilateSource.Shared.ViewModel.Status;
+using AntDesign;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
+using System.Net.Http.Json;
 
 namespace AffilateSource.Client.Pages.Home
 {
@@ -24,6 +28,7 @@ namespace AffilateSource.Client.Pages.Home
         int Page { get; set; } = 1;
         bool Visible { get; set; }
         bool isVisible { get; set; }
+        public DeleteViewModel deleteViewModel { get; set; } = new DeleteViewModel();
         public FilterRequest filtterRequest { get; set; } = new FilterRequest { };
         public class FilterRequest
         {
@@ -140,5 +145,45 @@ namespace AffilateSource.Client.Pages.Home
             StateHasChanged();
         }
         #endregion Get data Grid
+
+        #region Delete One Post
+
+        bool _visible = false;
+        async Task<DeleteViewModel> btnDelete(int id)
+        {
+             _visible = true;
+            deleteViewModel.Id = id;
+            return deleteViewModel;
+            //await Task.CompletedTask;
+        }
+        async Task HandleOk()
+        {
+            var checkname = await Http.PostAsJsonAsync("/Post/DeletePost", deleteViewModel);
+            if (checkname.IsSuccessStatusCode)
+            {
+                await _notice.Open(new NotificationConfig()
+                {
+                    Message = "Xóa bài đăng thành công",
+                    NotificationType = NotificationType.Success
+                });
+                await RefreshThroughState();
+                _visible = false;
+
+            }
+            else
+            {
+                await _notice.Open(new NotificationConfig()
+                {
+                    Message = "Lỗi",
+                    NotificationType = NotificationType.Error
+                });
+            }
+        }
+
+        private void HandleCancel(MouseEventArgs e)
+        {
+            _visible = false;
+        }
+        #endregion Delete One Post
     }
 }

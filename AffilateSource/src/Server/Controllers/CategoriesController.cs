@@ -1,5 +1,6 @@
 ﻿using AffilateSource.Data.DataEntity;
 using AffilateSource.Data.Services.Interface;
+using AffilateSource.Shared.ViewModel.Category;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -14,9 +15,7 @@ namespace AffilateSource.Server.Controllers
     public class CategoriesController : ControllerBase
     {
         private readonly ICategoriesServices _categoriesServices;
-        //private readonly ISequenceService _sequenceService;
         private readonly ApplicationDbContext _context;
-        //private readonly IStorageService _storageService;
         public CategoriesController(ICategoriesServices categoriesServices, ApplicationDbContext context)
         {
             _categoriesServices = categoriesServices;
@@ -55,6 +54,19 @@ namespace AffilateSource.Server.Controllers
             {
                 return Ok(categoryParents);
             }
+        }
+
+        [HttpPost("UpdateCategories")]
+        public async Task<IActionResult> UpdateCategories([FromBody] CategoryQuickVM request)
+        {
+            var post = await _categoriesServices.UpdateCategories(request);
+            return Ok(post);
+        }
+        [HttpPost("GetCategoryDetailById")]
+        public async Task<IActionResult> GetCategoryDetailById([FromBody] int id)
+        {
+            var post = await _categoriesServices.GetCategoryDetailById(id);
+            return Ok(post);
         }
 
     }

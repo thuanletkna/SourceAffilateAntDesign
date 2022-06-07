@@ -90,5 +90,42 @@ namespace AffilateSource.Data.Services.Repository
                 return result;
             }
         }
+
+        public async Task<SlideImageVm> GetSlideById(int id)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(_configuration.Value))
+                {
+
+                    SlideImageVm productQuickViewModel;
+                    DynamicParameters ObjParm = new DynamicParameters();
+                    ObjParm.Add("@Id", id);
+                    productQuickViewModel = await conn.QuerySingleOrDefaultAsync<SlideImageVm>("[SLIDES_GetDetailById]", ObjParm, commandType: CommandType.StoredProcedure);
+                    conn.Close();
+                    return productQuickViewModel;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<SlideImageVm> UpdateSlide(SlideImageVm objEmp)
+        {
+            using (var conn = new SqlConnection(_configuration.Value))
+            {
+                //Nếu user hoạt động thì nghỉ việc tạm thời sẽ bằng false và ngược lại. Set cứng ở frontend
+                DynamicParameters ObjParm = new DynamicParameters();
+                ObjParm.Add("@Id", objEmp.Id);
+                ObjParm.Add("@ImageSlide", objEmp.ImageSlide);
+                ObjParm.Add("@StatusId", objEmp.StatusId);
+                ObjParm.Add("@SlideName", objEmp.SlideName);
+                await conn.ExecuteAsync("[SLIDES_update]", ObjParm, commandType: CommandType.StoredProcedure);
+                conn.Close();
+                return objEmp;
+            }
+        }
     }
 }

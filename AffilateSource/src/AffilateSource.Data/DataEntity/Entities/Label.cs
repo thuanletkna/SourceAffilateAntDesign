@@ -16,5 +16,6 @@ namespace AffilateSource.Data.DataEntity.Entities
 
         [MaxLength(50)]
         public string Name { get; set; }
+        public int StatusId { get; set; }
     }
 }

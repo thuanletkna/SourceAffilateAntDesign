@@ -216,15 +216,15 @@
       "mscorlib.dll": "sha256-Q4A\/043fz702a7DDbm+JAtMHV3jKAZ9k8khztTMKp2M=",
       "netstandard.dll": "sha256-W9cwgVmBZsddVw3WVFMC5Gya92UufvbVTNR4+u7pnR0=",
       "System.Private.CoreLib.dll": "sha256-KVnZkFos\/ML\/3S2isVijfmFZXO4zEQeCga6BZvGdTbY=",
-      "AffilateSource.Shared.dll": "sha256-luuovgdd4oqE+\/juHRcvOLZh+Nv\/XiDSIcrSxmEPEzc=",
-      "AffilateSource.Client.dll": "sha256-2iMzcRVk7m1g7S0NbHRpgM69dlXqa8J+4iaPFIUjIp4="
+      "AffilateSource.Shared.dll": "sha256-2xi4ccQDKabUI8AGAnJAy3WHoZjQFr9Gjv++1Ww8vpc=",
+      "AffilateSource.Client.dll": "sha256-ItHSJBBcuXPdd35wK17QTsrTkkWL0TOmRWRq26VUZHU="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
-      "AffilateSource.Shared.pdb": "sha256-W5FKSfvGWz9A07mPM2YJ2jThfHkhA4KOpLQxjWYfhAU=",
-      "AffilateSource.Client.pdb": "sha256-aBnzl4VkC+fXa8DARCytXG8cz3qU3FbxieaVZFGobnE="
+      "AffilateSource.Shared.pdb": "sha256-KgpI8wWAcdL4WVNB5a6TH2cwIc3cqAkHMqKynSfbEgA=",
+      "AffilateSource.Client.pdb": "sha256-hdGLk747kbY3ZrB0uPV8mYcfAVjwQs0aYlsgEz2wHro="
     },
     "runtime": {
       "dotnet.6.0.4.g806md4tte.js": "sha256-WYno\/cK5MDsl5yi4T\/\/QgUskbBfhLL77i+c0uKzO9+c=",
