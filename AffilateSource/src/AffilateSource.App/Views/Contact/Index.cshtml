@@ -1,5 +1,5 @@
 ﻿@using AffilateSource.Shared.ViewModel.Contact
-@*@model ContactVM*@
+@model ContactVm
 
 @{
     ViewData["Title"] = "Index";
@@ -22,9 +22,8 @@
                             Vườn hoa lá là cửa hàng hoa tươi online được yêu thích nhiều năm liền.
                         </h2>
                         <p>
-Với hệ thống đại lý phủ sóng khắp 63 tỉnh/thành, chúng tôi cam kết dịch vụ điện hoa trong nước luôn thực hiện không quá 2 giờ.
-Là thành viên của Hiệp hội Điện hoa Toàn cầu – INTERFLORA, chúng tôi cung cấp dịch vụ điện hoa từ Việt Nam đến hơn 150 quốc gia và ngược lại. Nhiều năm nay, Thế Giới Hoa Tươi luôn là lựa chọn đáng tin cậy của doanh nhân, doanh nghiệp, du học sinh, kiều bào đang sinh sống, học tập và làm việc ở nhiều quốc gia: Mỹ, Canada, Australia, Anh, Đức, Pháp, Nhật v.v…
-Dù bạn đang ở đâu, chỉ cần click chuột là đã có ngay một bó hoa tươi thắm hay một giỏ trái cây tươi để thể hiện tình cảm với “người ấy” của bạn. Chúng tôi cam kết chất lượng hoa luôn ở mức độ hoàn hảo, thái độ phục vụ chuyên nghiệp với tinh thần “khách hàng luôn luôn đúng”.</p>
+                            @Model.Content
+                        </p>
                         <img src="images/sign.png" alt="" />
                         <h3 class="m-b5">Jone Doe</h3>
                         <p>From the chairman's desk</p>

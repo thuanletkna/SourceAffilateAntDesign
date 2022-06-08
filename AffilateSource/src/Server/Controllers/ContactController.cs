@@ -27,6 +27,12 @@ namespace AffilateSource.Server.Controllers
             var slide = await _contactServices.UpdateContacts(contactVm);
             return Ok(slide);
         }
+        [HttpPost("GetContactById")]
+        public async Task<IActionResult> GetContactById([FromBody] int id)
+        {
+            var slide = await _contactServices.GetContactById(id);
+            return Ok(slide);
+        }
         [HttpGet("GetListContact")]
         public async Task<IActionResult> GetListContact()
         {

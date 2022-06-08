@@ -9,10 +9,10 @@
 @inject ModalService _modalService
 @inject NotificationService _notice
 <PageContainer Title="Thông tin liên hệ và giới thiệu">
-   <TelerikGrid Data=@GridData
-             PageSize="5"
-             Pageable=true>
-   <GridColumns>
+    <TelerikGrid Data=@GridData
+                 PageSize="5"
+                 Pageable=true>
+        <GridColumns>
             <GridColumn Field="@(nameof(ContactVm.Content))" Editable="false" Title="Trang giới thiệu" Width="120px" />
             <GridColumn Field="@(nameof(ContactVm.ContentHome))" Title="Giới thiệu Trang chủ" Width="120px" />
             <GridColumn Field="@(nameof(ContactVm.Address))" Title="Địa chỉ" Width="120px" />
@@ -20,12 +20,53 @@
             <GridColumn Field="@(nameof(ContactVm.Phone))" Title="Số điện thoại" Width="120px" />
             <GridColumn Field="@(nameof(ContactVm.FacebookLink))" Title="Link Facebook" Width="120px" />
             <GridColumn Field="@(nameof(ContactVm.ZaloLink))" Title="Link Zalo" Width="120px" />
+            <GridColumn Field="@(nameof(ContactVm.ID))" Title="Chỉnh sửa" Width="120px">
+                <Template>
+                    @{
+                        var post = context as ContactVm;
+                        <Button Type="primary" OnClick="@(()=>btnUpdate(post.ID))">
+                            Chỉnh sửa
+                        </Button>
+                    }
+                </Template>
+            </GridColumn>
         </GridColumns>
-</TelerikGrid>
-
-
-    
+    </TelerikGrid>
 </PageContainer>
+
+<Modal Title="@("Chỉnh sửa liên hệ - giới thiệu")"
+       Visible="@_visibleUpdate"
+       OnOk="@HandleOkUpdate"
+       OnCancel="@HandleCancelUpdate">
+    <Form Loading="loadingUpdate" Model="@modelUpdate"
+          OnFinish="OnFinishUpdate"
+          OnFinishFailed="OnFinishFailedUpdate"
+          @ref="@_formUpdate">
+        <AntDesign.FormItem Label="Giới thiệu">
+            <Input @bind-Value="@context.Content" />
+        </AntDesign.FormItem>
+        <AntDesign.FormItem Label="Giới thiệu ngắn trang chủ">
+            <Input @bind-Value="@context.ContentHome" />
+        </AntDesign.FormItem>
+        <AntDesign.FormItem Label="Địa chỉ">
+            <Input @bind-Value="@context.Address" />
+        </AntDesign.FormItem>
+        <AntDesign.FormItem Label="Email">
+            <Input @bind-Value="@context.Email" />
+        </AntDesign.FormItem>
+        <AntDesign.FormItem Label="Số điện thoại">
+            <Input @bind-Value="@context.Phone" />
+        </AntDesign.FormItem>
+        <AntDesign.FormItem Label="Link Facebook">
+            <Input @bind-Value="@context.FacebookLink" />
+        </AntDesign.FormItem>
+        <AntDesign.FormItem Label="Link Zalo">
+            <Input @bind-Value="@context.ZaloLink" />
+        </AntDesign.FormItem>
+    </Form>
+</Modal>
+
+
 <style>
     .pre {
         margin: 12px 0;
