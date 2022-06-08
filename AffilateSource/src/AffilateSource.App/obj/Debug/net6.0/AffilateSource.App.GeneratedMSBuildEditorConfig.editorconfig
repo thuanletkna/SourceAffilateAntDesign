@@ -8,81 +8,85 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = AffilateSource.App
 build_property.RootNamespace = AffilateSource.App
-build_property.ProjectDir = D:\SourceAffilateGit_AntDesign\SourceAffilateAntDesign\AffilateSource\src\AffilateSource.App\
+build_property.ProjectDir = D:\SourceAffilateAntDesignGit\SourceAffilateAntDesign\AffilateSource\src\AffilateSource.App\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = true
-build_property.MSBuildProjectDirectory = D:\SourceAffilateGit_AntDesign\SourceAffilateAntDesign\AffilateSource\src\AffilateSource.App
+build_property.MSBuildProjectDirectory = D:\SourceAffilateAntDesignGit\SourceAffilateAntDesign\AffilateSource\src\AffilateSource.App
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/SourceAffilateGit_AntDesign/SourceAffilateAntDesign/AffilateSource/src/AffilateSource.App/Views/Contact/Index.cshtml]
+[D:/SourceAffilateAntDesignGit/SourceAffilateAntDesign/AffilateSource/src/AffilateSource.App/Views/Contact/Contact.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdFxDb250YWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SourceAffilateAntDesignGit/SourceAffilateAntDesign/AffilateSource/src/AffilateSource.App/Views/Contact/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/SourceAffilateGit_AntDesign/SourceAffilateAntDesign/AffilateSource/src/AffilateSource.App/Views/Home/Index.cshtml]
+[D:/SourceAffilateAntDesignGit/SourceAffilateAntDesign/AffilateSource/src/AffilateSource.App/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/SourceAffilateGit_AntDesign/SourceAffilateAntDesign/AffilateSource/src/AffilateSource.App/Views/Home/Privacy.cshtml]
+[D:/SourceAffilateAntDesignGit/SourceAffilateAntDesign/AffilateSource/src/AffilateSource.App/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/SourceAffilateGit_AntDesign/SourceAffilateAntDesign/AffilateSource/src/AffilateSource.App/Views/Post/GetAllPostPaging.cshtml]
+[D:/SourceAffilateAntDesignGit/SourceAffilateAntDesign/AffilateSource/src/AffilateSource.App/Views/Post/GetAllPostPaging.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdFxHZXRBbGxQb3N0UGFnaW5nLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/SourceAffilateGit_AntDesign/SourceAffilateAntDesign/AffilateSource/src/AffilateSource.App/Views/Post/GetPostById.cshtml]
+[D:/SourceAffilateAntDesignGit/SourceAffilateAntDesign/AffilateSource/src/AffilateSource.App/Views/Post/GetPostById.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdFxHZXRQb3N0QnlJZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/SourceAffilateGit_AntDesign/SourceAffilateAntDesign/AffilateSource/src/AffilateSource.App/Views/Product/GetAllProductPaging.cshtml]
+[D:/SourceAffilateAntDesignGit/SourceAffilateAntDesign/AffilateSource/src/AffilateSource.App/Views/Product/GetAllProductPaging.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxHZXRBbGxQcm9kdWN0UGFnaW5nLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/SourceAffilateGit_AntDesign/SourceAffilateAntDesign/AffilateSource/src/AffilateSource.App/Views/Product/GetAllProductsPaging.cshtml]
+[D:/SourceAffilateAntDesignGit/SourceAffilateAntDesign/AffilateSource/src/AffilateSource.App/Views/Product/GetAllProductsPaging.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxHZXRBbGxQcm9kdWN0c1BhZ2luZy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/SourceAffilateGit_AntDesign/SourceAffilateAntDesign/AffilateSource/src/AffilateSource.App/Views/Product/GetProductById.cshtml]
+[D:/SourceAffilateAntDesignGit/SourceAffilateAntDesign/AffilateSource/src/AffilateSource.App/Views/Product/GetProductById.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxHZXRQcm9kdWN0QnlJZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/SourceAffilateGit_AntDesign/SourceAffilateAntDesign/AffilateSource/src/AffilateSource.App/Views/Shared/Components/Footer/Default.cshtml]
+[D:/SourceAffilateAntDesignGit/SourceAffilateAntDesign/AffilateSource/src/AffilateSource.App/Views/Shared/Components/Footer/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcRm9vdGVyXERlZmF1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/SourceAffilateGit_AntDesign/SourceAffilateAntDesign/AffilateSource/src/AffilateSource.App/Views/Shared/Components/LeftSideBarProduct/Default.cshtml]
+[D:/SourceAffilateAntDesignGit/SourceAffilateAntDesign/AffilateSource/src/AffilateSource.App/Views/Shared/Components/LeftSideBarProduct/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTGVmdFNpZGVCYXJQcm9kdWN0XERlZmF1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/SourceAffilateGit_AntDesign/SourceAffilateAntDesign/AffilateSource/src/AffilateSource.App/Views/Shared/Components/LeftSideBar/Default.cshtml]
+[D:/SourceAffilateAntDesignGit/SourceAffilateAntDesign/AffilateSource/src/AffilateSource.App/Views/Shared/Components/LeftSideBar/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTGVmdFNpZGVCYXJcRGVmYXVsdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/SourceAffilateGit_AntDesign/SourceAffilateAntDesign/AffilateSource/src/AffilateSource.App/Views/Shared/Components/Navigation/Default.cshtml]
+[D:/SourceAffilateAntDesignGit/SourceAffilateAntDesign/AffilateSource/src/AffilateSource.App/Views/Shared/Components/Navigation/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTmF2aWdhdGlvblxEZWZhdWx0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/SourceAffilateGit_AntDesign/SourceAffilateAntDesign/AffilateSource/src/AffilateSource.App/Views/Shared/Components/Pager/Default.cshtml]
+[D:/SourceAffilateAntDesignGit/SourceAffilateAntDesign/AffilateSource/src/AffilateSource.App/Views/Shared/Components/Pager/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcUGFnZXJcRGVmYXVsdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/SourceAffilateGit_AntDesign/SourceAffilateAntDesign/AffilateSource/src/AffilateSource.App/Views/Shared/Error.cshtml]
+[D:/SourceAffilateAntDesignGit/SourceAffilateAntDesign/AffilateSource/src/AffilateSource.App/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/SourceAffilateGit_AntDesign/SourceAffilateAntDesign/AffilateSource/src/AffilateSource.App/Views/Shared/_Layout.cshtml]
+[D:/SourceAffilateAntDesignGit/SourceAffilateAntDesign/AffilateSource/src/AffilateSource.App/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/SourceAffilateGit_AntDesign/SourceAffilateAntDesign/AffilateSource/src/AffilateSource.App/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/SourceAffilateAntDesignGit/SourceAffilateAntDesign/AffilateSource/src/AffilateSource.App/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/SourceAffilateGit_AntDesign/SourceAffilateAntDesign/AffilateSource/src/AffilateSource.App/Views/_ViewImports.cshtml]
+[D:/SourceAffilateAntDesignGit/SourceAffilateAntDesign/AffilateSource/src/AffilateSource.App/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/SourceAffilateGit_AntDesign/SourceAffilateAntDesign/AffilateSource/src/AffilateSource.App/Views/_ViewStart.cshtml]
+[D:/SourceAffilateAntDesignGit/SourceAffilateAntDesign/AffilateSource/src/AffilateSource.App/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

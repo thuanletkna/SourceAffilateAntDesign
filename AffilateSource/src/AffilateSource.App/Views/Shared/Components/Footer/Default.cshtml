@@ -5,13 +5,20 @@
 @{
     Layout = null;
 }
-
-<footer class="site-footer">
+<style>
+    .footer-overlay .footer-top {
+    background-color: rgb(92 91 91 / 80%);
+}
+#footerrow{
+    width:20%;
+}
+</style>
+<footer class="site-footer footer-overlay bg-img-fix" style="background-image: url(https://gardenzone.dexignlab.com/xhtml/images/background/bg1.jpg);background-position: center bottom;background-size: cover;display: block;height: 513.5px;">
     <!-- footer top part -->
-    <div class="footer-top" style="background-image:url(/portalstyle/images/background/footer.png);">
+    <div class="footer-top">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
+                <div   class="col-lg-3 col-md-6 col-sm-6">
                     <div class="widget widget_about">
                         <div class="logo-footer"><img src="/portalstyle/images/logovuonhoala.png" alt=""></div>
                         <p>@Model.getContact.ContentHome</p>
@@ -23,7 +30,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
+                <div   class="col-lg-3 col-md-6 col-sm-6">
                     <div class="widget recent-posts-entry">
                         <h4 class="m-b15 text-uppercase">bài đăng phổ biến</h4>
                         <div class="dez-separator-outer m-b10">
@@ -36,7 +43,7 @@
                                     <div class="dez-post-media"> <img style="width:90px;height:72px" src="@(Configuration["BackendApiUrl"]+ item.ImagePost)" alt="@item.Title" width="200" height="143"> </div>
                                     <div class="dez-post-info">
                                         <div class="dez-post-header">
-                                            <h6 style="overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp: 2;display: -webkit-box;-webkit-box-orient: vertical;"  class="post-title text-uppercase"><a href="/details/@item.SeoAlias-@item.Id">@item.Title</a></h6>
+                                            <h6 style="overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp: 2;display: -webkit-box;-webkit-box-orient: vertical;"  class="post-title text-uppercase"><a style="color: white;" href="/details/@item.SeoAlias-@item.Id">@item.Title</a></h6>
                                         </div>
                                         <div class="dez-post-meta">
                                             <ul>
@@ -64,7 +71,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
+                <div  class="col-lg-3 col-md-6 col-sm-6">
                     <div class="widget widget_getintuch">
                         <h4 class="m-b15 text-uppercase">Liên hệ</h4>
                         <div class="dez-separator-outer m-b10">

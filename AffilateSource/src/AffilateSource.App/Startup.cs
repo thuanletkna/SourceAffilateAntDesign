@@ -73,6 +73,10 @@ namespace AffilateSource.App
                   pattern: "/gioi-thieu",
                  new { controller = "Contact", action = "Index" });
                 endpoints.MapControllerRoute(
+                 name: "Contact",
+                  pattern: "/lien-he",
+                 new { controller = "Contact", action = "Contact" });
+                endpoints.MapControllerRoute(
                    name: "Admin",
                    pattern: "/admin",
                    new { controller = "Admin", action = "Index" });
