@@ -12,7 +12,7 @@
     <div class="dez-bnr-inr overlay-black-middle" style="background-image:url(/portalstyle/images/banner/banner.png);">
         <div class="container">
             <div class="dez-bnr-inr-entry">
-                <h1 class="text-white">Sản phẩm khuyến mãi</h1>
+                <h1 class="text-white">Bộ sưu tập</h1>
             </div>
         </div>
     </div>
@@ -43,12 +43,10 @@
                         {
                             <div class="col-lg-4 col-sm-12 m-b30 product-item card-container">
                                 <div class="dez-box">
-                                    <div class="dez-media"> <a href="/chi-tiet/@item.SeoAlias-@item.Id"><img style="width:376px;height:236px;" src="@(Configuration["BackendApiUrl"]+ item.ImageProducts)" alt="@item.Title"></a> </div>
+                                    <div class="dez-media"> <a href="/chi-tiet/@item.SeoAlias-@item.Id"><img style="width:376px;height:210px;" src="@(Configuration["BackendApiUrl"]+ item.ImageProducts)" alt="@item.Title"></a> </div>
                                     <div class="dez-info p-a20 text-center bg-gray" style="background-color: #daeded;">
                                         <h4 class="dez-title m-t0"><a href="/product/@item.SeoAlias-@item.Id" style="overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp: 2;display: -webkit-box;-webkit-box-orient: vertical;">@item.Title</a></h4>
-                                        @*<p style="overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp: 2;display: -webkit-box;-webkit-box-orient: vertical;" class="m-b0">@item.Description</p>*@
-                                        <div style="font-size: initial;" class="m-b0"><span>Giá gốc: </span> <del style="font-size: initial;" class="m-r10"><span>@item.Price VNĐ</span></del> </div>
-                                        <h3 class="m-b0"><span>Giá bán:</span> <span style="font-size:20px; color:red">@item.Price VNĐ</span> </h3>
+                                        <h3 class="m-b0"><span>Giá:</span> <span style="font-size:20px; color:red">@item.Price VNĐ</span> </h3>
                                         <div class="m-t20">
                                             <a href="@item.LinkAffilateOther" class="site-button radius-xl">Mua ngay</a>
                                         </div>
@@ -64,7 +62,7 @@
 
                 </div>
             </div>
-            <div class="row">
+           @* <div class="row">
                 <div class="col-md-12">
                     <div class="add-plat text-white shop-add" style="background-image:url(/portalstyle/images/banner/bnr4.jpg); background-size:100%;
 						background-position:center;">
@@ -72,7 +70,7 @@
                         <a href="javascript:void(0);" class="site-button outline yellow">Get Free Estimate</a>
                     </div>
                 </div>
-            </div>
+            </div>*@
         </div>
         <!-- Product END -->
     </div>

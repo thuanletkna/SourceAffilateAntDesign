@@ -17,5 +17,10 @@ namespace AffilateSource.App.Controllers
             var contact =await contactServices.GetContact();
             return View(contact);
         }
+        public async Task<IActionResult> Contact()
+        {
+            var contact = await contactServices.GetContact();
+            return View(contact);
+        }
     }
 }

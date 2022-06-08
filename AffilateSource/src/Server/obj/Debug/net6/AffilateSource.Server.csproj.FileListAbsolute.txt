@@ -201,3 +201,4 @@ D:\SourceAffilateGit_AntDesign\SourceAffilateAntDesign\AffilateSource\src\Server
 D:\SourceAffilateGit_AntDesign\SourceAffilateAntDesign\AffilateSource\src\Server\obj\Debug\net6\AffilateSource.Server.pdb
 D:\SourceAffilateGit_AntDesign\SourceAffilateAntDesign\AffilateSource\src\Server\obj\Debug\net6\AffilateSource.Server.genruntimeconfig.cache
 D:\SourceAffilateGit_AntDesign\SourceAffilateAntDesign\AffilateSource\src\Server\obj\Debug\net6\ref\AffilateSource.Server.dll
+D:\SourceAffilateAntDesignGit\SourceAffilateAntDesign\AffilateSource\src\Server\obj\Debug\net6\AffilateSource.Server.MvcApplicationPartsAssemblyInfo.cs

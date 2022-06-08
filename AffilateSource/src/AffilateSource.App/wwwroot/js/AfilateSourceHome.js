@@ -49,16 +49,15 @@ function listProductHome(id) {
                 html +=
                     '<li class="home card-container col-lg-3 col-md-3 col-sm-6 col-6">' +
                     '                                <div class="dez-box dez-gallery-box">' +
-                '                                    <div class="dez-media"> <a href="/product/' + item.seoAlias + '-' + item.id + '"><img src="https://admin.vuonhoala.vn' + item.imageProducts + ' "style="width:376px; height:236px" alt="' + item.title + '"></a> </div>' +
+                '                                    <div class="dez-media"> <a href="/product/' + item.seoAlias + '-' + item.id + '"><img src="https://admin.vuonhoala.vn' + item.imageProducts + ' "style="width:376px; height:210px" alt="' + item.title + '"></a> </div>' +
                     '                                    <div class="dez-info p-a20 text-center bg-gray" style="background-color: #daeded;">' +
-                    '                                        <div class="p-lr20">' +
-                    '                                            <h4 style="padding: 10px;" class="m-a0 bg-primary service-head"><a href="javascript:void(0);">' + item.categoryName + '</a></h4>' +
-                    '                                        </div>' +
-                    '                                        <h4 class="dez-title m-t0"><a href="/product/' + item.seoAlias + '-' + item.id + '" style="overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp: 2;display: -webkit-box;-webkit-box-orient: vertical;">' + item.title + '</a></h4>' +
-                    '                                        <div style="font-size: initial;" class="m-b0"><span>Giá Gốc: </span> <del style="font-size: initial;" class="m-r10"><span>' + item.price + ' VNĐ</span></del> </div>' +
-                    '                                        <h3 class="m-b0"><span>Giá Bán:</span> <span style="font-size:20px; color:red">' + item.price + ' VNĐ</span> </h3>' +
+                    //'                                        <div class="p-lr20">' +
+                    //'                                            <h4 style="padding: 10px;" class="m-a0 bg-primary service-head"><a href="javascript:void(0);">' + item.categoryName + '</a></h4>' +
+                    //'                                        </div>' +
+                    '                                        <h4 style="margin-bottom:10px" class="dez-title m-t0"><a href="/product/' + item.seoAlias + '-' + item.id + '" style="overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp: 2;display: -webkit-box;-webkit-box-orient: vertical;">' + item.title + '</a></h4>' +
+                    '                                        <h3 class="m-b0"><span style="font-size:18px">Giá:</span> <span style="font-size:18px; color:red">' + item.price + ' VNĐ</span> </h3>' +
                     '                                        <div class="m-t20">' +
-                    '                                            <a href="' + item.linkAffilate + '" class="site-button radius-xl">Mua ngay</a>' +
+                '                                            <a href="' + item.linkAffilateOther + '" class="site-button radius-xl">Mua ngay</a>' +
                     '                                        </div>' +
                     '                                    </div>' +
                     '                                </div>' +
