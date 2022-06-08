@@ -9,17 +9,22 @@ namespace AffilateSource.App.Controllers.Components
     {
         private readonly ICategoriesServices _categoryApiClient;
         private readonly IPostServices _postApiClient;
-        public FooterViewComponent(ICategoriesServices categoryApiClient, IPostServices postApiClient)
+        private readonly IContactServices _contactServices;
+
+        public FooterViewComponent(ICategoriesServices categoryApiClient, IPostServices postApiClient, IContactServices contactServices)
         {
             _categoryApiClient = categoryApiClient;
             _postApiClient = postApiClient;
+            _contactServices = contactServices;
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var postViewCount = await _postApiClient.GetPostByViewCount(); //Get 3 post view count
+            var contact = await _contactServices.GetContact();
             var viewmodel = new FooterViewModel()
             {
-                ListPostViewCount = postViewCount
+                ListPostViewCount = postViewCount,
+                getContact = contact
             };
             return View("Default", viewmodel);
         }

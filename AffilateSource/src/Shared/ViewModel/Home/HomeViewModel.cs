@@ -1,5 +1,6 @@
 ﻿
 using AffilateSource.Shared.ViewModel.Category;
+using AffilateSource.Shared.ViewModel.Contact;
 using AffilateSource.Shared.ViewModel.Post;
 using AffilateSource.Shared.ViewModel.Product;
 using System;
@@ -20,6 +21,7 @@ namespace AffilateSource.Shared.ViewModel.Home
         public IEnumerable<ProductHomeViewModel> GetProductByViewCount { get; set; }
         public IEnumerable<PostHomeViewModel> GetPostHome { get; set; }
         public IEnumerable<PostHomeViewModel> GetPostCreateDate { get; set; }
+        public ContactVm getContact {get;set;}
 
     }
 }

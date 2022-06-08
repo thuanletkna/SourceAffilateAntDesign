@@ -33,7 +33,7 @@
         "name": "Thêm mới",
         "key": "form.step-form"
       }
-      
+
     ]
   },
   {
@@ -53,41 +53,41 @@
         "name": "Danh sách banner",
         "key": "result.success"
       }
-      
+
     ]
   },
   {
     "path": "/exception",
-    "name": "Error Pages",
+    "name": "Giao diện",
     "key": "exception",
     "icon": "exception",
     "children": [
       {
         "path": "/exception/403",
-        "name": "403",
+        "name": "Trang chủ",
         "key": "exception.403"
       },
       {
         "path": "/exception/404",
-        "name": "404",
+        "name": "Giới thiệu",
         "key": "exception.404"
       },
       {
         "path": "/exception/500",
-        "name": "500",
+        "name": "Liên hệ",
         "key": "exception.500"
       }
     ]
   },
   {
     "path": "/account",
-    "name": "Account",
+    "name": "Seo",
     "key": "account",
     "icon": "user",
     "children": [
       {
         "path": "/account/center",
-        "name": "Account Center",
+        "name": "Thông tin",
         "key": "account.center"
       },
       {

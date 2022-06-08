@@ -1,0 +1,36 @@
+﻿@page "/contact"
+@using AffilateSource.Client.Services
+@using AffilateSource.Shared.ViewModel.Contact
+@using AffilateSource.Shared.ViewModel.Post
+@using Telerik.Blazor.Components
+@inject HttpClient Http
+@inject PostApiServices postApi
+@inject NavigationManager NavigationManager
+@inject ModalService _modalService
+@inject NotificationService _notice
+<PageContainer Title="Thông tin liên hệ và giới thiệu">
+   <TelerikGrid Data=@GridData
+             PageSize="5"
+             Pageable=true>
+   <GridColumns>
+            <GridColumn Field="@(nameof(ContactVm.Content))" Editable="false" Title="Trang giới thiệu" Width="120px" />
+            <GridColumn Field="@(nameof(ContactVm.ContentHome))" Title="Giới thiệu Trang chủ" Width="120px" />
+            <GridColumn Field="@(nameof(ContactVm.Address))" Title="Địa chỉ" Width="120px" />
+            <GridColumn Field="@(nameof(ContactVm.Email))" Title="Email" Width="120px" />
+            <GridColumn Field="@(nameof(ContactVm.Phone))" Title="Số điện thoại" Width="120px" />
+            <GridColumn Field="@(nameof(ContactVm.FacebookLink))" Title="Link Facebook" Width="120px" />
+            <GridColumn Field="@(nameof(ContactVm.ZaloLink))" Title="Link Zalo" Width="120px" />
+        </GridColumns>
+</TelerikGrid>
+
+
+    
+</PageContainer>
+<style>
+    .pre {
+        margin: 12px 0;
+        padding: 12px 20px;
+        background: #fff;
+        box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09);
+    }
+</style>
