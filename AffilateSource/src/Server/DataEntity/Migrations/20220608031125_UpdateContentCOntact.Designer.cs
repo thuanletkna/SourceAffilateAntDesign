@@ -4,6 +4,7 @@ using AffilateSource.Data.DataEntity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AffilateSource.Server.DataEntity.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220608031125_UpdateContentCOntact")]
+    partial class UpdateContentCOntact
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -276,17 +278,11 @@ namespace AffilateSource.Server.DataEntity.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FacebookLink")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Phone")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool?>("Status")
                         .HasColumnType("bit");
-
-                    b.Property<string>("ZaloLink")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 

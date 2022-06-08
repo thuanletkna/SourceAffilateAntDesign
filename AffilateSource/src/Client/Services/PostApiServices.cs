@@ -1,6 +1,7 @@
 ﻿using AffilateSource.Shared.ViewModel;
 using AffilateSource.Shared.ViewModel.BannerImages;
 using AffilateSource.Shared.ViewModel.Category;
+using AffilateSource.Shared.ViewModel.Contact;
 using AffilateSource.Shared.ViewModel.Filter;
 using AffilateSource.Shared.ViewModel.Post;
 using AffilateSource.Shared.ViewModel.Product;
@@ -251,5 +252,20 @@ namespace AffilateSource.Client.Services
             }
         }
         #endregion Slide
+
+        public async Task<List<ContactVm>> GetContact(string controller, string action)
+        {
+            HttpResponseMessage response = await Http.GetAsync(controller + "/" + action);
+
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                var content = await response.Content.ReadFromJsonAsync<List<ContactVm>>();
+                return content;
+            }
+            else
+            {
+                return new List<ContactVm>();
+            }
+        }
     }
 }

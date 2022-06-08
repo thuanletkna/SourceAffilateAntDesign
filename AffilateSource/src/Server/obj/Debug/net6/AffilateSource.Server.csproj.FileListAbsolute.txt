@@ -99,15 +99,15 @@ D:\SourceAffilateAntDesignGit\SourceAffilateAntDesign\AffilateSource\src\Server\
 D:\SourceAffilateAntDesignGit\SourceAffilateAntDesign\AffilateSource\src\Server\obj\Debug\net6\AffilateSource.Server.pdb
 D:\SourceAffilateAntDesignGit\SourceAffilateAntDesign\AffilateSource\src\Server\obj\Debug\net6\AffilateSource.Server.genruntimeconfig.cache
 D:\SourceAffilateAntDesignGit\SourceAffilateAntDesign\AffilateSource\src\Server\obj\Debug\net6\ref\AffilateSource.Server.dll
+D:\SourceAffilateGit_AntDesign\SourceAffilateAntDesign\AffilateSource\src\Server\bin\Debug\net6\AffilateSource.Client.staticwebassets.runtime.json
 D:\SourceAffilateGit_AntDesign\SourceAffilateAntDesign\AffilateSource\src\Server\bin\Debug\net6\appsettings.Development.json
+D:\SourceAffilateGit_AntDesign\SourceAffilateAntDesign\AffilateSource\src\Server\bin\Debug\net6\appsettings.json
 D:\SourceAffilateGit_AntDesign\SourceAffilateAntDesign\AffilateSource\src\Server\bin\Debug\net6\BlazorDebugProxy\BrowserDebugHost.dll
 D:\SourceAffilateGit_AntDesign\SourceAffilateAntDesign\AffilateSource\src\Server\bin\Debug\net6\BlazorDebugProxy\BrowserDebugHost.runtimeconfig.json
 D:\SourceAffilateGit_AntDesign\SourceAffilateAntDesign\AffilateSource\src\Server\bin\Debug\net6\BlazorDebugProxy\BrowserDebugProxy.dll
 D:\SourceAffilateGit_AntDesign\SourceAffilateAntDesign\AffilateSource\src\Server\bin\Debug\net6\BlazorDebugProxy\Microsoft.CodeAnalysis.CSharp.dll
 D:\SourceAffilateGit_AntDesign\SourceAffilateAntDesign\AffilateSource\src\Server\bin\Debug\net6\BlazorDebugProxy\Microsoft.CodeAnalysis.dll
 D:\SourceAffilateGit_AntDesign\SourceAffilateAntDesign\AffilateSource\src\Server\bin\Debug\net6\BlazorDebugProxy\Newtonsoft.Json.dll
-D:\SourceAffilateGit_AntDesign\SourceAffilateAntDesign\AffilateSource\src\Server\bin\Debug\net6\AffilateSource.Client.staticwebassets.runtime.json
-D:\SourceAffilateGit_AntDesign\SourceAffilateAntDesign\AffilateSource\src\Server\bin\Debug\net6\appsettings.json
 D:\SourceAffilateGit_AntDesign\SourceAffilateAntDesign\AffilateSource\src\Server\bin\Debug\net6\AffilateSource.Server.staticwebassets.runtime.json
 D:\SourceAffilateGit_AntDesign\SourceAffilateAntDesign\AffilateSource\src\Server\bin\Debug\net6\AffilateSource.Server.exe
 D:\SourceAffilateGit_AntDesign\SourceAffilateAntDesign\AffilateSource\src\Server\bin\Debug\net6\AffilateSource.Server.deps.json

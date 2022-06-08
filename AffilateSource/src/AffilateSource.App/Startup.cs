@@ -35,6 +35,8 @@ namespace AffilateSource.App
             services.AddScoped<ICategoriesServices, CategoriesServices>();
             //services.AddTransient<IProductApiClient, ProductApiClient>();
             services.AddScoped<IPostServices, PostServices>();
+            services.AddScoped<IContactServices, ContactServices>();
+            services.AddScoped<IBannerImageServices, BannerImageServices>();
             services.AddConfigSourceAffilateData(Configuration);
         }
 

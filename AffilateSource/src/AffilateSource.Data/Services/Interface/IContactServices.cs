@@ -10,5 +10,8 @@ namespace AffilateSource.Data.Services.Interface
     public interface IContactServices
     {
         public Task<ContactVm> GetContact();
+        Task<ContactVm> UpdateContacts(ContactVm contactVm);
+        Task<ContactVm> CreateContacts(ContactVm contactVm);
+        Task<List<ContactVm>> GetListContact();
     }
 }

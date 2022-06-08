@@ -14,7 +14,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="widget widget_about">
                         <div class="logo-footer"><img src="/portalstyle/images/logovuonhoala.png" alt=""></div>
-                        <p><strong>Muonloaihoa.vn</strong>  tự hào mang đến cho bạn nhiều trải nghiệm thú vị trong cuộc sống, bằng những kinh nghiệm thực tế cũng như sản phẩm chất lượng sẽ giúp mọi người không phải băn khoăn trong việc lựa chọn sản phẩm cũng như thiếu kiến thức về sản phẩm...</p>
+                        <p>@Model.getContact.ContentHome</p>
                         <ul class="dez-social-icon">
                             <li class="border"><a class="fab fa-facebook-f" href="javascript:void(0);"></a></li>
                             <li class="border"><a class="fab fa-twitter" href="javascript:void(0);"></a></li>
@@ -71,10 +71,9 @@
                             <div class="dez-separator bg-white style-skew"></div>
                         </div>
                         <ul>
-                            <li><i class="fas fa-map-marker-alt"></i><strong>Địa chỉ</strong> Thành phố Hồ Chí Minh, VietNam</li>
-                            <li><i class="fas fa-phone-alt"></i><strong>Điện thoại</strong>0800-123456 (24/7 Support Line)</li>
-                            @*<li><i class="fa fa-fax"></i><strong>FAX</strong>(123) 123-4567</li>*@
-                            <li><i class="fa fa-envelope"></i><strong>Email</strong>info_vuonhoala@gmail.com</li>
+                            <li><i class="fas fa-map-marker-alt"></i><strong>Địa chỉ</strong> @Model.getContact.Address</li>
+                            <li><i class="fas fa-phone-alt"></i><strong>Điện thoại</strong>@Model.getContact.Phone</li>
+                            <li><i class="fa fa-envelope"></i><strong>Email</strong>@Model.getContact.Email</li>
                         </ul>
                     </div>
                 </div>
