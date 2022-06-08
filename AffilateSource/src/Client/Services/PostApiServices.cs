@@ -267,5 +267,21 @@ namespace AffilateSource.Client.Services
                 return new List<ContactVm>();
             }
         }
+
+        public async Task<ContactVm> GetContactDetailByIdAdmin(string controller, string action, int id)
+        {
+
+            HttpResponseMessage response = await Http.PostAsJsonAsync(controller + "/" + action, id);
+
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                var content = await response.Content.ReadFromJsonAsync<ContactVm>();
+                return content;
+            }
+            else
+            {
+                return new ContactVm();
+            }
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using AffilateSource.Data.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace AffilateSource.App.Controllers
 {
@@ -11,9 +12,9 @@ namespace AffilateSource.App.Controllers
         {
             this.contactServices = contactServices;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var contact = contactServices.GetContact();
+            var contact =await contactServices.GetContact();
             return View(contact);
         }
     }

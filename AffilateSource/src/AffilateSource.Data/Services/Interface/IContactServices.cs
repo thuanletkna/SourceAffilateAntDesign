@@ -13,5 +13,6 @@ namespace AffilateSource.Data.Services.Interface
         Task<ContactVm> UpdateContacts(ContactVm contactVm);
         Task<ContactVm> CreateContacts(ContactVm contactVm);
         Task<List<ContactVm>> GetListContact();
+        Task<ContactVm> GetContactById(int id);
     }
 }

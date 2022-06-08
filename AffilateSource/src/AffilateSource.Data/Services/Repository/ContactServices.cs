@@ -34,6 +34,8 @@ namespace AffilateSource.Data.Services.Repository
                 Address = x.Address,
                 Email = x.Email,
                 Status = x.Status,
+                FacebookLink = x.FacebookLink,
+                ZaloLink = x.ZaloLink
             }).Where(x => x.Status==true).FirstOrDefaultAsync();
             return  data;
         }
@@ -41,6 +43,9 @@ namespace AffilateSource.Data.Services.Repository
         {
             var data = await context.Contacts.Select(x => new ContactVm()
             {
+                ID = x.ID,
+                FacebookLink = x.FacebookLink,
+                ZaloLink = x.ZaloLink,
                 Content = x.Content,
                 ContentHome = x.ContentHome,
                 Phone = x.Phone,
@@ -77,10 +82,34 @@ namespace AffilateSource.Data.Services.Repository
                 ObjParm.Add("@Email", contactVm.Email);
                 ObjParm.Add("@Address", contactVm.Address);
                 ObjParm.Add("@Phone", contactVm.Phone);
+                ObjParm.Add("@ContentHome", contactVm.ContentHome);
+                ObjParm.Add("@FacebookLink", contactVm.FacebookLink);
+                ObjParm.Add("@ZaloLink", contactVm.ZaloLink);
                 await conn.ExecuteAsync("[CONTACT_Update]", ObjParm, commandType: CommandType.StoredProcedure);
                 conn.Close();
                 return contactVm;
             }
+        }
+        public async Task<ContactVm>GetContactById(int id)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(_configuration.Value))
+                {
+
+                    ContactVm productQuickViewModel;
+                    DynamicParameters ObjParm = new DynamicParameters();
+                    ObjParm.Add("@Id", id);
+                    productQuickViewModel = await conn.QuerySingleOrDefaultAsync<ContactVm>("[CONTACT_GetDetailById]", ObjParm, commandType: CommandType.StoredProcedure);
+                    conn.Close();
+                    return productQuickViewModel;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
         }
     }
 }

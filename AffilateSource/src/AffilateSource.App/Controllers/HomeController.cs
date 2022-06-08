@@ -38,6 +38,7 @@ namespace AffilateSource.App.Controllers
             //var magiamgia = await _categoryApiClient.GetCategoryByParentId(6);
             var danhmuckhuyenmai = await _categoryApiClient.GetCategoryByParentId(2);
             var danhmucpost = await _categoryApiClient.GetCategoryByParentId(3);
+            var banner = await _bannerImageServices.GetBannerSlide();
             //var contact = await _contactServices.GetContact();
             var viewmodel = new HomeViewModel()
             {
@@ -48,6 +49,7 @@ namespace AffilateSource.App.Controllers
                 GetProductHome = productHome,
                 GetPostHome = postHome,
                 GetProductByViewCount = productbyViewCount,
+                Getbanner = banner
                 //getContact = contact
                 //GetPostCreateDate = postCreateDate,
             };
