@@ -24,6 +24,7 @@ namespace AffilateSource.Data.Services.Interface
         Task<PostCreateViewModel> CreatePost(PostCreateViewModel request);
         Task<PostCreateViewModel> UpdatePost(PostCreateViewModel request);
         Task<PostDetailVm> CreatePostDetail(PostDetailVm request);
+        Task<PostDetailVm> CreatePostDetailByPosstId(PostDetailVm request);
         Task<List<PostHomeViewModel>> GetPostCreatedLast();
         Task<List<PostDetailVm>> GetPostDetailById();
         Task<PostDetailVm> UpdatePostDetail(PostDetailVm request);

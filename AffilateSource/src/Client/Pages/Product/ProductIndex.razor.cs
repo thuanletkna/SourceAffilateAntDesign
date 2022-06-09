@@ -27,7 +27,7 @@ namespace AffilateSource.Client.Pages.Product
         GridSelectionMode selectionMode { get; set; } = GridSelectionMode.Multiple;
         bool ShowSelectAll => selectionMode == GridSelectionMode.Multiple;
         public IEnumerable<ProductHomeViewModel> SelectedItems { get; set; } = Enumerable.Empty<ProductHomeViewModel>();
-        int PageSize { get; set; } = 2;
+        int PageSize { get; set; } = 50;
         int Page { get; set; } = 1;
 
         bool Visible { get; set; }

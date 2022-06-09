@@ -73,6 +73,10 @@ namespace AffilateSource.App
                   pattern: "/gioi-thieu",
                  new { controller = "Contact", action = "Index" });
                 endpoints.MapControllerRoute(
+                 name: "Product",
+                  pattern: "/all-product",
+                 new { controller = "Product", action = "GetAllProductCategory" });
+                endpoints.MapControllerRoute(
                  name: "Contact",
                   pattern: "/lien-he",
                  new { controller = "Contact", action = "Contact" });
@@ -87,7 +91,8 @@ namespace AffilateSource.App
                 endpoints.MapControllerRoute(
                  name: "Product",
                   pattern: "{SeoAlias}-{id}",
-                 new { controller = "Product", action = "GetAllProductPaging" });
+                 new { controller = "Product", action = "GetAllProductPaging" }); 
+               
                 endpoints.MapControllerRoute(
                  name: "Product",
                   pattern: "/sanpham/{SeoAlias}-{id}",

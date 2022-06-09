@@ -14,10 +14,19 @@ namespace AffilateSource.App.Controllers
             _productApiClient = productApiClient;
             _categoryApiClient = categoryApiClient;
         }
-        public IActionResult Index()
+        
+        public async Task<IActionResult> GetAllProductCategory(int id)
         {
-            return View();
+            var danhmuckhuyenmai = await _categoryApiClient.GetCategoryByParentId(2);
+            var productHome = await _productApiClient.GetProductHome();
+            var viewmodel = new ProductViewModel()
+            {
+                GetDanhMucKhuyenMai = (System.Collections.Generic.List<Shared.ViewModel.Category.CategoryQuickVM>)danhmuckhuyenmai,
+                GetProductHome = productHome,
+            };
+            return View(viewmodel);
         }
+
         public async Task<IActionResult> GetAllProductPaging(int id, int page = 1)
         {
             var pageSize = 15;
@@ -36,7 +45,7 @@ namespace AffilateSource.App.Controllers
         }
         public async Task<IActionResult> GetAllProductsPaging(int id, int page = 1)
         {
-            var pageSize = 2;
+            var pageSize = 12;
 
             //var category = await _categoryApiClient.GetCategoryById(id);
             //var productListAll = await _productApiClient.GetAllProductPaging(page, pageSize);

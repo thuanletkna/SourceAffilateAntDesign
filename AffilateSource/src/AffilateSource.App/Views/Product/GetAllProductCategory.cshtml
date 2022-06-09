@@ -1,0 +1,74 @@
+﻿@using AffilateSource.Shared.ViewModel.Product
+@using Microsoft.Extensions.Configuration
+@model ProductViewModel
+@inject IConfiguration Configuration
+@{
+    ViewData["Title"] = "GetAllProductCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-content">
+    <!-- inner page banner -->
+    <div class="dez-bnr-inr overlay-black-middle" style="background-image:url(images/banner/bnr1.jpg);">
+        <div class="container">
+            <div class="dez-bnr-inr-entry">
+                <h1 class="text-white">Carousel Sliders</h1>
+            </div>
+        </div>
+    </div>
+   
+    <!-- inner page banner END -->
+    <!-- Breadcrumb row -->
+    <div class="breadcrumb-row">
+        <div class="container">
+            <ul class="list-inline">
+                <li><a href="index.html">Trang chủ</a></li>
+                <li>Bộ sưu tập</li>
+            </ul>
+        </div>
+    </div>
+    <div class="section-full content-inner">
+        <!-- content start -->
+        @foreach (var item in Model.GetDanhMucKhuyenMai)
+        {
+            var data = Model.GetProductHome.Where(x => x.CategoryParentId == item.Id).ToList();
+            <div class="container">
+                <!-- Image Carousel start -->
+                <div class="p-a30 bg-white m-b30">
+                    <div class="section-head inner-haed">
+                        <h2 class="text-uppercase">@item.CategoryName</h2>
+                    </div>
+                    <div class="section-content">
+                        <div class="img-carousel owl-carousel mfp-gallery gallery owl-btn-center-lr">
+                            @foreach (var items in data)
+                            {
+                                <div class="item">
+                                    <div class="dez-media"> <a href="/product/@items.SeoAlias-@items.Id"><img style="width:376px;height:236px;" src="@(Configuration["BackendApiUrl"]+ items.ImageProducts)" alt="@items.Title"></a> </div>
+                                    <div class="dez-info p-a20 text-center bg-gray" style="background-color: #daeded;">
+                                        <h4 class="dez-title m-t0"><a href="/product/@items.SeoAlias-@items.Id" style="overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp: 2;display: -webkit-box;-webkit-box-orient: vertical;">@items.Title</a></h4>
+                                        <h3 class="m-b0"><span>Giá KM:</span> <span style="font-size:18px; color:red">@items.Price VNĐ</span> </h3>
+                                        <div class="m-t20">
+                                            <a href="@items.LinkAffilateOther" class="site-button radius-xl">Mua ngay</a>
+                                        </div>
+                                    </div>
+
+                                    @*<div class="ow-img dez-img-effect zoom-slow"> <a href="javascript:void(0);"><img src="@(Configuration["BackendApiUrl"]+@items.ImageProducts )" alt=""></a> </div>*@
+                                </div>
+                            }
+
+
+                        </div>
+
+                    </div>
+                    <a href="/sanpham/@item.SeoAlias-@item.Id" style="margin-left: 45%;margin-top: 20px;" class="btn btn-danger" type="button">Xem tất cả</a>
+
+                </div>
+
+            </div>
+
+        }
+
+        <!-- content  END -->
+    </div>
+</div>
+
