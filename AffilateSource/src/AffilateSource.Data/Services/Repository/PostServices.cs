@@ -132,6 +132,29 @@ namespace AffilateSource.Data.Services.Repository
                 return request;
             }    
         }
+        public async Task<PostDetailVm> CreatePostDetailByPosstId(PostDetailVm request)
+        {
+           
+            var postdetail = new PostDetail()
+            {
+                PostId = request.PostId,
+                ProductId = request.ProductId,
+                Content = request.Content,
+                StatusId = request.StatusIdDetail,
+                SortDetail = request.SortDetail,
+                TitleDetail = request.TitleDetail
+            };
+            await _context.PostDetails.AddAsync(postdetail);
+            var data = await _context.SaveChangesAsync();
+            if (data > 0)
+            {
+                return request;
+            }
+            else
+            {
+                return request;
+            }
+        }
         public async Task<PostDetailVm> UpdatePostDetail(PostDetailVm request)
         {
             try

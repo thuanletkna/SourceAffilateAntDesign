@@ -111,6 +111,7 @@ namespace AffilateSource.Client.Pages.Post
             WindowVisible = !WindowVisible;
             detailUpdate = await postApi.GetDetailByPostDetailIdAdmin("Post", "GetDetailsByPostDetails", id);
             productSelect = await postApi.GetdataSelectProductByCategoryId("Product", "GetProductSelectByCategoryId", 2);
+            StatusViewModel = await postApi.GetDataSelectStatus("Status", "GetListSatatus");
             return detailUpdate;
         }
         async Task UpdateDetail()
@@ -122,10 +123,10 @@ namespace AffilateSource.Client.Pages.Post
             {
                 await _notice.Open(new NotificationConfig()
                 {
-                    Message = "Chỉnh sửa bài đăng thành công",
+                    Message = "Chỉnh sửa chi tiết bài đăng thành công",
                     NotificationType = NotificationType.Success
                 });
-                NavigationManager.NavigateTo("/");
+                WindowVisible = false;
 
             }
             else
@@ -166,5 +167,46 @@ namespace AffilateSource.Client.Pages.Post
 
         }
         #endregion Upload image
+
+
+        #region Thêm mới chi tiết bài đăng
+        public bool _visibleCreateDetailPost { get; set; }
+        public PostDetailVm DetailPostsModal { get; set; } = new PostDetailVm();
+
+        async Task<PostDetailVm> CreatePostDetail()
+        {
+            _visibleCreateDetailPost = true;
+            detailUpdate = await postApi.GetDetailByPostDetailIdAdmin("Post", "GetDetailsByPostDetails", id);
+            productSelect = await postApi.GetdataSelectProductByCategoryId("Product", "GetProductSelectByCategoryId", 2);
+            return detailUpdate;
+        }
+        private void HandleCancelCreateDetailPost(MouseEventArgs e)
+        {
+            _visibleCreateDetailPost = false;
+        }
+        
+        async Task HandleOkCreateAsync()
+        {
+            var checkname = await Http.PostAsJsonAsync("/Post/CreatePostDetailByPosstId", detailUpdate);
+            if (checkname.IsSuccessStatusCode)
+            {
+                await _notice.Open(new NotificationConfig()
+                {
+                    Message = "Thêm mới thành công",
+                    NotificationType = NotificationType.Success
+                });
+                _visibleCreateDetailPost = false;
+
+            }
+            else
+            {
+                await _notice.Open(new NotificationConfig()
+                {
+                    Message = "Lỗi",
+                    NotificationType = NotificationType.Error
+                });
+            }
+        }
+        #endregion Thêm mới chi tiết bài đăng
     }
 }

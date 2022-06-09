@@ -10,6 +10,7 @@ namespace AffilateSource.Shared.ViewModel.Product
     {
         public int Id { get; set; }
         public int CategoryId { get; set; }
+        public int CategoryParentId { get; set; }
         public string Title { get; set; }
         public string CategoryName { get; set; }
         public string ImageProducts { get; set; }

@@ -24,7 +24,7 @@
                     </AntDesign.FormItem>
                     <AntDesign.FormItem>
                         <Text>Tên bài đăng</Text>
-                        <Input Style="margin-top: 10px;" Placeholder="Mã chấm công" @bind-Value="@context.Title" />
+                        <Input Style="margin-top: 10px;" Placeholder="Tên bài đăng" @bind-Value="@context.Title" />
                     </AntDesign.FormItem>
                     <AntDesign.FormItem>
                         <Text>Danh mục</Text>
@@ -50,7 +50,7 @@
                                 @bind-Value="@context.StatusId"
                                 LabelName="@nameof(StatusVm.StatusName)"
                                 ValueName="@nameof(StatusVm.StatusId)"
-                                Placeholder="Chọn trạng thái cần chỉnh sửa"
+                                Placeholder="Chọn trạng thái"
                                 AllowClear>
                         </Select>
                     </AntDesign.FormItem>
@@ -88,6 +88,13 @@
                              Pageable="true"
                              Sortable="true"
                              PageSize="5">
+                    <GridToolBar>
+                        <Space>
+                            <SpaceItem>
+                                <AntDesign.Button Icon="plus" Size="@ButtonSize.Large" Type="primary" OnClick="@CreatePostDetail">Thêm mới chi tiết</AntDesign.Button>
+                            </SpaceItem>
+                        </Space>
+                    </GridToolBar>
                     <GridColumns>
                         <GridColumn Field=@nameof(PostDetailVm.SortDetail) Title="Thứ tự hiển thị" />
                         <GridColumn Field=@nameof(PostDetailVm.TitleDetail) Title="Tiêu đề" />
@@ -106,10 +113,44 @@
             </TabStripTab>
         </TelerikTabStrip>
     </div>
-
-
-
 </PageContainer>
+
+<Modal Title="Thêm mới chi tiết bài đăng"
+       Visible="@_visibleCreateDetailPost"
+       OnOk="@HandleOkCreateAsync"
+       OnCancel="@HandleCancelCreateDetailPost"
+       Width="1000">
+    <TelerikForm Model="@detailUpdate">
+        <FormValidation>
+            <DataAnnotationsValidator></DataAnnotationsValidator>
+        </FormValidation>
+        <FormItems>
+            <Telerik.Blazor.Components.FormItem LabelText="ID bài đăng: " Field="@nameof(detailUpdate.PostId)" />
+            <Telerik.Blazor.Components.FormItem LabelText="Tiêu đề*: " Field="@nameof(detailUpdate.TitleDetail)" />
+            <TelerikEditor Tools="@EditorToolSets.All"
+                           Height="300px"
+                           @bind-Value="@detailUpdate.Content"></TelerikEditor>
+            <Telerik.Blazor.Components.FormItem LabelText="Sản phẩm Affilate*: " Field="@nameof(detailUpdate.ProductId)" ColSpan="1">
+                <Template>
+                    <label for="images" class="k-label k-form-label">Sản phẩm Afilate*:</label>
+                    <TelerikDropDownList Data="@productSelect"
+                                         @bind-Value="@detailUpdate.ProductId"
+                                         TextField="Title"
+                                         ValueField="Id"
+                                         DefaultText="Chọn sản phẩm afilate"
+                                         Width="100%">
+                    </TelerikDropDownList>
+                </Template>
+            </Telerik.Blazor.Components.FormItem>
+            <Telerik.Blazor.Components.FormItem LabelText="Trạng thái*: " Field="@nameof(detailUpdate.StatusIdDetail)" ColSpan="2">
+                 
+            </Telerik.Blazor.Components.FormItem>
+            <Telerik.Blazor.Components.FormItem LabelText="Thứ tự chi tiết*: " Field="@nameof(detailUpdate.SortDetail)" ColSpan="2" />
+        </FormItems>
+        <FormButtons></FormButtons>
+    </TelerikForm>
+</Modal>
+
 <Modal Title="Chỉnh sửa chi tiết bài đăng"
        Footer=null
        OnCancel="@HandleCancelDetail"
@@ -119,12 +160,12 @@
     <Form Model="@detailUpdate"
           OnFinish="UpdateDetail">
         <AntDesign.FormItem Style="display: inline-block;width:100px ">
-            <Text>Mã chấm công</Text>
+            <Text>ID</Text>
             <Input ReadOnly Placeholder="ID" @bind-Value="@context.Id" />
         </AntDesign.FormItem>
         <AntDesign.FormItem Style="display: inline-block;width:472px ">
             <Text>Tiêu đề</Text>
-            <Input Placeholder="ID" @bind-Value="@context.TitleDetail" />
+            <Input Placeholder="Tiêu đề" @bind-Value="@context.TitleDetail" />
         </AntDesign.FormItem>
         <AntDesign.FormItem Style="display: inline-block">
             <Template>
@@ -135,22 +176,28 @@
             </Template>
         </AntDesign.FormItem>
         <AntDesign.FormItem>
-            <Text>Danh mục</Text>
+            <Text>Sản phẩm Affilate</Text>
             <Select DataSource="@productSelect"
                     @bind-Value="@context.ProductId"
                     LabelName="@nameof(productSelectViewModel.Title)"
                     ValueName="@nameof(productSelectViewModel.Id)"
-                    Placeholder="Chọn danh mục chỉnh sửa"
+                    Placeholder="Chọn sản phẩm Affilate"
                     AllowClear>
             </Select>
         </AntDesign.FormItem>
         <AntDesign.FormItem Style="display: inline-block;width:472px ">
             <Text>Trạng thái</Text>
-            <Input Placeholder="Trạng thái" @bind-Value="@context.StatusId" />
+            <Select DataSource="@StatusViewModel"
+                    @bind-Value="@context.StatusId"
+                    LabelName="@nameof(StatusVm.StatusName)"
+                    ValueName="@nameof(StatusVm.StatusId)"
+                    Placeholder="Chọn trạng thái"
+                    AllowClear>
+            </Select>
         </AntDesign.FormItem>
         <AntDesign.FormItem Style="display: inline-block;width:472px ">
             <Text>Thứ tự hiển thị</Text>
-            <Input Placeholder="Trạng thái" @bind-Value="@context.SortDetail" />
+            <Input Placeholder="Thứ tự hiển thị" @bind-Value="@context.SortDetail" />
         </AntDesign.FormItem>
         <AntDesign.FormItem WrapperColOffset="8" WrapperColSpan="16" Style="margin-bottom: 0px;">
             <Button Type="@AntDesign.ButtonType.Primary" HtmlType="submit">

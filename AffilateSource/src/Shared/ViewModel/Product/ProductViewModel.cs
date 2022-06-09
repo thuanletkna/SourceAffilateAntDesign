@@ -14,5 +14,6 @@ namespace AffilateSource.Shared.ViewModel.Product
         public ProductHomeViewModel GetProductById { get; set; }
         public DataEnvelope<ProductHomeViewModel> ProductListAllByCategoryid { get; set; }
         public List<CategoryQuickVM> GetDanhMucKhuyenMai { get; set; }
+        public IEnumerable<ProductHomeViewModel> GetProductHome { get; set; }
     }
 }

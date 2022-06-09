@@ -31,7 +31,7 @@ namespace AffilateSource.App.Controllers
         public async Task<IActionResult> Index()
         {
             var categoryHome = await _categoryApiClient.GetCategoryHome();
-            var productHome = await _productApiClient.GetProductHome();
+            var productHome = await _productApiClient.GetProductHome();   // get 12 sản phẩm mới nhất
             var productbyViewCount = await _productApiClient.GetProductByViewCount();
             var postHome = await _postApiClient.GetPostHome();
             //var postCreateDate = await _postApiClient.GetPostByCreateDate(40);  //Get bài đăng mới nhất của danh mục chăm sóc cây có id là 40

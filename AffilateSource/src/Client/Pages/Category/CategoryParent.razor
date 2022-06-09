@@ -1,6 +1,7 @@
 ﻿@using AffilateSource.Client.Services
 @using AffilateSource.Shared.ViewModel.Category
 @using System.Text.Json
+@using AffilateSource.Shared.ViewModel.Status
 @inject PostApiServices postApi
 @inject HttpClient Http
 @inject NavigationManager NavigationManager
@@ -21,7 +22,7 @@ else
             <GridColumn Field="@(nameof(CategoryQuickVM.Id))" Title="Chỉnh sửa" Width="120px">
                 <Template>
                     @{
-                    var post = context as CategoryQuickVM;
+                        var post = context as CategoryQuickVM;
                     <Button Type="primary" OnClick="@(()=>btnUpdateCategoryParent(post.Id))">
                         Chỉnh sửa
                     </Button>
@@ -47,12 +48,22 @@ else
         <AntDesign.FormItem Label="Danh mục cha">
             <Input @bind-Value="@context.ParentId" />
         </AntDesign.FormItem>
-         <AntDesign.FormItem Label="Thứ tự hiển thị">
+        <AntDesign.FormItem Label="Thứ tự hiển thị">
             <Input @bind-Value="@context.SortOrder" />
         </AntDesign.FormItem>
-        <AntDesign.FormItem Label="Trạng thái">
-            <Input @bind-Value="@context.StatusId" />
+        <AntDesign.FormItem>
+            <Text>Trạng thái</Text>
+            <Select DataSource="@StatusViewModel"
+                    @bind-Value="@context.StatusId"
+                    LabelName="@nameof(StatusVm.StatusName)"
+                    ValueName="@nameof(StatusVm.StatusId)"
+                    Placeholder="Chọn trạng thái"
+                    AllowClear>
+            </Select>
         </AntDesign.FormItem>
+        @*<AntDesign.FormItem Label="Trạng thái">
+            <Input @bind-Value="@context.StatusId" />
+        </AntDesign.FormItem>*@
     </Form>
 </Modal>
 
@@ -60,6 +71,7 @@ else
 
 @code {
     [Parameter] public int EmployeeId { get; set; }
+    public List<StatusVm> StatusViewModel { get; set; } = new List<StatusVm>();
     public List<CategoryQuickVM> ProjectsData { get; set; }
     protected override async Task OnParametersSetAsync()
     {
@@ -68,52 +80,53 @@ else
     }
 
     bool _visibleUpdate = false;
-        bool loadingUpdate = false;
-        void toggleUpdate(bool value) => loadingUpdate = value;
-        private Form<CategoryQuickVM> _formUpdate;
-        private CategoryQuickVM modelUpdate = new CategoryQuickVM();
-        async Task<CategoryQuickVM> btnUpdateCategoryParent(int id)
-        {
-            modelUpdate = await postApi.GetCategoryDetailByIdAdmin("Categories", "GetCategoryDetailById", id);  // get thông tin chi tiết của 1 danh mục
-            _visibleUpdate = true;
-            return modelUpdate;
-        }
+    bool loadingUpdate = false;
+    void toggleUpdate(bool value) => loadingUpdate = value;
+    private Form<CategoryQuickVM> _formUpdate;
+    private CategoryQuickVM modelUpdate = new CategoryQuickVM();
+    async Task<CategoryQuickVM> btnUpdateCategoryParent(int id)
+    {
+        modelUpdate = await postApi.GetCategoryDetailByIdAdmin("Categories", "GetCategoryDetailById", id);  // get thông tin chi tiết của 1 danh mục
+        StatusViewModel = await postApi.GetDataSelectStatus("Status", "GetListSatatus");
+        _visibleUpdate = true;
+        return modelUpdate;
+    }
 
-        private void HandleCancelUpdate(MouseEventArgs e)
+    private void HandleCancelUpdate(MouseEventArgs e)
+    {
+        _visibleUpdate = false;
+    }
+    private void HandleOkUpdate(MouseEventArgs e)
+    {
+        _formUpdate.Submit();
+    }
+    async Task OnFinishUpdate()
+    {
+        var checkname = await Http.PostAsJsonAsync("/Categories/UpdateCategories", modelUpdate);
+        if (checkname.IsSuccessStatusCode)
         {
-            _visibleUpdate = false;
-        }
-        private void HandleOkUpdate(MouseEventArgs e)
-        {
-            _formUpdate.Submit();
-        }
-        async Task OnFinishUpdate()
-        {
-            var checkname = await Http.PostAsJsonAsync("/Categories/UpdateCategories", modelUpdate);
-            if (checkname.IsSuccessStatusCode)
-            {
-                await _notice.Open(new NotificationConfig()
+            await _notice.Open(new NotificationConfig()
                 {
                     Message = "Chỉnh sửa danh mục thành công",
                     NotificationType = NotificationType.Success
                 });
-                //await RefreshThroughState();
-                _visibleUpdate = false;
+            //await RefreshThroughState();
+            _visibleUpdate = false;
 
-            }
-            else
-            {
-                await _notice.Open(new NotificationConfig()
+        }
+        else
+        {
+            await _notice.Open(new NotificationConfig()
                 {
                     Message = "Lỗi",
                     NotificationType = NotificationType.Error
                 });
-            }
-            _visibleUpdate = false;
         }
-        private void OnFinishFailedUpdate(EditContext editContext)
-        {
-            Console.WriteLine($"Failed:{JsonSerializer.Serialize(modelUpdate)}");
-        }
-        
+        _visibleUpdate = false;
+    }
+    private void OnFinishFailedUpdate(EditContext editContext)
+    {
+        Console.WriteLine($"Failed:{JsonSerializer.Serialize(modelUpdate)}");
+    }
+
 }

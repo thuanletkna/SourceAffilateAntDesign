@@ -8,13 +8,22 @@
 @using AffilateSource.Shared.ViewModel.Category
 @using System.ComponentModel
 @using AffilateSource.Shared.ViewModel.Post
+@using System.Text.Json
+@using AffilateSource.Shared.ViewModel.Status
 @using Telerik.DataSource
-
+@inject NotificationService _notice
 <TelerikGrid TItem="@CategoryQuickVM" OnRead=@ReadItems ScrollMode="@GridScrollMode.Scrollable"
              FilterMode="@GridFilterMode.None"
              @ref="@DataSource"
              Pageable="true"
              @bind-PageSize="@PageSize" @bind-Page="@Page">
+    @*<GridToolBar>
+        <Space>
+            <SpaceItem>
+                <AntDesign.Button Icon="plus" Size="@ButtonSize.Large" Type="primary" OnClick="@CreateCategory">Thêm mới danh mục</AntDesign.Button>
+            </SpaceItem>
+        </Space>
+    </GridToolBar>*@
     <DetailTemplate>
         @{
             CategoryQuickVM employee = context as CategoryQuickVM;
@@ -22,12 +31,12 @@
         }
     </DetailTemplate>
     <GridColumns>
-        @*<GridCheckboxColumn SelectAll="@ShowSelectAll" Width="30px"></GridCheckboxColumn>*@
         <GridColumn Field="@(nameof(CategoryQuickVM.Id))" Editable="false" Title="ID" Width="120px">
             <Template>
                 @{
                     var product = context as CategoryQuickVM;
-                    @product.Id;
+                    @product.Id
+                    ;
                 }
             </Template>
         </GridColumn>
@@ -36,18 +45,45 @@
             <Template>
                 @{
                     var post = context as CategoryQuickVM;
-                    <AntDesign.Button Type="primary">
-                        <a href="/post/update-post/@(post.Id)"> Chỉnh sửa</a>
-                    </AntDesign.Button>
+                    <Button Type="primary" OnClick="@(()=>btnUpdateCategory(post.Id))">
+                        Chỉnh sửa
+                    </Button>
                 }
             </Template>
         </GridColumn>
     </GridColumns>
 </TelerikGrid>
+<Modal Title="@("Chỉnh sửa danh mục")"
+       Visible="@_visibleUpdateCate"
+       OnOk="@HandleOkUpdateCate"
+       OnCancel="@HandleCancelUpdateCate">
+    <Form Loading="loadingUpdate" Model="@modelUpdate"
+          OnFinish="OnFinishUpdateCate"
+          OnFinishFailed="OnFinishFailedUpdateCate"
+          @ref="@_formUpdate">
+        <AntDesign.FormItem Label="Tên danh mục">
+            <Input @bind-Value="@context.CategoryName" />
+        </AntDesign.FormItem>
 
+        <AntDesign.FormItem Label="Thứ tự hiển thị">
+            <Input @bind-Value="@context.SortOrder" />
+        </AntDesign.FormItem>
+        <AntDesign.FormItem>
+            <Text>Trạng thái</Text>
+            <Select DataSource="@StatusViewModel"
+                    @bind-Value="@context.StatusId"
+                    LabelName="@nameof(StatusVm.StatusName)"
+                    ValueName="@nameof(StatusVm.StatusId)"
+                    Placeholder="Chọn trạng thái"
+                    AllowClear>
+            </Select>
+        </AntDesign.FormItem>
+    </Form>
+</Modal>
 
 
 @code {
+    public List<StatusVm> StatusViewModel { get; set; } = new List<StatusVm>();
     public List<CategoryQuickVM> categoryQuickVM { get; set; }
     TelerikGrid<CategoryQuickVM> DataSource { get; set; }
     public CategoryQuickVM DetailPosts { get; set; }
@@ -64,13 +100,6 @@
             _filter.FilterDescriptors.Add(new FilterDescriptor("Level", FilterOperator.IsEqualTo, filtterRequest.Level));
         if (!string.IsNullOrEmpty(filtterRequest.StatusId))
             _filter.FilterDescriptors.Add(new FilterDescriptor("StatusId", FilterOperator.IsEqualTo, filtterRequest.StatusId));
-
-        //if (!string.IsNullOrEmpty(filtterRequest.NhanVien))
-        //    _filter.FilterDescriptors.Add(new FilterDescriptor("MaNhanVien", FilterOperator.IsEqualTo, filtterRequest.NhanVien));
-        //if (!string.IsNullOrEmpty(filtterRequest.PhongBan))
-        //    _filter.FilterDescriptors.Add(new FilterDescriptor("MaPhongBan", FilterOperator.IsEqualTo, filtterRequest.PhongBan));
-        //if (!string.IsNullOrEmpty(filtterRequest.KhuVuc))
-        //    _filter.FilterDescriptors.Add(new FilterDescriptor("MaKhuVuc", FilterOperator.IsEqualTo, filtterRequest.KhuVuc));
         args.Request.Filters.Add(_filter);
         // Sắp xếp
         args.Request.Sorts.Clear();
@@ -98,18 +127,70 @@
         //await GetSelectListValue();
     }
     public FilterRequest filtterRequest { get; set; } = new FilterRequest { };
-        public class FilterRequest
+    public class FilterRequest
+    {
+        public object this[string propertyName]
         {
-            public object this[string propertyName]
-            {
-                get { return this.GetType().GetProperty(propertyName).GetValue(this, null); }
-                set { this.GetType().GetProperty(propertyName).SetValue(this, value, null); }
-            }
-            public string Level { get; set; } = "1";
-            public string StatusId { get; set; } = "1";
-            //public string MaCongTy { get; set; } = "CT00001";
-            //public IEnumerable<StatusVm> dataSelectStatus { get; set; } = new List<StatusVm>();
-            //public List<SelectModel> dataSelectCategoryFilter { get; set; } = new List<SelectModel>();
+            get { return this.GetType().GetProperty(propertyName).GetValue(this, null); }
+            set { this.GetType().GetProperty(propertyName).SetValue(this, value, null); }
+        }
+        public string Level { get; set; } = "1";
+        public string StatusId { get; set; }
+    }
+
+    //update danh mục cha
+    #region Update Danh mục cha
+
+    bool _visibleUpdateCate = false;
+    bool loadingUpdate = false;
+    void toggleUpdate(bool value) => loadingUpdate = value;
+    private Form<CategoryQuickVM> _formUpdate;
+    private CategoryQuickVM modelUpdate = new CategoryQuickVM();
+    async Task<CategoryQuickVM> btnUpdateCategory(int id)
+    {
+        modelUpdate = await postApi.GetCategoryDetailByIdAdmin("Categories", "GetCategoryDetailById", id);  // get thông tin chi tiết của 1 danh mục
+        StatusViewModel = await postApi.GetDataSelectStatus("Status", "GetListSatatus");
+        _visibleUpdateCate = true;
+        return modelUpdate;
+    }
+
+    private void HandleCancelUpdateCate(MouseEventArgs e)
+    {
+        _visibleUpdateCate = false;
+    }
+    private void HandleOkUpdateCate(MouseEventArgs e)
+    {
+        _formUpdate.Submit();
+    }
+    async Task OnFinishUpdateCate()
+    {
+        var checkname = await Http.PostAsJsonAsync("/Categories/UpdateCategories", modelUpdate);
+        if (checkname.IsSuccessStatusCode)
+        {
+            await _notice.Open(new NotificationConfig()
+                {
+                    Message = "Chỉnh sửa danh mục thành công",
+                    NotificationType = NotificationType.Success
+                });
+            //await RefreshThroughState();
+            _visibleUpdateCate = false;
 
         }
+        else
+        {
+            await _notice.Open(new NotificationConfig()
+                {
+                    Message = "Lỗi",
+                    NotificationType = NotificationType.Error
+                });
+        }
+        _visibleUpdateCate = false;
+    }
+    private void OnFinishFailedUpdateCate(EditContext editContext)
+    {
+        Console.WriteLine($"Failed:{JsonSerializer.Serialize(modelUpdate)}");
+    }
+    #endregion Update Danh mục cha
+
+    
 }

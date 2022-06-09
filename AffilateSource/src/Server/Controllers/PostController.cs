@@ -52,6 +52,12 @@ namespace AffilateSource.Server.Controllers
             var post = await _postServices.CreatePostDetail(request);
             return Ok(post);
         }
+        [HttpPost("CreatePostDetailByPosstId")]
+        public async Task<IActionResult> CreatePostDetailByPosstId([FromBody] PostDetailVm request)
+        {
+            var post = await _postServices.CreatePostDetailByPosstId(request);
+            return Ok(post);
+        }
         [HttpGet("GetPostCreatedLast")]
         public async Task<IActionResult> GetPostCreatedLast()
         {
