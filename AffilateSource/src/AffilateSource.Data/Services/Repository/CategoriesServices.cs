@@ -1,5 +1,6 @@
 ﻿using AffilateSource.Data.Configuration;
 using AffilateSource.Data.DataEntity;
+using AffilateSource.Data.DataEntity.Entities;
 using AffilateSource.Data.Helpers;
 using AffilateSource.Data.Services.Interface;
 using AffilateSource.Shared.Kendohelpers;
@@ -226,6 +227,32 @@ namespace AffilateSource.Data.Services.Repository
                 conn.Close();
                 return objEmp;
             }
+        }
+        public async Task<CategoryQuickVM> CreateCategory(CategoryQuickVM categoryQuickVM)
+        {
+            var category = new Category()
+            {
+                CategoryName = categoryQuickVM.CategoryName,
+                Level = categoryQuickVM.Level.ToString(),
+                ParentId = categoryQuickVM.ParentId.ToString(),
+                StatusId = 1,
+                SortOrder = categoryQuickVM.SortOrder,
+            };
+            if (!string.IsNullOrEmpty(categoryQuickVM.CategoryName))
+            {
+                category.SeoAlias = TextHelper.ToUnsignString(categoryQuickVM.CategoryName);
+            }
+            if(categoryQuickVM.ParentId!=0 && categoryQuickVM.ParentId != null)
+            {
+                category.Level = "2";
+            }
+            else
+            {
+                category.Level = "1";
+            }  
+            _context.Categories.Add(category);
+            await _context.SaveChangesAsync();
+            return categoryQuickVM;
         }
     }
 }

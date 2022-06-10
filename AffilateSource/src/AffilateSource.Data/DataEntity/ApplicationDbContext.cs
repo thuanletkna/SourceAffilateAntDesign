@@ -51,6 +51,7 @@ namespace AffilateSource.Data.DataEntity
         public DbSet<Package> Packages { set; get; }
         public DbSet<OrderProduct> OrderProducts { set; get; }
         public DbSet<Comment> Comments { set; get; }
+        public DbSet<BannerImage> BannerImages { set; get; }
         public DbSet<Post> Posts { set; get; }
         public DbSet<DocStatus> DocStatus { set; get; }
         public DbSet<Feedback> Feedbacks { set; get; }

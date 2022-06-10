@@ -4,6 +4,8 @@
 @inject IConfiguration Configuration
 @{
     Layout = null;
+    var footer = Model.BannerImageVm.Where(x => x.Type == "Footer").FirstOrDefault();
+    
 }
 <style>
     .footer-overlay .footer-top {
@@ -13,7 +15,8 @@
     width:20%;
 }
 </style>
-<footer class="site-footer footer-overlay bg-img-fix" style="background-image: url(https://gardenzone.dexignlab.com/xhtml/images/background/bg1.jpg);background-position: center bottom;background-size: cover;display: block;height: 513.5px;">
+
+<footer class="site-footer footer-overlay bg-img-fix" style="background-image: url(@(Configuration["BackendApiUrl"]+ footer.PathImages));background-position: center bottom;background-size: cover;display: block;height: 513.5px;">
     <!-- footer top part -->
     <div class="footer-top">
         <div class="container">

@@ -238,9 +238,207 @@ namespace AffilateSource.Client.Pages.BannerImage
 
                 }
             }
+            await Task.CompletedTask;
+        }
+        private async Task OnSuccessHandlerBannerImage(UploadSuccessEventArgs e, string field)
+        {
+            if (e.Operation == UploadOperationType.Upload)
+            {
+                string content = e.Request.ResponseText;
+                foreach (var file in e.Files)
+                {
 
+                    //postCreateViewModel.Detail = content;
+                    modelBannerImage.PathImages = content;
+
+                    if (!string.IsNullOrEmpty(modelBannerImage.PathImages))
+                    {
+                        modelBannerImage.PathImages = "/Uploads/PostImages/" + modelBannerImage.PathImages;
+                    }
+
+                }
+            }
+            await Task.CompletedTask;
         }
 
         #endregion Upload Ảnh
+
+
+        #region Get Banner Image
+        TelerikGrid<BannerImageCreateUpdate> DataSourceBanner { get; set; }
+        GridSelectionMode selectionModeBanner { get; set; } = GridSelectionMode.Multiple;
+        bool ShowSelectAllBanner => selectionModeBanner == GridSelectionMode.Multiple;
+        public IEnumerable<BannerImageCreateUpdate> SelectedItemsBanner { get; set; } = Enumerable.Empty<BannerImageCreateUpdate>();
+
+        protected async Task ReadItemsBanner(GridReadEventArgs argsz)
+        {
+            args = argsz;
+            Page = args.Request.Page;
+            await GetDataBanner();
+        }
+        async Task RefreshThroughStateBanner()
+        {
+            await Task.Delay(1);
+            await DataSourceBanner.SetState(DataSourceBanner.GetState());
+        }
+        async Task GetDataBanner()
+        {
+            args.Request.Filters.Clear();
+            CompositeFilterDescriptor _filter = new CompositeFilterDescriptor();
+            _filter.LogicalOperator = FilterCompositionLogicalOperator.And;
+
+            //if (!string.IsNullOrEmpty(filtterRequest.CategoryParentId))
+            //    _filter.FilterDescriptors.Add(new FilterDescriptor("CategoryParentId", FilterOperator.IsEqualTo, filtterRequest.CategoryParentId));
+            //if (!string.IsNullOrEmpty(filtterRequest.StatusId))
+            //    _filter.FilterDescriptors.Add(new FilterDescriptor("StatusId", FilterOperator.IsEqualTo, filtterRequest.StatusId));
+
+            //if (!string.IsNullOrEmpty(filtterRequest.NhanVien))
+            //    _filter.FilterDescriptors.Add(new FilterDescriptor("MaNhanVien", FilterOperator.IsEqualTo, filtterRequest.NhanVien));
+            //if (!string.IsNullOrEmpty(filtterRequest.PhongBan))
+            //    _filter.FilterDescriptors.Add(new FilterDescriptor("MaPhongBan", FilterOperator.IsEqualTo, filtterRequest.PhongBan));
+            //if (!string.IsNullOrEmpty(filtterRequest.KhuVuc))
+            //    _filter.FilterDescriptors.Add(new FilterDescriptor("MaKhuVuc", FilterOperator.IsEqualTo, filtterRequest.KhuVuc));
+            args.Request.Filters.Add(_filter);
+            // Sắp xếp
+            args.Request.Sorts.Clear();
+            args.Request.Sorts.Add(new SortDescriptor("Id", ListSortDirection.Descending));
+            args.Request.PageSize = PageSize;
+            DataEnvelope<BannerImageCreateUpdate> result = await postApi.GetDataBannerImageAdminAsync("BannerImage", "GetBannerImagePagingFilterAdmin", args.Request);
+            if (args.Request.Groups.Count > 0)
+            {
+                var data = GroupDataHelpers.DeserializeGroups<BannerImageCreateUpdate>(result.GroupedData);
+                args.Data = data.Cast<object>().ToList();
+            }
+            else
+            {
+                args.Data = result.Data.Cast<object>().ToList();
+            }
+            args.Total = result.Total;
+            StateHasChanged();
+
+        }
+        #endregion Get Banner Image
+
+
+        bool _visibleBannerImage = false;
+        bool loadingBannerImage = false;
+        void toggleBannerImage(bool value) => loading = value;
+        private Form<BannerImageCreateUpdate> _formBannerImage;
+        private BannerImageCreateUpdate modelBannerImage = new BannerImageCreateUpdate();
+        public TelerikForm RegisterFormBannerImage { get; set; }
+        private void ShowModalBannerImage()
+        {
+            _visibleBannerImage = true;
+        }
+
+        private void HandleCancelBannerImage(MouseEventArgs e)
+        {
+            _visibleBannerImage = false;
+        }
+        private void HandleOkBannerImage(MouseEventArgs e)
+        {
+            _formBannerImage.Submit();
+        }
+        async Task OnFinishBannerImage()
+        {
+            var checkname = await Http.PostAsJsonAsync("/BannerImage/CreateBannerImage", modelBannerImage);
+            if (checkname.IsSuccessStatusCode)
+            {
+                await _notice.Open(new NotificationConfig()
+                {
+                    Message = "Thêm mới Slide thành công",
+                    NotificationType = NotificationType.Success
+                });
+                _visibleBannerImage = false;
+
+            }
+            else
+            {
+                await _notice.Open(new NotificationConfig()
+                {
+                    Message = "Lỗi",
+                    NotificationType = NotificationType.Error
+                });
+                _visibleBannerImage = true;
+            }
+           
+        }
+        private void OnFinishFailedBannerImage(EditContext editContext)
+        {
+            Console.WriteLine($"Failed:{JsonSerializer.Serialize(modelBannerImage)}");
+        }
+
+
+        #region Chỉnh sửa Banner Image
+        bool _visibleUpdateBannerImage = false;
+        bool loadingUpdateBannerImage = false;
+        void toggleUpdateBannerImage(bool value) => loadingUpdateBannerImage = value;
+        private Form<BannerImageCreateUpdate> _formUpdateBannerImage;
+        private BannerImageCreateUpdate modelUpdateBannerImage = new BannerImageCreateUpdate();
+        async Task<BannerImageCreateUpdate> btnUpdateBannerImage(int id)
+        {
+            modelUpdateBannerImage = await postApi.GetBannerImageById("BannerImage", "GetBannerImageById", id);
+            _visibleUpdateBannerImage = true;
+            return modelUpdateBannerImage;
+        }
+
+        private void HandleCancelUpdateBannerImage(MouseEventArgs e)
+        {
+            _visibleUpdateBannerImage = false;
+        }
+        private void HandleOkUpdateBannerImage(MouseEventArgs e)
+        {
+            _formUpdateBannerImage.Submit();
+        }
+        async Task OnFinishUpdateBannerImage()
+        {
+            var checkname = await Http.PostAsJsonAsync("/BannerImage/UpdateBannerImage", modelUpdateBannerImage);
+            if (checkname.IsSuccessStatusCode)
+            {
+                await _notice.Open(new NotificationConfig()
+                {
+                    Message = "Chỉnh sửa Banner thành công",
+                    NotificationType = NotificationType.Success
+                });
+                await RefreshThroughState();
+                _visibleUpdateBannerImage = false;
+
+            }
+            else
+            {
+                await _notice.Open(new NotificationConfig()
+                {
+                    Message = "Lỗi",
+                    NotificationType = NotificationType.Error
+                });
+            }
+            _visibleUpdateBannerImage = false;
+        }
+        private void OnFinishFailedUpdateBannerImage(EditContext editContext)
+        {
+            Console.WriteLine($"Failed:{JsonSerializer.Serialize(modelUpdateBannerImage)}");
+        }
+        private async Task OnSuccessHandlerUpdateBannerImage(UploadSuccessEventArgs e, string field)
+        {
+            if (e.Operation == UploadOperationType.Upload)
+            {
+                string content = e.Request.ResponseText;
+                foreach (var file in e.Files)
+                {
+
+                    //postCreateViewModel.Detail = content;
+                    modelUpdateBannerImage.PathImages = content;
+
+                    if (!string.IsNullOrEmpty(modelUpdateBannerImage.PathImages))
+                    {
+                        modelUpdateBannerImage.PathImages = "/Uploads/PostImages/" + modelUpdateBannerImage.PathImages;
+                    }
+
+                }
+            }
+            await Task.CompletedTask;
+
+        }
+        #endregion Chỉnh sửa Banner Image
     }
 }

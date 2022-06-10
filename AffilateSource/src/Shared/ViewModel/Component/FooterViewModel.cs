@@ -1,4 +1,5 @@
-﻿using AffilateSource.Shared.ViewModel.Contact;
+﻿using AffilateSource.Shared.ViewModel.BannerImages;
+using AffilateSource.Shared.ViewModel.Contact;
 using AffilateSource.Shared.ViewModel.Post;
 using System;
 using System.Collections.Generic;
@@ -12,5 +13,6 @@ namespace AffilateSource.Shared.ViewModel.Component
     {
         public IEnumerable<PostHomeViewModel> ListPostViewCount { get; set; }
         public ContactVm getContact { get; set; }
+        public List<BannerImageCreateUpdate> BannerImageVm { get; set; }
     }
 }

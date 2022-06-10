@@ -23,6 +23,7 @@ namespace AffilateSource.Shared.ViewModel.Home
         public IEnumerable<PostHomeViewModel> GetPostHome { get; set; }
         public IEnumerable<PostHomeViewModel> GetPostCreateDate { get; set; }
         public BannerImageViewModel Getbanner { get; set; }
+        public BannerImageViewModel GetbannerImages { get; set; }
         public ContactVm getContact {get;set;}
 
     }

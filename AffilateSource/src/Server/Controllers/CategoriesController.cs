@@ -55,7 +55,12 @@ namespace AffilateSource.Server.Controllers
                 return Ok(categoryParents);
             }
         }
-
+        [HttpPost("CreateCategory")]
+        public async Task<IActionResult> CreateCategory(CategoryQuickVM slideImageVm)
+        {
+            var slide = await _categoriesServices.CreateCategory(slideImageVm);
+            return Ok(slide);
+        }
         [HttpPost("UpdateCategories")]
         public async Task<IActionResult> UpdateCategories([FromBody] CategoryQuickVM request)
         {
@@ -68,6 +73,19 @@ namespace AffilateSource.Server.Controllers
             var post = await _categoriesServices.GetCategoryDetailById(id);
             return Ok(post);
         }
-
+        [HttpGet("GetCategory")]
+        public async Task<IActionResult> GetCategory()
+        {
+            var category = await _categoriesServices.GetCategoryHome();
+            var data = category.Where(x=> x.Level == 1).ToList();
+            if (data == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(data);
+            }
+        }
     }
 }

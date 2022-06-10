@@ -30,7 +30,6 @@ namespace AffilateSource.Server.Controllers
         }
         
         [HttpGet("GetCategoryHome")]
-        [AllowAnonymous]
         public async Task<IActionResult> GetCategoryHome()
         {
             var category = await _categoriesServices.GetCategoryHome();

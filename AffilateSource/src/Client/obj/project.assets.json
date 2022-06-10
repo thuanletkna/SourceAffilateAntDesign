@@ -9304,23 +9304,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Thuan Le\\.nuget\\packages\\": {},
+    "C:\\Users\\lthua\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\AffilateSource.Client.csproj",
+      "projectUniqueName": "D:\\SourceAffilateGit_AntDesign\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\AffilateSource.Client.csproj",
       "projectName": "AffilateSource.Client",
-      "projectPath": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\AffilateSource.Client.csproj",
-      "packagesPath": "C:\\Users\\Thuan Le\\.nuget\\packages\\",
-      "outputPath": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\",
+      "projectPath": "D:\\SourceAffilateGit_AntDesign\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\AffilateSource.Client.csproj",
+      "packagesPath": "C:\\Users\\lthua\\.nuget\\packages\\",
+      "outputPath": "D:\\SourceAffilateGit_AntDesign\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Thuan Le\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\lthua\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -9329,15 +9329,15 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files (x86)\\Progress\\Telerik UI for Blazor 3.0.0": {},
+        "C:\\Program Files (x86)\\Progress\\Telerik UI for Blazor 2.28.0": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6",
           "projectReferences": {
-            "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Shared\\AffilateSource.Shared.csproj": {
-              "projectPath": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Shared\\AffilateSource.Shared.csproj"
+            "D:\\SourceAffilateGit_AntDesign\\SourceAffilateAntDesign\\AffilateSource\\src\\Shared\\AffilateSource.Shared.csproj": {
+              "projectPath": "D:\\SourceAffilateGit_AntDesign\\SourceAffilateAntDesign\\AffilateSource\\src\\Shared\\AffilateSource.Shared.csproj"
             }
           }
         }
@@ -9399,7 +9399,7 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
-            "version": "[6.0.5, 6.0.5]"
+            "version": "[6.0.4, 6.0.4]"
           }
         ],
         "frameworkReferences": {
@@ -9407,7 +9407,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {

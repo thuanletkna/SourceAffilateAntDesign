@@ -17,13 +17,13 @@
              @ref="@DataSource"
              Pageable="true"
              @bind-PageSize="@PageSize" @bind-Page="@Page">
-    @*<GridToolBar>
+    <GridToolBar>
         <Space>
             <SpaceItem>
                 <AntDesign.Button Icon="plus" Size="@ButtonSize.Large" Type="primary" OnClick="@CreateCategory">Thêm mới danh mục</AntDesign.Button>
             </SpaceItem>
         </Space>
-    </GridToolBar>*@
+    </GridToolBar>
     <DetailTemplate>
         @{
             CategoryQuickVM employee = context as CategoryQuickVM;
@@ -81,10 +81,40 @@
     </Form>
 </Modal>
 
+<Modal Title="@("Thêm mới danh mục")"
+       Visible="@_visibleCreate"
+       OnOk="@HandleOkCreate"
+       OnCancel="@HandleCancelCreate">
+    <Form Loading="loadingUpdate" Model="@categoryViewModel"
+          OnFinish="OnFinishCreate"
+          OnFinishFailed="OnFinishFailedCreate"
+          @ref="@_formUpdate">
+        <AntDesign.FormItem Label="Tên danh mục">
+            <Input @bind-Value="@context.CategoryName" />
+        </AntDesign.FormItem>
+
+        <AntDesign.FormItem Label="Thứ tự hiển thị">
+            <Input @bind-Value="@context.SortOrder" />
+        </AntDesign.FormItem>
+        <AntDesign.FormItem>
+            <Text>Danh mục cha</Text>
+            <Select DataSource="@categorySelect"
+                    @bind-Value="@context.ParentId"
+                    LabelName="@nameof(CategoryQuickVM.CategoryName)"
+                    ValueName="@nameof(CategoryQuickVM.Id)"
+                    Placeholder="Chọn danh mục cha"
+                    AllowClear>
+            </Select>
+        </AntDesign.FormItem>
+    </Form>
+</Modal>
+
 
 @code {
     public List<StatusVm> StatusViewModel { get; set; } = new List<StatusVm>();
     public List<CategoryQuickVM> categoryQuickVM { get; set; }
+    public List<CategoryQuickVM> categorySelect { get; set; } = new List<CategoryQuickVM>();
+    public CategoryQuickVM categoryViewModel { get; set; } = new CategoryQuickVM();
     TelerikGrid<CategoryQuickVM> DataSource { get; set; }
     public CategoryQuickVM DetailPosts { get; set; }
     GridReadEventArgs args = new GridReadEventArgs();
@@ -192,5 +222,48 @@
     }
     #endregion Update Danh mục cha
 
-    
+
+     bool _visibleCreate = false;
+    async Task<List<CategoryQuickVM>> CreateCategory()
+    {
+        categorySelect = await postApi.GetListCategories("Categories", "GetCategory");
+        _visibleCreate = true;
+        return categorySelect;
+    }
+    async Task OnFinishCreate()
+    {
+        var checkname = await Http.PostAsJsonAsync("/Categories/CreateCategory", categoryViewModel);
+        if (checkname.IsSuccessStatusCode)
+        {
+            await _notice.Open(new NotificationConfig()
+                {
+                    Message = "Thêm mới danh mục thành công",
+                    NotificationType = NotificationType.Success
+                });
+            //await RefreshThroughState();
+            _visibleCreate = false;
+
+        }
+        else
+        {
+            await _notice.Open(new NotificationConfig()
+                {
+                    Message = "Lỗi",
+                    NotificationType = NotificationType.Error
+                });
+        }
+        _visibleCreate = false;
+    }
+    private void HandleOkCreate(MouseEventArgs e)
+    {
+        _formUpdate.Submit();
+    }
+    private void HandleCancelCreate(MouseEventArgs e)
+    {
+        _visibleCreate = false;
+    }
+    private void OnFinishFailedCreate(EditContext editContext)
+    {
+        Console.WriteLine($"Failed:{JsonSerializer.Serialize(categoryViewModel)}");
+    }
 }

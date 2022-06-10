@@ -17,5 +17,6 @@ namespace AffilateSource.Data.Services.Interface
         Task<IEnumerable<CategoryQuickVM>> GetCategoriesByParentIdAdmin(int parentId);
         Task<CategoryQuickVM> UpdateCategories(CategoryQuickVM objEmp);
         Task<CategoryQuickVM> GetCategoryDetailById(int id);   // Lấy chi tiết thông tin của 1 danh mục dùng cho update 
+        Task<CategoryQuickVM> CreateCategory(CategoryQuickVM categoryQuickVM);
     }
 }

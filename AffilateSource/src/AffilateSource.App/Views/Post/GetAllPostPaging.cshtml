@@ -5,16 +5,28 @@
 @{
     ViewData["Title"] = "GetAllPostPaging";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var headerblog = Model.BannerImageVm.Where(x => x.Type == "Header-Blog").FirstOrDefault();
 }
 <div class="page-content bg-white">
     <!-- inner page banner -->
-    <div class="dez-bnr-inr overlay-black-middle" style="background-image:url(/portalstyle/images/banner/banner.png);">
+    @*<div class="dez-post-media dez-img-effect ">
+        <div class="owl-fade-one owl-carousel owl-btn-center-lr">
+        <div class="item">
+        <div class="dez-thum-bx"> <img src="/portalstyle/images/banner/banner.png" alt=""> </div>
+        </div>
+        <div class="item">
+        <div class="dez-thum-bx"> <img src="/portalstyle/images/banner/bnr1.jpg" alt=""> </div>
+        </div>
+        </div>
+        </div>*@
+    <div class="dez-bnr-inr overlay-black-middle" style="background-image:url(@(Configuration["BackendApiUrl"]+ headerblog.PathImages));">
         <div class="container">
             <div class="dez-bnr-inr-entry">
                 <h1 class="text-white">Bài đăng kinh nghiệm</h1>
             </div>
         </div>
     </div>
+
     <!-- inner page banner END -->
     <!-- Breadcrumb row -->
     <div class="breadcrumb-row">

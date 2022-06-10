@@ -24,10 +24,29 @@ namespace AffilateSource.Server.Controllers
             var slide =await _bannerImageServices.CreateImageSlides(slideImageVm);
             return Ok(slide);
         }
+        [HttpPost("CreateBannerImage")]
+        public async Task<IActionResult> CreateBannerImage(BannerImageCreateUpdate slideImageVm)
+        {
+            var slide =await _bannerImageServices.CreateBannerImage(slideImageVm);
+            return Ok(slide);
+        }
         [HttpPost("GetDetailSlideUpdateById")]
         public async Task<IActionResult> GetDetailSlideUpdateById([FromBody] int id)
         {
             var productDetail = await _bannerImageServices.GetSlideById(id);
+            if (productDetail == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(productDetail);
+            }
+        } 
+        [HttpPost("GetBannerImageById")]
+        public async Task<IActionResult> GetBannerImageById([FromBody] int id)
+        {
+            var productDetail = await _bannerImageServices.GetBannerImageById(id);
             if (productDetail == null)
             {
                 return NotFound();
@@ -42,12 +61,25 @@ namespace AffilateSource.Server.Controllers
         {
             var slide = await _bannerImageServices.UpdateSlide(slideImageVm);
             return Ok(slide);
+        } 
+        [HttpPost("UpdateBannerImage")]
+        public async Task<IActionResult> UpdateBannerImage(BannerImageCreateUpdate slideImageVm)
+        {
+            var slide = await _bannerImageServices.UpdateBannerImage(slideImageVm);
+            return Ok(slide);
         }
 
         [HttpPost("GetBannerSlidePagingFilterAdmin")]
         public async Task<DataSourceResult> GetBannerSlidePagingFilterAdmin([FromBody] DataSourceRequest request)
         {
             var post = await _bannerImageServices.GetBannerSlidePagingFilterAdmin(request);
+            return post;
+        }
+
+        [HttpPost("GetBannerImagePagingFilterAdmin")]
+        public async Task<DataSourceResult> GetBannerImagePagingFilterAdmin([FromBody] DataSourceRequest request)
+        {
+            var post = await _bannerImageServices.GetBannerImagePagingFilterAdmin(request);
             return post;
         }
 

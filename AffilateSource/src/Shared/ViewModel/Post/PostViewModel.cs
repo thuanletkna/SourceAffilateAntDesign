@@ -1,4 +1,5 @@
-﻿using AffilateSource.Shared.ViewModel.Category;
+﻿using AffilateSource.Shared.ViewModel.BannerImages;
+using AffilateSource.Shared.ViewModel.Category;
 using System.Collections.Generic;
 
 
@@ -11,5 +12,6 @@ namespace AffilateSource.Shared.ViewModel.Post
         public List<CategoryQuickVM> GetDanhMucKinhNghiem { get; set; }
         public List<ListPostDetailVm> DetailPostbyId { get; set; }
         public PostHomeViewModel GetPostById { get; set; }
+        public List<BannerImageCreateUpdate> BannerImageVm { get; set; }
     }
 }

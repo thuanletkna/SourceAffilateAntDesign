@@ -80,7 +80,60 @@
                 </TelerikGrid>
             </TabStripTab>
             <TabStripTab Title="Banner HeaderBlog">
-                cvbc
+                <TelerikGrid TItem="@BannerImageCreateUpdate" OnRead=@ReadItemsBanner ScrollMode="@GridScrollMode.Scrollable"
+                             FilterMode="@GridFilterMode.None"
+                             SelectionMode="@selectionModeBanner"
+                             @bind-SelectedItems="@SelectedItemsBanner"
+                             @ref="@DataSourceBanner"
+                             Pageable="true"
+                             @bind-PageSize="@PageSize" @bind-Page="@Page">
+                    <GridToolBar>
+                        <Space>
+                            <SpaceItem>
+                                <AntDesign.Button Icon="plus" Size="@ButtonSize.Large" Type="primary" @onclick="_=>ShowModalBannerImage()">Thêm mới</AntDesign.Button>
+                            </SpaceItem>
+                        </Space>
+                    </GridToolBar>
+                    <GridColumns>
+                        <GridCheckboxColumn SelectAll="@ShowSelectAllBanner" Width="30px"></GridCheckboxColumn>
+                        <GridColumn Field="@(nameof(BannerImageCreateUpdate.Id))" Editable="false" Title="ID" Width="120px">
+                            <Template>
+                                @{
+                                    var product = context as BannerImageCreateUpdate;
+                                    @product.Id
+                                    ;
+                                }
+                            </Template>
+                        </GridColumn>
+                        <GridColumn Field=@nameof(BannerImageCreateUpdate.PathImages) Width="100px">
+                            <HeaderTemplate>
+                                <span class="k-display-flex k-align-items-center">
+                                    <TelerikIcon Icon="image" />&nbsp;
+                                    Image
+                                </span>
+                            </HeaderTemplate>
+                            <Template>
+                                @{
+                                    var article = context as BannerImageCreateUpdate;
+                                    <img src="@(article.PathImages)" alt="" width="125" height="95" />
+                                }
+                            </Template>
+                        </GridColumn>
+                        <GridColumn Field="@(nameof(BannerImageCreateUpdate.BannerName))" Editable="false" Title="Tên Banner" Width="120px" />
+                        <GridColumn Field="@(nameof(BannerImageCreateUpdate.Type))" Editable="false" Title="Loại Banner" Width="120px" />
+                        <GridColumn Field="@(nameof(BannerImageCreateUpdate.StatusName))" Title="Trạng thái" Width="120px" />
+                        <GridColumn Field="@(nameof(BannerImageCreateUpdate.Id))" Title="Chỉnh sửa" Width="120px">
+                            <Template>
+                                @{
+                                    var post = context as BannerImageCreateUpdate;
+                                    <Button Type="primary" OnClick="@(()=>btnUpdateBannerImage(post.Id))">
+                                        Chỉnh sửa
+                                    </Button>
+                                }
+                            </Template>
+                        </GridColumn>
+                    </GridColumns>
+                </TelerikGrid>
             </TabStripTab>
             <TabStripTab Title="Banner Footer">
                 bcvb
@@ -164,3 +217,80 @@
 </Modal>
 
 
+<Modal Title="@("Thêm mới Banner Images")"
+       Visible="@_visibleBannerImage"
+       OnOk="@HandleOkBannerImage"
+       OnCancel="@HandleCancelBannerImage">
+    <Form Loading="loadingBannerImage" Model="@modelBannerImage"
+          OnFinish="OnFinishBannerImage"
+          OnFinishFailed="OnFinishFailedBannerImage"
+          @ref="@_formBannerImage">
+        <AntDesign.FormItem Label="Tên Banner">
+            <Input @bind-Value="@context.BannerName" />
+        </AntDesign.FormItem>
+         <AntDesign.FormItem Label="Loại banner">
+            <InputPassword @bind-Value="@context.Type" />
+        </AntDesign.FormItem>
+        <AntDesign.FormItem Label="Trạng thái">
+            <InputPassword @bind-Value="@context.StatusId" />
+        </AntDesign.FormItem>
+        <AntDesign.FormItem Label="Hình ảnh" Style="margin-bottom: 0px">
+            <TelerikUpload SaveUrl="@SaveUrl"
+                           RemoveUrl="@RemoveUrl"
+                           SaveField="file"
+                           OnSuccess="@((UploadSuccessEventArgs arg) => OnSuccessHandlerBannerImage(arg, "images"))"
+                           AllowedExtensions="@(new List<string>() {".jpg", ".png" })" MaxFileSize="1048576">
+            </TelerikUpload>
+            <div class="col-md-3 col-sm-12">
+                @if (!string.IsNullOrEmpty(context.PathImages))
+                {
+                    <div class="img-inform">
+                        <img style="width: 300px;margin-top: 20px;" src="@context.PathImages">
+                    </div>
+                }
+            </div>
+            <div class="col-md-3 col-sm-12 d-none">
+                <TelerikTextBox Enabled="false" @bind-Value="context.PathImages" PlaceHolder="VD: example.png" Width="100%" InputMode="text" Class="k-invalidx form-control" Id="images"></TelerikTextBox>
+            </div>
+        </AntDesign.FormItem>
+    </Form>
+</Modal>
+
+<Modal Title="@("Chỉnh sửa Banner Image")"
+       Visible="@_visibleUpdateBannerImage"
+       OnOk="@HandleOkUpdateBannerImage"
+       OnCancel="@HandleCancelUpdateBannerImage">
+    <Form Loading="loadingUpdateBannerImage" Model="@modelUpdateBannerImage"
+          OnFinish="OnFinishUpdateBannerImage"
+          OnFinishFailed="OnFinishFailedUpdateBannerImage"
+          @ref="@_formUpdateBannerImage">
+        <AntDesign.FormItem Label="Tên Slide">
+            <Input @bind-Value="@context.BannerName" />
+        </AntDesign.FormItem>
+        <AntDesign.FormItem Label="Loại Banner">
+            <Input @bind-Value="@context.Type" />
+        </AntDesign.FormItem>
+        <AntDesign.FormItem Label="Trạng thái">
+            <Input @bind-Value="@context.StatusId" />
+        </AntDesign.FormItem>
+        <AntDesign.FormItem Label="Hình ảnh" Style="margin-bottom: 0px">
+            <TelerikUpload SaveUrl="@SaveUrl"
+                           RemoveUrl="@RemoveUrl"
+                           SaveField="file"
+                           OnSuccess="@((UploadSuccessEventArgs arg) => OnSuccessHandlerUpdateBannerImage(arg, "images"))"
+                           AllowedExtensions="@(new List<string>() {".jpg", ".png" })" MaxFileSize="1048576">
+            </TelerikUpload>
+            <div class="col-md-3 col-sm-12">
+                @if (!string.IsNullOrEmpty(context.PathImages))
+                {
+                    <div class="img-inform">
+                        <img style="width: 300px;margin-top: 20px;" src="@context.PathImages">
+                    </div>
+                }
+            </div>
+            <div class="col-md-3 col-sm-12 d-none">
+                <TelerikTextBox Enabled="false" @bind-Value="context.PathImages" PlaceHolder="VD: example.png" Width="100%" InputMode="text" Class="k-invalidx form-control" Id="images"></TelerikTextBox>
+            </div>
+        </AntDesign.FormItem>
+    </Form>
+</Modal>

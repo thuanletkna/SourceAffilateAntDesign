@@ -167,6 +167,7 @@ namespace AffilateSource.Client.Services
             }
         }
 
+
         public async Task<PostDetailVm> GetDetailByPostDetailIdAdmin(string controller, string action, int id)
         {
 
@@ -207,6 +208,21 @@ namespace AffilateSource.Client.Services
                 return new List<CategoryQuickVM>();
             }
         }
+        public async Task<List<CategoryQuickVM>> GetListCategories(string controller, string action)
+        {
+
+            HttpResponseMessage response = await Http.GetAsync(controller + "/" + action);
+
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                var content = await response.Content.ReadFromJsonAsync<List<CategoryQuickVM>>();
+                return content;
+            }
+            else
+            {
+                return new List<CategoryQuickVM>();
+            }
+        }
 
         public async Task<CategoryQuickVM> GetCategoryDetailByIdAdmin(string controller, string action, int id)
         {
@@ -236,6 +252,14 @@ namespace AffilateSource.Client.Services
 
             throw new Exception($"The service returned with status {response.StatusCode}");
         }
+        public async Task<DataEnvelope<BannerImageCreateUpdate>> GetDataBannerImageAdminAsync(string controller, string action, DataSourceRequest Request)
+        {
+            HttpResponseMessage response = await Http.PostAsJsonAsync(controller + "/" + action, Request);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                return await response.Content.ReadFromJsonAsync<DataEnvelope<BannerImageCreateUpdate>>();
+
+            throw new Exception($"The service returned with status {response.StatusCode}");
+        }
         public async Task<SlideImageVm> GetSlideDetailByIdAdmin(string controller, string action, int id)
         {
 
@@ -249,6 +273,21 @@ namespace AffilateSource.Client.Services
             else
             {
                 return new SlideImageVm();
+            }
+        }
+        public async Task<BannerImageCreateUpdate> GetBannerImageById(string controller, string action, int id)
+        {
+
+            HttpResponseMessage response = await Http.PostAsJsonAsync(controller + "/" + action, id);
+
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                var content = await response.Content.ReadFromJsonAsync<BannerImageCreateUpdate>();
+                return content;
+            }
+            else
+            {
+                return new BannerImageCreateUpdate();
             }
         }
         #endregion Slide

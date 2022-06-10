@@ -5,13 +5,14 @@
 @{
     ViewData["Title"] = "GetPostById";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var headerblog = Model.BannerImageVm.Where(x => x.Type == "Header-Blog").FirstOrDefault();
 }
 <link rel="stylesheet" href="/cssdetail/style.css">
 @*<link rel="stylesheet" href="/cssdetail/bootstrap.min.css">*@
 @*<script src="~/js/LoadProduct.js"></script>*@
 <div class="page-content bg-white">
     <!-- inner page banner -->
-    <div class="dez-bnr-inr overlay-black-middle" style="background-image:url(/portalstyle/images/banner/banner.png);">
+    <div class="dez-bnr-inr overlay-black-middle" style="background-image:url(@(Configuration["BackendApiUrl"]+ headerblog.PathImages));">
         <div class="container">
             <div class="dez-bnr-inr-entry">
                 <h1 class="text-white">Thông tin bài đăng</h1>

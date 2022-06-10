@@ -106,6 +106,31 @@ namespace AffilateSource.Server.DataEntity.Migrations
                     b.ToTable("Attachments");
                 });
 
+            modelBuilder.Entity("AffilateSource.Data.DataEntity.Entities.BannerImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("BannerName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PathImages")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StatusId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BannerImages");
+                });
+
             modelBuilder.Entity("AffilateSource.Data.DataEntity.Entities.Category", b =>
                 {
                     b.Property<int>("Id")

@@ -9,5 +9,6 @@ namespace AffilateSource.Shared.ViewModel.BannerImages
     public class BannerImageViewModel
     {
         public List<SlideImageVm> SlideImages { get; set; }
+        public List<BannerImageCreateUpdate> BannerImageVm { get; set; }
     }
 }
