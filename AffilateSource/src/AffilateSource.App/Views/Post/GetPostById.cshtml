@@ -61,18 +61,15 @@
                                     @Html.Raw(item.Content)
                                     @if (@item.ProductAffilateName!= null)
                                     {
-                                        <div class="strip_list">
+                                        <div class="strip_list" style="min-height: 250px;">
                                             <div class="ribbon_1">
                                                 Popular
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <div class="desc">
-                                                        <div class="thumb_strip">
-                                                            <a href="detail_page.html"><img src="@(Configuration["BackendApiUrl"]+ @item.ImageProducts)" alt=""></a>
-                                                        </div>
-                                                        <div class="rating">
-                                                            <i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i> (<small><a href="#0">98 reviews</a></small>)
+                                                    <div class="desc" style="padding-left: 225px;">
+                                                        <div class="thumb_strip" style="width: 200px;height: 200px;">
+                                                            <a href="#"><img src="@(Configuration["BackendApiUrl"]+ @item.ImageProducts)" alt=""></a>
                                                         </div>
                                                         <h3>@item.ProductAffilateName</h3>
                                                         <div class="type">
@@ -82,7 +79,6 @@
                                                             @item.Description
                                                         </div>
                                                         <ul>
-                                                            @*<li>Giá gốc: @item.ProductAffilatePrice</li>*@
                                                             <li>Giá bán: @item.ProductAffilatePrice</li>
                                                         </ul>
                                                     </div>

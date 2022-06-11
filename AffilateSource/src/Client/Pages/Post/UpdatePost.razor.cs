@@ -155,6 +155,7 @@ namespace AffilateSource.Client.Pages.Post
                     }
                 }
             }
+            await Task.CompletedTask;
 
         }
         // file upload image
@@ -198,6 +199,7 @@ namespace AffilateSource.Client.Pages.Post
             _visibleCreateDetailPost = true;
             detailUpdate = await postApi.GetDetailByPostDetailIdAdmin("Post", "GetDetailsByPostDetails", id);
             productSelect = await postApi.GetdataSelectProductByCategoryId("Product", "GetProductSelectByCategoryId", 2);
+            detailUpdate.PostId = id;
             return detailUpdate;
         }
         private void HandleCancelCreateDetailPost(MouseEventArgs e)

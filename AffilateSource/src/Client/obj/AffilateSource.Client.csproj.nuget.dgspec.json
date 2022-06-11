@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\SourceAffilateGit_AntDesign\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\AffilateSource.Client.csproj": {}
+    "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\AffilateSource.Client.csproj": {}
   },
   "projects": {
-    "D:\\SourceAffilateGit_AntDesign\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\AffilateSource.Client.csproj": {
+    "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\AffilateSource.Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SourceAffilateGit_AntDesign\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\AffilateSource.Client.csproj",
+        "projectUniqueName": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\AffilateSource.Client.csproj",
         "projectName": "AffilateSource.Client",
-        "projectPath": "D:\\SourceAffilateGit_AntDesign\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\AffilateSource.Client.csproj",
-        "packagesPath": "C:\\Users\\lthua\\.nuget\\packages\\",
-        "outputPath": "D:\\SourceAffilateGit_AntDesign\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\",
+        "projectPath": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\AffilateSource.Client.csproj",
+        "packagesPath": "C:\\Users\\Thuan Le\\.nuget\\packages\\",
+        "outputPath": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\lthua\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Thuan Le\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,15 +26,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files (x86)\\Progress\\Telerik UI for Blazor 2.28.0": {},
+          "C:\\Program Files (x86)\\Progress\\Telerik UI for Blazor 3.0.0": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6",
             "projectReferences": {
-              "D:\\SourceAffilateGit_AntDesign\\SourceAffilateAntDesign\\AffilateSource\\src\\Shared\\AffilateSource.Shared.csproj": {
-                "projectPath": "D:\\SourceAffilateGit_AntDesign\\SourceAffilateAntDesign\\AffilateSource\\src\\Shared\\AffilateSource.Shared.csproj"
+              "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Shared\\AffilateSource.Shared.csproj": {
+                "projectPath": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Shared\\AffilateSource.Shared.csproj"
               }
             }
           }
@@ -96,7 +96,7 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
-              "version": "[6.0.4, 6.0.4]"
+              "version": "[6.0.5, 6.0.5]"
             }
           ],
           "frameworkReferences": {
@@ -104,7 +104,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
@@ -113,20 +113,20 @@
         }
       }
     },
-    "D:\\SourceAffilateGit_AntDesign\\SourceAffilateAntDesign\\AffilateSource\\src\\Shared\\AffilateSource.Shared.csproj": {
+    "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Shared\\AffilateSource.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SourceAffilateGit_AntDesign\\SourceAffilateAntDesign\\AffilateSource\\src\\Shared\\AffilateSource.Shared.csproj",
+        "projectUniqueName": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Shared\\AffilateSource.Shared.csproj",
         "projectName": "AffilateSource.Shared",
-        "projectPath": "D:\\SourceAffilateGit_AntDesign\\SourceAffilateAntDesign\\AffilateSource\\src\\Shared\\AffilateSource.Shared.csproj",
-        "packagesPath": "C:\\Users\\lthua\\.nuget\\packages\\",
-        "outputPath": "D:\\SourceAffilateGit_AntDesign\\SourceAffilateAntDesign\\AffilateSource\\src\\Shared\\obj\\",
+        "projectPath": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Shared\\AffilateSource.Shared.csproj",
+        "packagesPath": "C:\\Users\\Thuan Le\\.nuget\\packages\\",
+        "outputPath": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Shared\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\lthua\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Thuan Le\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -135,7 +135,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files (x86)\\Progress\\Telerik UI for Blazor 2.28.0": {},
+          "C:\\Program Files (x86)\\Progress\\Telerik UI for Blazor 3.0.0": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -182,7 +182,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }

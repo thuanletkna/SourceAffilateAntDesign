@@ -66,7 +66,7 @@
                             @if (!string.IsNullOrEmpty(context.ImagePost))
                             {
                                 <div class="img-inform">
-                                    <img style="width: 500px;margin-top: 20px;" src="@context.ImagePost">
+                                    <img style="width: 200px;margin-top: 20px;" src="@context.ImagePost">
                                 </div>
                             }
                         </div>
@@ -127,9 +127,13 @@
         <FormItems>
             <Telerik.Blazor.Components.FormItem LabelText="ID bài đăng: " Field="@nameof(detailUpdate.PostId)" />
             <Telerik.Blazor.Components.FormItem LabelText="Tiêu đề*: " Field="@nameof(detailUpdate.TitleDetail)" />
-            <TelerikEditor Tools="@EditorToolSets.All"
-                           Height="300px"
-                           @bind-Value="@detailUpdate.Content"></TelerikEditor>
+            <Telerik.Blazor.Components.FormItem LabelText="Chi tiết bài đăng*: " Field="@nameof(detailUpdate.Content)">
+                <Template>
+                    <TelerikEditor Tools="@EditorToolSets.All"
+                                   Height="300px"
+                                   @bind-Value="@detailUpdate.Content"></TelerikEditor>
+                </Template>
+            </Telerik.Blazor.Components.FormItem>
             <Telerik.Blazor.Components.FormItem LabelText="Tên sản phẩm Affilate*: " Field="@nameof(detailUpdate.ProductAffilateName)" ColSpan="2" />
             <Telerik.Blazor.Components.FormItem LabelText="Giá sản phẩm Affilate*: " Field="@nameof(detailUpdate.ProductAffilatePrice)" ColSpan="2" />
             <Telerik.Blazor.Components.FormItem LabelText="Link Affilate Shopee*: " Field="@nameof(detailUpdate.LinkAffilateShopee)" ColSpan="2" />
@@ -148,7 +152,7 @@
                         @if (!string.IsNullOrEmpty(detailUpdate.ImageProducts))
                         {
                             <div class="img-inform">
-                                <img style="width: 500px;margin-top: 20px;" src="@detailUpdate.ImageProducts">
+                                <img style="width: 200px;margin-top: 20px;" src="@detailUpdate.ImageProducts">
                             </div>
                         }
                     </div>

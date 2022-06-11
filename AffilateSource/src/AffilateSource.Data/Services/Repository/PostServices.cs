@@ -178,7 +178,6 @@ namespace AffilateSource.Data.Services.Repository
                     ObjParm.Add("@Content", request.Content);
                     ObjParm.Add("@TitleDetail", request.TitleDetail);
                     ObjParm.Add("@StatusId", request.StatusId);
-                    //ObjParm.Add("@ProductId", request.ProductId);
                     ObjParm.Add("@SortDetail", request.SortDetail);
                     ObjParm.Add("@ProductAffilatePrice", request.ProductAffilatePrice);
                     ObjParm.Add("@ProductAffilateName", request.ProductAffilateName);
