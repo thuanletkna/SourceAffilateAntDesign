@@ -4,6 +4,8 @@
 @inject IConfiguration Configuration
 @{
     ViewData["Title"] = "Home Page";
+    var headerblog = Model.BannerImageVm.Where(x => x.Type == "Feedback").FirstOrDefault();
+    var bannerhome1 = Model.BannerImageVm.Where(x => x.Type == "Banner-Home-1").FirstOrDefault();
 }
 <style>
     .desriptions {
@@ -15,10 +17,6 @@
         -webkit-box-orient: vertical;
     }
 
-    /*.col-lg-3 {
-            flex: 0 0 auto;
-            width: 20%;
-        }*/
 </style>
 <div class="page-content">
     <!-- Slider -->
@@ -74,11 +72,11 @@
                         <div class="widget widget_gallery" style="margin-bottom: 10px; margin-top: 40px;">
                             <h4 class="widget-title">Vẻ đẹp hoa lá</h4>
                             <div class="p-tb30">
-                                <a href="javascript:void(0);"><img style="width:276px;height:283px;" src="/portalstyle/images/gallery/bannerhomebody1.jpg" alt="" /></a>
+                                <a href="javascript:void(0);"><img style="width:276px;height:283px;" src="@(Configuration["BackendApiUrl"]+ bannerhome1.PathImages)" alt="" /></a>
                             </div>
-                            <div class="p-tb30">
+                            @*<div class="p-tb30">
                                 <a href="javascript:void(0);"><img style="width:276px;height:283px;" src="/portalstyle/images/gallery/bannerhomebody1.jpg" alt="" /></a>
-                            </div>
+                            </div>*@
                         </div>
                     </div>
                 </div>
@@ -124,8 +122,63 @@
         </div>
     </div>
     <!-- About Us END -->
+    <div class="section-full  content-inner service-style1-area">
+            <div class="container">
+                <div class="row">
+					<div class="col-xl-3 col-lg-12 wow fadeInLeft" data-wow-delay="0.2s" data-wow-duration="2s">
+						<div class="section-head style1 text-left text-white bg-grading">
+							<h3 class="h3">Vườn Hoa Lá</h3>
+							<div class="dez-separator bg-white"></div>
+							<p>Lựa chọn hoàn hảo cho những dịp đặc biệt với người yêu thương...</p>
+						</div>
+					</div>
+					<div class="col-xl-3 col-lg-4 col-md-4 wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="2s">
+						<div class="icon-bx-wraper service-style1 m-b30 center">
+							<div class="icon-bx-xl"> 
+								<a href="javascript:void(0);" class="icon-cell">
+									<img src="/portalstyle/images/icon/icon1.png" alt="">
+								</a> 
+							</div>
+							<div class="icon-content">
+								<h2 class="dez-tilte text-primary">Sứ mệnh</h2>
+								<p>Sứ mệnh của chúng tôi là giúp bạn trao đi tâm tư và biến mọi dịp trọng đại của bạn trở nên đặc biệt hơn, ý nghĩa hơn</p>
+								<a href="javascript:void(0);" class="site-button italic light-gray">Trải nghiệm ngay</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-3 col-lg-4 col-md-4 wow fadeInDown" data-wow-delay="0.2s" data-wow-duration="2s">
+						<div class="icon-bx-wraper service-style1 m-b30 center">
+							<div class="icon-bx-xl"> 
+								<a href="javascript:void(0);" class="icon-cell">
+									<img src="/portalstyle/images/icon/icon2.png" alt="">
+								</a> 
+							</div>
+							<div class="icon-content">
+								<h2 class="dez-tilte text-primary">Dịch vụ</h2>
+								<p>Chúng tôi luôn đảm bảo đem đến cho bạn những bó hoa tươi nhất được gói cùng các loại nguyên vật liệu chất lượng cao</p>
+								<a href="/bo-suu-tap" class="site-button italic light-gray">Trải nghiệm ngay</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-3 col-lg-4 col-md-4 wow fadeInRight" data-wow-delay="0.2s" data-wow-duration="2s">
+						<div class="icon-bx-wraper service-style1 center">
+							<div class="icon-bx-xl"> 
+								<a href="/bo-suu-tap" class="icon-cell">
+									<img src="/portalstyle/images/icon/icon3.png" alt="">
+								</a> 
+							</div>
+							<div class="icon-content">
+								<h2 class="dez-tilte text-primary">Trải nghiệm</h2>
+								<p>Thông qua nền tảng trực tuyến, chúng tôi mong muốn đem đến cho bạn trải nghiệm thật tiện lợi, dễ dàng và tràn đầy niềm vui.</p>
+								<a href="/bo-suu-tap" class="site-button italic light-gray">Trải nghiệm ngay</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
     <!-- Services -->
-    <div class="content-area" style="background-image: url(/portalstyle/images/background/bgrhome.jpg);background-position: bottom;background-size: cover;">
+    <div class="content-area" style="background-position: bottom;background-size: cover;background-color: white;">
         <div class="container sortcodes-gallery">
             <div class="Section-full">
                 <div class="section-head text-center">
@@ -151,32 +204,29 @@
         </div>
     </div>
     <!-- Services END -->
-    <!-- Latest blog -->
-
-    <div class="section-full content-inner-1 bg-white">
+    <div class="section-full content-inner">
+        <!-- content start -->
         <div class="container">
+
             <div class="section-head text-center">
                 <h3 class="h3 text-uppercase">kho báu <span class="text-primary">kinh nghiệm</span></h3>
                 <p>Chúng tôi luôn tìm hiểu, cập nhật những kiến thức hay, bổ ích để tất cả mọi người cùng biết tới.</p>
             </div>
+            <div class="section-content">
+                <div class="img-carousel-content owl-carousel mfp-gallery gallery owl-btn-center-lr">
 
-            <div class="section-content owl-none latest-blog-1">
-                <div class="blog-carousel owl-carousel">
                     @foreach (var item in Model.GetPostHome)
                     {
                         <div class="item">
-                            <div class="dez-box">
-                                <div class="dez-media">
-                                    <a href="/details/@item.SeoAlias-@item.Id" class="text-primary"><img style="width:372px;height:234px;" src="@(Configuration["BackendApiUrl"]+ item.ImagePost)" alt="@item.Title"></a>
-                                </div>
-                                <div class="dez-info p-a20 border-1">
-                                    <ul class="blog-info text-primary">
-                                        <li>Đăng bởi <a href="javascript:void(0);" title="@item.Title" rel="author">@item.FirstName &nbsp; @item.LastName</a> </li>
-                                        <li><span>@item.CreateDate</span> </li>
-                                    </ul>
-                                    <h4 style="overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp: 3;display: -webkit-box;-webkit-box-orient: vertical;" class="dez-title m-t0"><a href="/details/@item.SeoAlias-@item.Id">@item.Title </a></h4>
-                                    <div style="overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp: 2;display: -webkit-box;-webkit-box-orient: vertical;" class="m-a0">@Html.Raw(item.Description)</div>
+                            <div class="ow-carousel-entry">
+                                <div class="ow-entry-media dez-img-effect zoom-slow"> <a href="/details/@item.SeoAlias-@item.Id"><img style="height: 200px;" src="@(Configuration["BackendApiUrl"]+ item.ImagePost)" alt="@item.Title"></a> </div>
+                                <div class="ow-entry-content">
+                                    <div class="ow-entry-title" style="overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp: 2;display: -webkit-box;-webkit-box-orient: vertical;"><a href="/details/@item.SeoAlias-@item.Id">@item.Title</a></div>
+                                    <div class="ow-entry-text" style="overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp: 2;display: -webkit-box;-webkit-box-orient: vertical;">
+                                        <p>@Html.Raw(item.Description)</p>
+                                    </div>
                                     <a href="/details/@item.SeoAlias-@item.Id" class="site-button-link m-t15">Đọc thêm <i class="fa fa-long-arrow-right"></i></a>
+                                    <div class="ow-entry-button"></div>
                                 </div>
                             </div>
                         </div>
@@ -185,112 +235,86 @@
             </div>
         </div>
     </div>
-    <!-- Latest blog END -->
-    <!-- Customers and Partners -->
-    <div class="section-full bg-white content-inner" style="padding-top: 0px;">
-        <div class="container">
-            <div class="section-head text-center">
-                <h3 class="h3 text-uppercase">Sự trải nghiệm với <span class="text-primary">Vườn Hoa Lá</span></h3>
-                <p>Sự hài lòng của khách hàng luôn là yếu tố mà chúng tôi dành thời gian đặc biệt quan tâm tới.</p>
-            </div>
-           
-            <div class="row">
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="2s">
-                    <div class="testimonial-one testimonial-8-area owl-carousel owl-none">
-                        <div class="item">
-                            <div class="testimonial-8">
-                                <div class="testimonial-detail clearfix info">
-                                    <div class="testimonial-pic"><img src="/portalstyle/images/feedback.jpg" style="width:90px;height:90px" alt="" width="100" height="100"></div>
-                                    <p class="testimonial-position">
-                                        <strong>Chị Thu Lan</strong>
-                                        <span>Công Ty HDNET</span>
-                                    </p>
-                                </div>
-                                <div class="testimonial-text">
-                                    <p>“Chúng tôi luôn chọn Vườn hoa lá là nơi cung cấp hoa cho các sự kiện của công ty. Rất hài lòng về những bó hoa đẹp, tỉ mỉ từ các bạn.”</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimonial-8">
-                                <div class="testimonial-detail clearfix info">
-                                    <div class="testimonial-pic"><img src="/portalstyle/images/feedback.jpg" style="width:90px;height:90px" alt="" width="100" height="100"></div>
-                                    <p class="testimonial-position">
-                                        <strong>Chị Huyền</strong>
-                                        <span>Nhân viên Sale BĐS</span>
-                                    </p>
-                                </div>
-                                <div class="testimonial-text">
-                                    <p>“Thực sự cảm ơn Vườn hoa lá về những chia sẻ kinh nghiệm hữu ích trong cách chăm sóc hoa cũng như lựa chọn hoa tươi tại cửa hàng.”</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="row client-logos">
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-6 wow fadeInUp" data-wow-delay="0.1s" data-wow-duration="2s">
-                            <div class="client-logo">
-                                <a href="javascript:void(0);" class="site-button gradient wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="2s" style="visibility: visible; animation-duration: 2s; animation-delay: 0.8s; animation-name: fadeInUp;">Get a Free Quote</a>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-6 wow fadeInUp" data-wow-delay="0.1s" data-wow-duration="2s">
-                            <div class="client-logo">
-                                <a href="javascript:void(0);" class="site-button gradient wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="2s" style="visibility: visible; animation-duration: 2s; animation-delay: 0.8s; animation-name: fadeInUp;">Get a Free Quote</a>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-6 wow fadeInUp" data-wow-delay="0.1s" data-wow-duration="2s">
-                            <div class="client-logo">
-                                <a href="javascript:void(0);" class="site-button gradient wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="2s" style="visibility: visible; animation-duration: 2s; animation-delay: 0.8s; animation-name: fadeInUp;">Get a Free Quote</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Customers and Partners END -->
-    <!-- Client logo -->
-    <div class="section-full dez-we-find bg-img-fix p-t50 p-b50 ">
-        <div class="container">
-            <div class="section-content">
-                <div class="client-logo-carousel owl-carousel  mfp-gallery gallery owl-btn-center-lr">
-                    <div class="item">
-                        <div class="ow-client-logo">
-                            <div class="client-logo"><a href="javascript:void(0);"><img src="/portalstyle/images/client-logo/logo1.jpg" alt=""></a></div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="ow-client-logo">
-                            <div class="client-logo"> <a href="javascript:void(0);"><img src="/portalstyle/images/client-logo/logo2.jpg" alt=""></a> </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="ow-client-logo">
-                            <div class="client-logo"> <a href="javascript:void(0);"><img src="/portalstyle/images/client-logo/logo1.jpg" alt=""></a> </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="ow-client-logo">
-                            <div class="client-logo"> <a href="javascript:void(0);"><img src="/portalstyle/images/client-logo/logo3.jpg" alt=""></a> </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="ow-client-logo">
-                            <div class="client-logo"> <a href="javascript:void(0);"><img src="/portalstyle/images/client-logo/logo4.jpg" alt=""></a> </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="ow-client-logo">
-                            <div class="client-logo"> <a href="javascript:void(0);"><img src="/portalstyle/images/client-logo/logo3.jpg" alt=""></a> </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Client logo END -->
 </div>
+<!-- Latest blog -->
+<!-- Latest blog END -->
+<div class="section-full bg-img-fix content-inner-1 overlay-black-middle" style="background-image:url(@(Configuration["BackendApiUrl"]+ headerblog.PathImages));">
+    <div class="container">
+        <div class="section-head text-center">
+            <h3 style="color: white;" class="h3 text-uppercase">SỰ TRẢI NGHIỆM CỦA KHÁCH HÀNG TỪ VƯỜN HOA LÁ</h3>
+            <p style="color: white;">Vườn hoa lá luôn quan tâm tới sự trải nghiệm cũng như đánh giá từ khách hàng để bổ sung kiến thức cũng như nâng cao chất lượng sản phẩm.</p>
+        </div>
+        <div class="section-content">
+            <div class="testimonial-five owl-carousel owl-theme">
+                <div class="item">
+                    <div class="testimonial-6">
+                        <div class="testimonial-text bg-white quote-left quote-right">
+                            <p>“Chúng tôi luôn chọn Vườn hoa lá là nơi cung cấp hoa cho các sự kiện của công ty. Rất hài lòng về những bó hoa đẹp, tỉ mỉ từ các bạn.”</p>
+                        </div>
+                        <div class="testimonial-detail clearfix bg-primary text-white">
+                            <h4 class="testimonial-name m-tb0">Chị Huyền</h4>
+                            <span class="testimonial-position">Nhân viên Sale BĐS</span>
+                            <div class="testimonial-pic radius"><img src="/portalstyle/images/feedback.jpg" alt="" width="100" height="100"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="testimonial-6">
+                        <div class="testimonial-text bg-white quote-left quote-right">
+                            <p>“Thực sự cảm ơn Vườn hoa lá về những chia sẻ kinh nghiệm hữu ích trong cách chăm sóc hoa cũng như lựa chọn hoa tươi tại cửa hàng.”</p>
+                        </div>
+                        <div class="testimonial-detail clearfix bg-primary text-white">
+                            <h4 class="testimonial-name m-tb0">Chị Thu Lan</h4>
+                            <span class="testimonial-position">Công Ty HDNET</span>
+                            <div class="testimonial-pic radius"><img src="/portalstyle/images/feedback.jpg" alt="" width="100" height="100"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Client logo -->
+<div class="section-full dez-we-find bg-img-fix p-t50 p-b50">
+    <div class="container">
+        <div class="section-content">
+            <div class="client-logo-carousel owl-carousel  mfp-gallery gallery owl-btn-center-lr">
+                <div class="item">
+                    <div class="ow-client-logo">
+                        <div class="client-logo"><a href="javascript:void(0);"><img src="/portalstyle/images/client-logo/logo1.jpg" alt=""></a></div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="ow-client-logo">
+                        <div class="client-logo"> <a href="javascript:void(0);"><img src="/portalstyle/images/client-logo/logo2.jpg" alt=""></a> </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="ow-client-logo">
+                        <div class="client-logo"> <a href="javascript:void(0);"><img src="/portalstyle/images/client-logo/logo1.jpg" alt=""></a> </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="ow-client-logo">
+                        <div class="client-logo"> <a href="javascript:void(0);"><img src="/portalstyle/images/client-logo/logo3.jpg" alt=""></a> </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="ow-client-logo">
+                        <div class="client-logo"> <a href="javascript:void(0);"><img src="/portalstyle/images/client-logo/logo4.jpg" alt=""></a> </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="ow-client-logo">
+                        <div class="client-logo"> <a href="javascript:void(0);"><img src="/portalstyle/images/client-logo/logo3.jpg" alt=""></a> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Client logo END -->
 <style>
     .blog-md .dez-post-media-style {
         min-width: 250px;

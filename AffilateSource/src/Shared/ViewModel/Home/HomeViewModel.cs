@@ -25,6 +25,7 @@ namespace AffilateSource.Shared.ViewModel.Home
         public BannerImageViewModel Getbanner { get; set; }
         public BannerImageViewModel GetbannerImages { get; set; }
         public ContactVm getContact {get;set;}
+        public List<BannerImageCreateUpdate> BannerImageVm { get; set; }
 
     }
 }

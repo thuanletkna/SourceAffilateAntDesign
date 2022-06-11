@@ -40,6 +40,7 @@ namespace AffilateSource.App.Controllers
             var danhmucpost = await _categoryApiClient.GetCategoryByParentId(3);
             var banner = await _bannerImageServices.GetBannerSlide();
             var bannerImage = await _bannerImageServices.GetBannerImages();
+            var listbannerImage = await _bannerImageServices.GetBannerImages();
             //var contact = await _contactServices.GetContact();
             var viewmodel = new HomeViewModel()
             {
@@ -52,6 +53,7 @@ namespace AffilateSource.App.Controllers
                 GetProductByViewCount = productbyViewCount,
                 Getbanner = banner,
                 GetbannerImages = bannerImage,
+                BannerImageVm = listbannerImage.BannerImageVm
                 //getContact = contact
                 //GetPostCreateDate = postCreateDate,
             };
