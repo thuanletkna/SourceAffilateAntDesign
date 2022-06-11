@@ -5,11 +5,12 @@
 @{
     ViewData["Title"] = "GetAllProductsPaging";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var headerblog = Model.BannerImageVm.Where(x => x.Type == "Header-Product").FirstOrDefault();
 }
 
 <div class="page-content">
     <!-- inner page banner -->
-    <div class="dez-bnr-inr overlay-black-middle" style="background-image:url(/portalstyle/images/banner/banner.png);">
+    <div class="dez-bnr-inr overlay-black-middle" style="background-image:url(@(Configuration["BackendApiUrl"]+ headerblog.PathImages));">
         <div class="container">
             <div class="dez-bnr-inr-entry">
                 <h1 class="text-white">Bộ sưu tập</h1>
@@ -48,7 +49,7 @@
                                         <h4 class="dez-title m-t0"><a href="/product/@item.SeoAlias-@item.Id" style="overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp: 2;display: -webkit-box;-webkit-box-orient: vertical;">@item.Title</a></h4>
                                         <h3 class="m-b0"><span style="font-size:18px;">Giá:</span> <span style="font-size:18px; color:red">@item.Price VNĐ</span> </h3>
                                         <div class="m-t20">
-                                            <a href="@item.LinkAffilateOther" class="site-button radius-xl">Mua ngay</a>
+                                            <a href="#" class="site-button radius-xl">Mua ngay</a>
                                         </div>
                                     </div>
                                    

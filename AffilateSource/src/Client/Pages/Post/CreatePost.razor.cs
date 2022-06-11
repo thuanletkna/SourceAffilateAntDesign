@@ -53,20 +53,29 @@ namespace AffilateSource.Client.Pages.Post
                     {
                         postCreateViewModel.ImagePost = "/Uploads/PostImages/" + postCreateViewModel.ImagePost;
                     }
-                    //if (field == "images")
-                    //{
-                    //    postCreateViewModel.Detail = content;
-
-                    //    if (!string.IsNullOrEmpty(postCreateViewModel.Detail))
-                    //    {
-                    //        postCreateViewModel.Detail = "/upload" + postCreateViewModel.Detail;
-                    //    }
-                    //}
                 }
             }
 
         }
+        private async Task OnSuccessHandlerProductAff(UploadSuccessEventArgs e, string field)
+        {
+            if (e.Operation == UploadOperationType.Upload)
+            {
+                string content = e.Request.ResponseText;
+                foreach (var file in e.Files)
+                {
 
+                    //postCreateViewModel.Detail = content;
+                    DetailPostsModal.ImageProducts = content;
+
+                    if (!string.IsNullOrEmpty(DetailPostsModal.ImageProducts))
+                    {
+                        DetailPostsModal.ImageProducts = "/Uploads/PostImages/" + DetailPostsModal.ImageProducts;
+                    }
+                }
+            }
+
+        }
 
         async Task ContentOnChange(string returnValue, string field)
         {

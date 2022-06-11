@@ -120,7 +120,13 @@ namespace AffilateSource.Data.Services.Repository
                 Content = request.Content,
                 StatusId = request.StatusIdDetail,
                 SortDetail = request.SortDetail,
-                TitleDetail = request.TitleDetail
+                TitleDetail = request.TitleDetail,
+                ImageProducts = request.ImageProducts,
+                LinkAffilateLazada = request.LinkAffilateLazada,
+                LinkAffilateOther = request.LinkAffilateOther,
+                LinkAffilateShopee= request.LinkAffilateShopee,
+                ProductAffilateName = request.ProductAffilateName,
+                ProductAffilatePrice = request.ProductAffilatePrice
             };
             await _context.PostDetails.AddAsync(postdetail);
             var data = await _context.SaveChangesAsync();
@@ -142,7 +148,13 @@ namespace AffilateSource.Data.Services.Repository
                 Content = request.Content,
                 StatusId = request.StatusIdDetail,
                 SortDetail = request.SortDetail,
-                TitleDetail = request.TitleDetail
+                TitleDetail = request.TitleDetail,
+                ImageProducts = request.ImageProducts,
+                LinkAffilateLazada = request.LinkAffilateLazada,
+                LinkAffilateOther = request.LinkAffilateOther,
+                LinkAffilateShopee = request.LinkAffilateShopee,
+                ProductAffilateName = request.ProductAffilateName,
+                ProductAffilatePrice = request.ProductAffilatePrice
             };
             await _context.PostDetails.AddAsync(postdetail);
             var data = await _context.SaveChangesAsync();
@@ -166,8 +178,14 @@ namespace AffilateSource.Data.Services.Repository
                     ObjParm.Add("@Content", request.Content);
                     ObjParm.Add("@TitleDetail", request.TitleDetail);
                     ObjParm.Add("@StatusId", request.StatusId);
-                    ObjParm.Add("@ProductId", request.ProductId);
+                    //ObjParm.Add("@ProductId", request.ProductId);
                     ObjParm.Add("@SortDetail", request.SortDetail);
+                    ObjParm.Add("@ProductAffilatePrice", request.ProductAffilatePrice);
+                    ObjParm.Add("@ProductAffilateName", request.ProductAffilateName);
+                    ObjParm.Add("@ImageProducts", request.ImageProducts);
+                    ObjParm.Add("@LinkAffilateLazada", request.LinkAffilateLazada);
+                    ObjParm.Add("@LinkAffilateOther", request.LinkAffilateOther);
+                    ObjParm.Add("@LinkAffilateShopee", request.LinkAffilateShopee);
                     await conn.ExecuteAsync("[POSTDETAILS_UpdateDetail]", ObjParm, commandType: CommandType.StoredProcedure);
                     conn.Close();
                     return request;

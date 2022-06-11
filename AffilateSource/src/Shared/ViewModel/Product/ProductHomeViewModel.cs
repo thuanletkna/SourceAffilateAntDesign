@@ -24,10 +24,10 @@ namespace AffilateSource.Shared.ViewModel.Product
 
         public string Detail { get; set; }
         public string FilePath { get; set; }
-        public string LinkAffilateLazada { get; set; }
-        public string LinkAffilateShopee { get; set; }
-        public string LinkAffilateTiki { get; set; }
-        public string LinkAffilateOther { get; set; }
+        //public string LinkAffilateLazada { get; set; }
+        //public string LinkAffilateShopee { get; set; }
+        //public string LinkAffilateTiki { get; set; }
+        //public string LinkAffilateOther { get; set; }
         public int Price { get; set; }
 
 

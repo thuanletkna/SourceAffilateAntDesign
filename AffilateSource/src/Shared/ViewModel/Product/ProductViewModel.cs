@@ -1,4 +1,5 @@
 ﻿using AffilateSource.Shared.ViewModel;
+using AffilateSource.Shared.ViewModel.BannerImages;
 using AffilateSource.Shared.ViewModel.Category;
 using System;
 using System.Collections.Generic;
@@ -15,5 +16,6 @@ namespace AffilateSource.Shared.ViewModel.Product
         public DataEnvelope<ProductHomeViewModel> ProductListAllByCategoryid { get; set; }
         public List<CategoryQuickVM> GetDanhMucKhuyenMai { get; set; }
         public IEnumerable<ProductHomeViewModel> GetProductHome { get; set; }
+        public List<BannerImageCreateUpdate> BannerImageVm { get; set; }
     }
 }

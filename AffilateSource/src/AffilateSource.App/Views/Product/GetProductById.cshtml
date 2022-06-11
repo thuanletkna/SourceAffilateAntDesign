@@ -5,11 +5,12 @@
 @{
     ViewData["Title"] = "GetProductById";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var headerblog = Model.BannerImageVm.Where(x => x.Type == "Header-Product").FirstOrDefault();
 }
 
 <div class="page-content bg-white">
         <!-- inner page banner -->
-        <div class="dez-bnr-inr overlay-black-middle" style="background-image:url(/portalstyle/images/banner/banner.png);">
+        <div class="dez-bnr-inr overlay-black-middle" style="background-image:url(@(Configuration["BackendApiUrl"]+ headerblog.PathImages));">
             <div class="container">
                 <div class="dez-bnr-inr-entry">
                     <h1 class="text-white">Thông tin sản phẩm</h1>
@@ -33,10 +34,10 @@
             <div class="container woo-entry">
                 <div class=" m-b30">
                     <div class="row blog-post blog-md date-style-2">
-                        <div class="col-lg-4 col-md-4 m-b30"> <a href="@Model.GetProductById.LinkAffilateOther"><img style="width:376px;height:376px" src="@(Configuration["BackendApiUrl"]+ @Model.GetProductById.ImageProducts)" alt="@Model.GetProductById.Title"></a> </div>
+                        <div class="col-lg-4 col-md-4 m-b30"> <a href="#"><img style="width:376px;height:376px" src="@(Configuration["BackendApiUrl"]+ @Model.GetProductById.ImageProducts)" alt="@Model.GetProductById.Title"></a> </div>
                         <div class="col-lg-8 col-md-8">
                             <div class="dez-post-title ">
-                                <h3 class="post-title m-b10"><a href="@Model.GetProductById.LinkAffilateOther">@Model.GetProductById.Title</a></h3>
+                                <h3 class="post-title m-b10"><a href="#">@Model.GetProductById.Title</a></h3>
                             </div>
                             <div class="dez-post-text">
                                 <p class="m-b10">@Model.GetProductById.Description</p>
@@ -59,7 +60,7 @@
                                 <div class="quantity btn-quantity float-start m-r10">
                                     <input id="demo_vertical2" type="text" value="1" name="demo_vertical2"/>
                                 </div>
-                                <a href="@Model.GetProductById.LinkAffilateOther" class="btn btn-primary site-button pull-left"><i class="fa fa-cart-plus"></i>Mua ngay</a>
+                                <a href="#" class="btn btn-primary site-button pull-left"><i class="fa fa-cart-plus"></i>Mua ngay</a>
                             </form>
                         </div>
                     </div>

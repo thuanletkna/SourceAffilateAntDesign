@@ -4,6 +4,7 @@ using AffilateSource.Data.DataEntity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AffilateSource.Server.DataEntity.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220610121734_UpdateProductAff")]
+    partial class UpdateProductAff
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -738,12 +740,6 @@ namespace AffilateSource.Server.DataEntity.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PostId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ProductAffilateName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ProductAffilatePrice")
                         .HasColumnType("int");
 
                     b.Property<int>("ProductId")

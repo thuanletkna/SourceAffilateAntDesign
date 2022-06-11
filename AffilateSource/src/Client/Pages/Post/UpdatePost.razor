@@ -130,20 +130,35 @@
             <TelerikEditor Tools="@EditorToolSets.All"
                            Height="300px"
                            @bind-Value="@detailUpdate.Content"></TelerikEditor>
-            <Telerik.Blazor.Components.FormItem LabelText="Sản phẩm Affilate*: " Field="@nameof(detailUpdate.ProductId)" ColSpan="1">
+            <Telerik.Blazor.Components.FormItem LabelText="Tên sản phẩm Affilate*: " Field="@nameof(detailUpdate.ProductAffilateName)" ColSpan="2" />
+            <Telerik.Blazor.Components.FormItem LabelText="Giá sản phẩm Affilate*: " Field="@nameof(detailUpdate.ProductAffilatePrice)" ColSpan="2" />
+            <Telerik.Blazor.Components.FormItem LabelText="Link Affilate Shopee*: " Field="@nameof(detailUpdate.LinkAffilateShopee)" ColSpan="2" />
+            <Telerik.Blazor.Components.FormItem LabelText="Link Affilate Lazada*: " Field="@nameof(detailUpdate.LinkAffilateLazada)" ColSpan="2" />
+            <Telerik.Blazor.Components.FormItem LabelText="Link Affilate Khác*: " Field="@nameof(detailUpdate.LinkAffilateOther)" ColSpan="2" />
+            <Telerik.Blazor.Components.FormItem LabelText="Ảnh bài đăng*:" Field="@nameof(detailUpdate.ImageProducts)">
                 <Template>
-                    <label for="images" class="k-label k-form-label">Sản phẩm Afilate*:</label>
-                    <TelerikDropDownList Data="@productSelect"
-                                         @bind-Value="@detailUpdate.ProductId"
-                                         TextField="Title"
-                                         ValueField="Id"
-                                         DefaultText="Chọn sản phẩm afilate"
-                                         Width="100%">
-                    </TelerikDropDownList>
+                    <label for="images" class="k-label k-form-label">Ảnh sản phẩm Affilate*:</label>
+                    <TelerikUpload SaveUrl="@SaveUrl"
+                                   RemoveUrl="@RemoveUrl"
+                                   SaveField="file"
+                                   OnSuccess="@((UploadSuccessEventArgs arg) => OnSuccessHandlerProductAff(arg, "images"))"
+                                   AllowedExtensions="@(new List<string>() {".jpg", ".png",".jpeg" })" MaxFileSize="1048576">
+                    </TelerikUpload>
+                    <div class="col-md-3 col-sm-12">
+                        @if (!string.IsNullOrEmpty(detailUpdate.ImageProducts))
+                        {
+                            <div class="img-inform">
+                                <img style="width: 500px;margin-top: 20px;" src="@detailUpdate.ImageProducts">
+                            </div>
+                        }
+                    </div>
+                    <div class="col-md-3 col-sm-12 d-none">
+                        <TelerikTextBox Enabled="false" @bind-Value="detailUpdate.ImageProducts" PlaceHolder="VD: example.png" Width="100%" InputMode="text" Class="k-invalidx form-control" Id="images"></TelerikTextBox>
+                    </div>
                 </Template>
             </Telerik.Blazor.Components.FormItem>
             <Telerik.Blazor.Components.FormItem LabelText="Trạng thái*: " Field="@nameof(detailUpdate.StatusIdDetail)" ColSpan="2">
-                 
+
             </Telerik.Blazor.Components.FormItem>
             <Telerik.Blazor.Components.FormItem LabelText="Thứ tự chi tiết*: " Field="@nameof(detailUpdate.SortDetail)" ColSpan="2" />
         </FormItems>
@@ -175,15 +190,45 @@
                                @bind-Value="@context.Content"></TelerikEditor>
             </Template>
         </AntDesign.FormItem>
+        <AntDesign.FormItem Style="display: inline-block;width:472px ">
+            <Text>Tên sản phẩm Affilate</Text>
+            <Input Placeholder="Tên sản phẩm Affilate" @bind-Value="@context.ProductAffilateName" />
+        </AntDesign.FormItem>
+        <AntDesign.FormItem Style="display: inline-block;width:472px ">
+            <Text>Giá sản phẩm Affilate</Text>
+            <Input Placeholder="Giá sản phẩm Affilate" @bind-Value="@context.ProductAffilatePrice" />
+        </AntDesign.FormItem>
+        <AntDesign.FormItem Style="display: inline-block;width:472px ">
+            <Text>Link Affilate Lazada</Text>
+            <Input Placeholder="Link Affilate Lazada" @bind-Value="@context.LinkAffilateLazada" />
+        </AntDesign.FormItem>
+        <AntDesign.FormItem Style="display: inline-block;width:472px ">
+            <Text>Link Affilate Shopee</Text>
+            <Input Placeholder="Link Affilate Shopee" @bind-Value="@context.LinkAffilateShopee" />
+        </AntDesign.FormItem>
+        <AntDesign.FormItem Style="display: inline-block;width:472px ">
+            <Text>Link Affilate Khác</Text>
+            <Input Placeholder="Link Affilate Khác" @bind-Value="@context.LinkAffilateOther" />
+        </AntDesign.FormItem>
         <AntDesign.FormItem>
-            <Text>Sản phẩm Affilate</Text>
-            <Select DataSource="@productSelect"
-                    @bind-Value="@context.ProductId"
-                    LabelName="@nameof(productSelectViewModel.Title)"
-                    ValueName="@nameof(productSelectViewModel.Id)"
-                    Placeholder="Chọn sản phẩm Affilate"
-                    AllowClear>
-            </Select>
+            <Text>Hình ảnh sản phẩm</Text>
+            <TelerikUpload SaveUrl="@SaveUrl"
+                           RemoveUrl="@RemoveUrl"
+                           SaveField="file"
+                           OnSuccess="@((UploadSuccessEventArgs arg) => OnSuccessHandlerUpdateImageProduct(arg, "images"))"
+                           AllowedExtensions="@(new List<string>() {".jpg", ".png" })" MaxFileSize="1048576">
+            </TelerikUpload>
+            <div class="col-md-3 col-sm-12">
+                @if (!string.IsNullOrEmpty(context.ImageProducts))
+                {
+                    <div class="img-inform">
+                        <img style="width: 500px;margin-top: 20px;" src="@context.ImageProducts">
+                    </div>
+                }
+            </div>
+            <div class="col-md-3 col-sm-12 d-none">
+                <TelerikTextBox Enabled="false" @bind-Value="context.ImageProducts" PlaceHolder="VD: example.png" Width="100%" InputMode="text" Class="k-invalidx form-control" Id="images"></TelerikTextBox>
+            </div>
         </AntDesign.FormItem>
         <AntDesign.FormItem Style="display: inline-block;width:472px ">
             <Text>Trạng thái</Text>

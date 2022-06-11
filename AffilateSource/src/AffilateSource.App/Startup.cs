@@ -74,7 +74,7 @@ namespace AffilateSource.App
                  new { controller = "Contact", action = "Index" });
                 endpoints.MapControllerRoute(
                  name: "Product",
-                  pattern: "/all-product",
+                  pattern: "/bo-suu-tap",
                  new { controller = "Product", action = "GetAllProductCategory" });
                 endpoints.MapControllerRoute(
                  name: "Contact",

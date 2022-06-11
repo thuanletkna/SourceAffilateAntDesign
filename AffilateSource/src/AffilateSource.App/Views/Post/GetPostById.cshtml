@@ -59,7 +59,7 @@
                             {
                                 <p>
                                     @Html.Raw(item.Content)
-                                    @if (@item.ProductId > 0)
+                                    @if (@item.ProductAffilateName!= null)
                                     {
                                         <div class="strip_list">
                                             <div class="ribbon_1">
@@ -74,7 +74,7 @@
                                                         <div class="rating">
                                                             <i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i> (<small><a href="#0">98 reviews</a></small>)
                                                         </div>
-                                                        <h3>@item.Title</h3>
+                                                        <h3>@item.ProductAffilateName</h3>
                                                         <div class="type">
                                                             @item.CategoryName
                                                         </div>
@@ -82,8 +82,8 @@
                                                             @item.Description
                                                         </div>
                                                         <ul>
-                                                            <li>Giá gốc: @item.Price</li>
-                                                            <li>Giá bán: @item.Price</li>
+                                                            @*<li>Giá gốc: @item.ProductAffilatePrice</li>*@
+                                                            <li>Giá bán: @item.ProductAffilatePrice</li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -101,9 +101,9 @@
                                                                 <a style="width: 261.79px;background-color: #f5824c;color: white;" href="@item.LinkAffilateShopee" class="btn_listing">Xem chi tiết sản phẩm tại Shopee</a>
 
                                                             }
-                                                            @if (@item.LinkAffilateTiki != null)
+                                                            @if (@item.LinkAffilateOther != null)
                                                             {
-                                                                <a style="width: 261.79px;background-color: #1fa65d;color: white;" href="@item.LinkAffilateTiki" class="btn_listing">Xem chi tiết sản phẩm tại Tiki</a>
+                                                                <a style="width: 261.79px;background-color: #1fa65d;color: white;" href="@item.LinkAffilateOther" class="btn_listing">Xem chi tiết sản phẩm tại Tiki</a>
 
                                                             }
                                                             @*@if(@item.LinkAffilateOther!=null)

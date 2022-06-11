@@ -138,6 +138,25 @@ namespace AffilateSource.Client.Pages.Post
                 });
             }
         }
+        private async Task OnSuccessHandlerUpdateImageProduct(UploadSuccessEventArgs e, string field)
+        {
+            if (e.Operation == UploadOperationType.Upload)
+            {
+                string content = e.Request.ResponseText;
+                foreach (var file in e.Files)
+                {
+
+                    //postCreateViewModel.Detail = content;
+                    detailUpdate.ImageProducts = content;
+
+                    if (!string.IsNullOrEmpty(detailUpdate.ImageProducts))
+                    {
+                        detailUpdate.ImageProducts = "/Uploads/PostImages/" + detailUpdate.ImageProducts;
+                    }
+                }
+            }
+
+        }
         // file upload image
         #region Upload image
         public string SaveUrl => ToAbsoluteUrl("api/upload/Save");
@@ -166,6 +185,7 @@ namespace AffilateSource.Client.Pages.Post
             }
 
         }
+
         #endregion Upload image
 
 
@@ -207,6 +227,26 @@ namespace AffilateSource.Client.Pages.Post
                 });
             }
         }
+        private async Task OnSuccessHandlerProductAff(UploadSuccessEventArgs e, string field)
+        {
+            if (e.Operation == UploadOperationType.Upload)
+            {
+                string content = e.Request.ResponseText;
+                foreach (var file in e.Files)
+                {
+
+                    //postCreateViewModel.Detail = content;
+                    detailUpdate.ImageProducts = content;
+
+                    if (!string.IsNullOrEmpty(detailUpdate.ImageProducts))
+                    {
+                        detailUpdate.ImageProducts = "/Uploads/PostImages/" + detailUpdate.ImageProducts;
+                    }
+                }
+            }
+
+        } 
+        
         #endregion Thêm mới chi tiết bài đăng
     }
 }
