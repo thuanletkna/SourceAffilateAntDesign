@@ -1,56 +1,135 @@
 ﻿@namespace AffilateSource
 @inherits LayoutComponentBase
-<TelerikRootComponent>
-<AntDesign.ProLayout.BasicLayout 
-    Logo="@("https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg")"
-    MenuData="_menuData">
-    <RightContentRender>
-        <AffilateSource.Components.RightContent />
-    </RightContentRender>
-    <ChildContent>
-        @Body
-    </ChildContent>
-    <FooterRender>
-        <FooterView Copyright="2021 Ant Design Blazor" Links="Links"></FooterView>
-    </FooterRender>
-</AntDesign.ProLayout.BasicLayout>
-<SettingDrawer />
+@*<TelerikRootComponent>
+    <AntDesign.ProLayout.BasicLayout Logo="@("https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg")"
+                                     MenuData="_menuData">
+        <RightContentRender>
+            <AffilateSource.Components.RightContent />
+        </RightContentRender>
+        <ChildContent>
+            @Body
+        </ChildContent>
+        <FooterRender>
+            <FooterView Copyright="2021 Ant Design Blazor" Links="Links"></FooterView>
+        </FooterRender>
+    </AntDesign.ProLayout.BasicLayout>
+    <SettingDrawer />
 
-@code
-{
-    private MenuDataItem[] _menuData = { };
-
-    [Inject] public HttpClient HttpClient { get; set; }
-
-    protected override async Task OnInitializedAsync()
+    @code
     {
+        private MenuDataItem[] _menuData = { };
+
+        [Inject] public HttpClient HttpClient { get; set; }
+
+        protected override async Task OnInitializedAsync()
+        {
         await base.OnInitializedAsync();
         _menuData = await HttpClient.GetFromJsonAsync<MenuDataItem[]>("data/menu.json");
-    }
-
-    public LinkItem[] Links { get; set; } =
-    {
-        new LinkItem
-        {
-            Key = "Ant Design Blazor",
-            Title = "Ant Design Blazor",
-            Href = "https://antblazor.com",
-            BlankTarget = true,
-        },
-        new LinkItem
-        {
-            Key = "github",
-            Title = (RenderFragment)(@<Icon Type="github" />),
-            Href = "https://github.com/ant-design-blazor/ant-design-pro-blazor",
-            BlankTarget = true,
-        },
-        new LinkItem
-        {
-            Key = "Blazor",
-            Title = "Blazor",
-            Href = "https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor?WT.mc_id=DT-MVP-5003987",
-            BlankTarget = true,
         }
+
+        public LinkItem[] Links { get; set; } =
+        {
+    new LinkItem
+    {
+    Key = "Ant Design Blazor",
+    Title = "Ant Design Blazor",
+    Href = "https://antblazor.com",
+    BlankTarget = true,
+    },
+    new LinkItem
+    {
+    Key = "github",
+    Title = (RenderFragment)(@<Icon Type="github" />),
+    Href = "https://github.com/ant-design-blazor/ant-design-pro-blazor",
+    BlankTarget = true,
+    },
+    new LinkItem
+    {
+    Key = "Blazor",
+    Title = "Blazor",
+    Href = "https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor?WT.mc_id=DT-MVP-5003987",
+    BlankTarget = true,
+    }
     };
-}
+    }
+</TelerikRootComponent>*@
+
+
+
+<TelerikRootComponent>
+    <div class="main">
+        @*<div class="top-row px-4">
+        <NavMenu />
+        </div>*@
+        <div class="top-row px-4 auth">
+             <AuthorizeView>
+                <Authorized>
+                    Hello, @context.User.Identity.Name
+                    <a href="/logout">Logout</a>
+                </Authorized>
+                <NotAuthorized>
+                    <a href="/login" class="ml-md-auto">Login</a>
+                </NotAuthorized>
+            </AuthorizeView>
+        </div>
+        <div class="content px-4">
+            <AuthorizeView>
+                <Authorized>
+                   <AntDesign.ProLayout.BasicLayout Logo="@("https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg")"
+                                                     MenuData="_menuData">
+                        <RightContentRender>
+                            <AffilateSource.Components.RightContent />
+                        </RightContentRender>
+                        <ChildContent>
+                            @Body
+                        </ChildContent>
+                        <FooterRender>
+                            <FooterView Copyright="2021 Ant Design Blazor" Links="Links"></FooterView>
+                        </FooterRender>
+                    </AntDesign.ProLayout.BasicLayout>
+                    <SettingDrawer />
+                </Authorized>
+                <NotAuthorized>
+                    @Body
+                </NotAuthorized>
+            </AuthorizeView>
+        </div>
+    </div>
+    @code
+    {
+        private MenuDataItem[] _menuData = { };
+
+        [Inject] public HttpClient HttpClient { get; set; }
+
+        protected override async Task OnInitializedAsync()
+        {
+        await base.OnInitializedAsync();
+        _menuData = await HttpClient.GetFromJsonAsync<MenuDataItem[]>("data/menu.json");
+        }
+
+        public LinkItem[] Links { get; set; } =
+        {
+    new LinkItem
+    {
+    Key = "Ant Design Blazor",
+    Title = "Ant Design Blazor",
+    Href = "https://antblazor.com",
+    BlankTarget = true,
+    },
+    new LinkItem
+    {
+    Key = "github",
+    Title = (RenderFragment)(@<Icon Type="github" />),
+    Href = "https://github.com/ant-design-blazor/ant-design-pro-blazor",
+    BlankTarget = true,
+    },
+    new LinkItem
+    {
+    Key = "Blazor",
+    Title = "Blazor",
+    Href = "https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor?WT.mc_id=DT-MVP-5003987",
+    BlankTarget = true,
+    }
+    };
+    }
 </TelerikRootComponent>

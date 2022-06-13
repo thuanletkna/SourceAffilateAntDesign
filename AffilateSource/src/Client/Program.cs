@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
+using AffilateSource.Client.Model;
 using AffilateSource.Client.Services;
 using AffilateSource.Client.Services.Interface;
 using AffilateSource.Client.Services.Repository;
@@ -11,6 +12,8 @@ using AntDesign.ProLayout;
 using Autofac;
 using Autofac.Core.Activators.Reflection;
 using Autofac.Extensions.DependencyInjection;
+using Blazored.LocalStorage;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -30,6 +33,11 @@ namespace AffilateSource.Client
             builder.Services.Configure<ProSettings>(builder.Configuration.GetSection("ProSettings"));
             builder.Services.AddScoped<PostApiServices>();
             //builder.Services.AddScoped<IStatusService, StatusService>();
+            builder.Services.AddApiAuthorization().AddAccountClaimsPrincipalFactory<CustomUserFactory>();
+            builder.Services.AddBlazoredLocalStorage();
+            builder.Services.AddAuthorizationCore();
+            builder.Services.AddScoped<AuthenticationStateProvider, ApiAuthenticationStateProvider>();
+            builder.Services.AddScoped<IAuthService, AuthService>();
             await builder.Build().RunAsync();
         }
         private static void ConfigureContainer(ContainerBuilder builder)

@@ -1,5 +1,27 @@
+@using AffilateSource.Client.Pages.Account
 @using BasicLayout = AffilateSource.BasicLayout
-<Router AppAssembly="@typeof(Program).Assembly">
+<CascadingAuthenticationState>
+    <Router AppAssembly="@typeof(Program).Assembly">
+        <Found Context="routeData">
+            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(BasicLayout)">
+                <NotAuthorized>
+                    <RedirectToLogin />
+                </NotAuthorized>
+            </AuthorizeRouteView>
+        </Found>
+
+        <NotFound>
+            <CascadingAuthenticationState>
+                <LayoutView Layout="@typeof(BasicLayout)">
+                    <p>Sorry, there's nothing at this address.</p>
+                </LayoutView>
+            </CascadingAuthenticationState>
+        </NotFound>
+    </Router>
+    <AntContainer />
+</CascadingAuthenticationState>
+
+@*<Router AppAssembly="@typeof(Program).Assembly">
     <Found Context="routeData">
         <RouteView RouteData="@routeData" DefaultLayout="@typeof(BasicLayout)" />
     </Found>
@@ -9,5 +31,4 @@
         </LayoutView>
     </NotFound>
 </Router>
-
-<AntContainer />
+<AntContainer />*@

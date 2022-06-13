@@ -1,0 +1,65 @@
+﻿@page "/login"
+@using AffilateSource.Client.Services
+@inject NavigationManager NavigationManager;
+@inject IAuthService AuthService;
+@using AffilateSource.Shared.ViewModel.Users
+@using AntDesign
+@if (ShowErrors)
+{
+    <div class="alert alert-danger">
+        <p>@Error</p>
+    </div>
+}
+<div class="demo-section">
+    <h3 style="text-align: center;margin-bottom: 30px;color: darkcyan;">HVNET</h3>
+    <Form Model="@LoginModel" Class="form"
+          LabelCol="new ColLayoutParam { Span = 8 }"
+          WrapperCol="new ColLayoutParam { Span = 16 }"
+          OnFinish="HandleLogin">
+        <AntDesign.FormItem Label="Tên đăng nhập">
+            <Input @bind-Value="@context.UserName" />
+        </AntDesign.FormItem>
+        <AntDesign.FormItem Label="Mật khẩu">
+            <InputPassword @bind-Value="@context.Password" />
+        </AntDesign.FormItem>
+
+        <AntDesign.FormItem WrapperCol="new ColLayoutParam{ Offset = 8, Span = 16 }">
+            <Button Type="@AntDesign.ButtonType.Primary" HtmlType="submit">
+                Đăng nhập
+            </Button>
+        </AntDesign.FormItem>
+    </Form>
+</div>
+
+@code {
+    private bool ShowErrors;
+    private string Error = "";
+    private LoginRequest LoginModel = new LoginRequest();
+
+    private async Task HandleLogin()
+    {
+        ShowErrors = false;
+
+        var result = await AuthService.Login(LoginModel);
+        if (result.Successful)
+        {
+            NavigationManager.NavigateTo("/",forceLoad: true);
+        }
+        else
+        {
+            ShowErrors = true;
+            Error = result.Error;
+        }
+    }
+}
+<style>
+    .demo-section {
+        margin: 0 auto;
+        padding: 3em;
+        border: 1px solid rgba(20,53,80,0.14);
+        box-shadow: 0 1px 2px 1px rgb(0 0 0 / 8%), 0 3px 6px rgb(0 0 0 / 8%);
+    }
+    .form{
+       max-width: 75%;
+    }
+</style>

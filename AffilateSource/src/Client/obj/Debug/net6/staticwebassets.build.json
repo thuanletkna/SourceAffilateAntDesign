@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "nTGXRDTMM/QWoaRM8fafQcpbG3h+PRxFmjLwcGsUxTs=",
+  "Hash": "idMsmvtRIe0YsnH4OhtdM0HauZe4riU8R1nPtTDYecM=",
   "Source": "AffilateSource.Client",
   "BasePath": "/",
   "Mode": "Root",
@@ -5831,6 +5831,23 @@
       "OriginalItemSpec": "C:\\Users\\Thuan Le\\.nuget\\packages\\antdesign\\0.10.6\\staticwebassets\\less\\upload\\style\\rtl.less"
     },
     {
+      "Identity": "C:\\Users\\Thuan Le\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.authentication\\6.0.5\\staticwebassets\\AuthenticationService.js",
+      "SourceId": "Microsoft.AspNetCore.Components.WebAssembly.Authentication",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\Thuan Le\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.authentication\\6.0.5\\staticwebassets\\",
+      "BasePath": "_content/Microsoft.AspNetCore.Components.WebAssembly.Authentication",
+      "RelativePath": "AuthenticationService.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\Thuan Le\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.authentication\\6.0.5\\staticwebassets\\AuthenticationService.js"
+    },
+    {
       "Identity": "C:\\Users\\Thuan Le\\.nuget\\packages\\telerik.ui.for.blazor\\3.0.0\\staticwebassets\\css\\kendo-theme-bootstrap\\all.css",
       "SourceId": "Telerik.UI.for.Blazor",
       "SourceType": "Package",
@@ -6103,6 +6120,23 @@
       "OriginalItemSpec": "C:\\Users\\Thuan Le\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly\\6.0.0\\build\\net6.0\\blazor.webassembly.js"
     },
     {
+      "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Blazored.LocalStorage.dll",
+      "SourceId": "AffilateSource.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Blazored.LocalStorage.dll",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "BlazorWebAssemblyResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\Thuan Le\\.nuget\\packages\\blazored.localstorage\\4.2.0\\lib\\net6.0\\Blazored.LocalStorage.dll"
+    },
+    {
       "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\dotnet.6.0.5.s7iri0fah9.js",
       "SourceId": "AffilateSource.Client",
       "SourceType": "Computed",
@@ -6236,7 +6270,24 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\Thuan Le\\.nuget\\packages\\microsoft.aspnetcore.authorization\\6.0.0\\lib\\net6.0\\Microsoft.AspNetCore.Authorization.dll"
+      "OriginalItemSpec": "C:\\Users\\Thuan Le\\.nuget\\packages\\microsoft.aspnetcore.authorization\\6.0.5\\lib\\net6.0\\Microsoft.AspNetCore.Authorization.dll"
+    },
+    {
+      "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Authorization.dll",
+      "SourceId": "AffilateSource.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.Authorization.dll",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "BlazorWebAssemblyResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\Thuan Le\\.nuget\\packages\\microsoft.aspnetcore.components.authorization\\6.0.5\\lib\\net6.0\\Microsoft.AspNetCore.Components.Authorization.dll"
     },
     {
       "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.DataAnnotations.Validation.dll",
@@ -6270,7 +6321,7 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\Thuan Le\\.nuget\\packages\\microsoft.aspnetcore.components\\6.0.0\\lib\\net6.0\\Microsoft.AspNetCore.Components.dll"
+      "OriginalItemSpec": "C:\\Users\\Thuan Le\\.nuget\\packages\\microsoft.aspnetcore.components\\6.0.5\\lib\\net6.0\\Microsoft.AspNetCore.Components.dll"
     },
     {
       "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Forms.dll",
@@ -6287,7 +6338,7 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\Thuan Le\\.nuget\\packages\\microsoft.aspnetcore.components.forms\\6.0.0\\lib\\net6.0\\Microsoft.AspNetCore.Components.Forms.dll"
+      "OriginalItemSpec": "C:\\Users\\Thuan Le\\.nuget\\packages\\microsoft.aspnetcore.components.forms\\6.0.5\\lib\\net6.0\\Microsoft.AspNetCore.Components.Forms.dll"
     },
     {
       "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Web.dll",
@@ -6304,7 +6355,24 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\Thuan Le\\.nuget\\packages\\microsoft.aspnetcore.components.web\\6.0.0\\lib\\net6.0\\Microsoft.AspNetCore.Components.Web.dll"
+      "OriginalItemSpec": "C:\\Users\\Thuan Le\\.nuget\\packages\\microsoft.aspnetcore.components.web\\6.0.5\\lib\\net6.0\\Microsoft.AspNetCore.Components.Web.dll"
+    },
+    {
+      "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll",
+      "SourceId": "AffilateSource.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "BlazorWebAssemblyResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\Thuan Le\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.authentication\\6.0.5\\lib\\net6.0\\Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll"
     },
     {
       "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.WebAssembly.dll",
@@ -6355,7 +6423,7 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\Thuan Le\\.nuget\\packages\\microsoft.aspnetcore.metadata\\6.0.0\\lib\\net6.0\\Microsoft.AspNetCore.Metadata.dll"
+      "OriginalItemSpec": "C:\\Users\\Thuan Le\\.nuget\\packages\\microsoft.aspnetcore.metadata\\6.0.5\\lib\\net6.0\\Microsoft.AspNetCore.Metadata.dll"
     },
     {
       "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.CSharp.dll",
@@ -6627,7 +6695,7 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\Thuan Le\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0\\lib\\net6.0\\Microsoft.Extensions.Logging.Abstractions.dll"
+      "OriginalItemSpec": "C:\\Users\\Thuan Le\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.1\\lib\\net6.0\\Microsoft.Extensions.Logging.Abstractions.dll"
     },
     {
       "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.Extensions.Logging.dll",
@@ -6712,7 +6780,7 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\Thuan Le\\.nuget\\packages\\microsoft.jsinterop\\6.0.0\\lib\\net6.0\\Microsoft.JSInterop.dll"
+      "OriginalItemSpec": "C:\\Users\\Thuan Le\\.nuget\\packages\\microsoft.jsinterop\\6.0.5\\lib\\net6.0\\Microsoft.JSInterop.dll"
     },
     {
       "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.JSInterop.WebAssembly.dll",
@@ -7698,7 +7766,7 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\Thuan Le\\.nuget\\packages\\system.io.pipelines\\6.0.0\\lib\\net6.0\\System.IO.Pipelines.dll"
+      "OriginalItemSpec": "C:\\Users\\Thuan Le\\.nuget\\packages\\system.io.pipelines\\6.0.3\\lib\\net6.0\\System.IO.Pipelines.dll"
     },
     {
       "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\System.IO.Pipes.AccessControl.dll",
@@ -9758,6 +9826,23 @@
       "OriginalItemSpec": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\System.Resources.Writer.dll"
     },
     {
+      "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\Debug\\net6\\build-gz\\0TEIxj3K.gz",
+      "SourceId": "AffilateSource.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Authorization.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.AspNetCore.Authorization.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.AspNetCore.Authorization.dll"
+    },
+    {
       "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\Debug\\net6\\build-gz\\0vWy67f5.gz",
       "SourceId": "AffilateSource.Client",
       "SourceType": "Computed",
@@ -9826,6 +9911,23 @@
       "OriginalItemSpec": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\System.Net.WebSockets.Client.dll"
     },
     {
+      "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\Debug\\net6\\build-gz\\1kksWtSN.gz",
+      "SourceId": "AffilateSource.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.Forms.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Forms.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Forms.dll"
+    },
+    {
       "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\Debug\\net6\\build-gz\\1QabkV6w.gz",
       "SourceId": "AffilateSource.Client",
       "SourceType": "Computed",
@@ -9892,6 +9994,23 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\System.Data.dll"
+    },
+    {
+      "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\Debug\\net6\\build-gz\\2yWAsrth.gz",
+      "SourceId": "AffilateSource.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.dll"
     },
     {
       "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\Debug\\net6\\build-gz\\34d72vcb.gz",
@@ -9977,23 +10096,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\System.Reflection.Extensions.dll"
-    },
-    {
-      "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\Debug\\net6\\build-gz\\4a+umIzF.gz",
-      "SourceId": "AffilateSource.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/Microsoft.AspNetCore.Components.dll.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "RelatedAsset": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.dll",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.dll"
     },
     {
       "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\Debug\\net6\\build-gz\\4C+I+K1x.gz",
@@ -10200,6 +10302,23 @@
       "OriginalItemSpec": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Autofac.dll"
     },
     {
+      "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\Debug\\net6\\build-gz\\9CrSXVfX.gz",
+      "SourceId": "AffilateSource.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.JSInterop.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.JSInterop.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.JSInterop.dll"
+    },
+    {
       "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\Debug\\net6\\build-gz\\9gQG2LT1.gz",
       "SourceId": "AffilateSource.Client",
       "SourceType": "Computed",
@@ -10283,23 +10402,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\System.Net.Sockets.dll"
-    },
-    {
-      "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\Debug\\net6\\build-gz\\AmjmnEZ5.gz",
-      "SourceId": "AffilateSource.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/Microsoft.AspNetCore.Metadata.dll.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "RelatedAsset": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.AspNetCore.Metadata.dll",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.AspNetCore.Metadata.dll"
     },
     {
       "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\Debug\\net6\\build-gz\\amwrny3O.gz",
@@ -10744,6 +10846,23 @@
       "OriginalItemSpec": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.Win32.Primitives.dll"
     },
     {
+      "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\Debug\\net6\\build-gz\\dNLPQEi9.gz",
+      "SourceId": "AffilateSource.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/System.IO.Pipelines.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\System.IO.Pipelines.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\System.IO.Pipelines.dll"
+    },
+    {
       "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\Debug\\net6\\build-gz\\dNnEzlCb.gz",
       "SourceId": "AffilateSource.Client",
       "SourceType": "Computed",
@@ -11067,23 +11186,6 @@
       "OriginalItemSpec": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\System.ValueTuple.dll"
     },
     {
-      "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\Debug\\net6\\build-gz\\HnwniszM.gz",
-      "SourceId": "AffilateSource.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/Microsoft.AspNetCore.Authorization.dll.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "RelatedAsset": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.AspNetCore.Authorization.dll",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.AspNetCore.Authorization.dll"
-    },
-    {
       "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\Debug\\net6\\build-gz\\hqesY2B8.gz",
       "SourceId": "AffilateSource.Client",
       "SourceType": "Computed",
@@ -11271,21 +11373,21 @@
       "OriginalItemSpec": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\System.Reflection.Emit.dll"
     },
     {
-      "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\Debug\\net6\\build-gz\\J+JT3wuq.gz",
+      "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\Debug\\net6\\build-gz\\J2+I8GM1.gz",
       "SourceId": "AffilateSource.Client",
       "SourceType": "Computed",
       "ContentRoot": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\",
       "BasePath": "/",
-      "RelativePath": "_framework/Microsoft.AspNetCore.Components.Web.dll.gz",
+      "RelativePath": "_framework/Blazored.LocalStorage.dll.gz",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Alternative",
-      "RelatedAsset": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Web.dll",
+      "RelatedAsset": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Blazored.LocalStorage.dll",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Web.dll"
+      "OriginalItemSpec": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Blazored.LocalStorage.dll"
     },
     {
       "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\Debug\\net6\\build-gz\\jbQg6v2j.gz",
@@ -11815,6 +11917,23 @@
       "OriginalItemSpec": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\System.Diagnostics.Tools.dll"
     },
     {
+      "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\Debug\\net6\\build-gz\\N8Ko9RvE.gz",
+      "SourceId": "AffilateSource.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.Authorization.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Authorization.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Authorization.dll"
+    },
+    {
       "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\Debug\\net6\\build-gz\\NeM1ybHV.gz",
       "SourceId": "AffilateSource.Client",
       "SourceType": "Computed",
@@ -11847,6 +11966,23 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\System.Net.Http.Json.dll"
+    },
+    {
+      "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\Debug\\net6\\build-gz\\Ni9KGjad.gz",
+      "SourceId": "AffilateSource.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Metadata.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.AspNetCore.Metadata.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.AspNetCore.Metadata.dll"
     },
     {
       "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\Debug\\net6\\build-gz\\NOaJom80.gz",
@@ -12019,23 +12155,6 @@
       "OriginalItemSpec": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\System.Net.dll"
     },
     {
-      "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\Debug\\net6\\build-gz\\OkMpo8kb.gz",
-      "SourceId": "AffilateSource.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/Microsoft.Extensions.Logging.Abstractions.dll.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "RelatedAsset": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.Extensions.Logging.Abstractions.dll",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.Extensions.Logging.Abstractions.dll"
-    },
-    {
       "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\Debug\\net6\\build-gz\\oPn9v6ID.gz",
       "SourceId": "AffilateSource.Client",
       "SourceType": "Computed",
@@ -12136,23 +12255,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\System.Text.Encoding.dll"
-    },
-    {
-      "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\Debug\\net6\\build-gz\\pOQih+aY.gz",
-      "SourceId": "AffilateSource.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/Microsoft.AspNetCore.Components.Forms.dll.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "RelatedAsset": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Forms.dll",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Forms.dll"
     },
     {
       "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\Debug\\net6\\build-gz\\pTlTlvKI.gz",
@@ -12427,23 +12529,6 @@
       "OriginalItemSpec": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\System.Net.NameResolution.dll"
     },
     {
-      "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\Debug\\net6\\build-gz\\SJKiG+gw.gz",
-      "SourceId": "AffilateSource.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/System.IO.Pipelines.dll.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "RelatedAsset": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\System.IO.Pipelines.dll",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\System.IO.Pipelines.dll"
-    },
-    {
       "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\Debug\\net6\\build-gz\\SJPY59xt.gz",
       "SourceId": "AffilateSource.Client",
       "SourceType": "Computed",
@@ -12578,6 +12663,23 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.CSharp.dll"
+    },
+    {
+      "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\Debug\\net6\\build-gz\\tu95vrNG.gz",
+      "SourceId": "AffilateSource.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.Extensions.Logging.Abstractions.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.Extensions.Logging.Abstractions.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.Extensions.Logging.Abstractions.dll"
     },
     {
       "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\Debug\\net6\\build-gz\\tVqwOQjx.gz",
@@ -12903,6 +13005,23 @@
       "OriginalItemSpec": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\System.Text.RegularExpressions.dll"
     },
     {
+      "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\Debug\\net6\\build-gz\\vLIQNhxx.gz",
+      "SourceId": "AffilateSource.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.Web.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Web.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Web.dll"
+    },
+    {
       "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\Debug\\net6\\build-gz\\Vp0J2faT.gz",
       "SourceId": "AffilateSource.Client",
       "SourceType": "Computed",
@@ -13054,23 +13173,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\System.Net.ServicePoint.dll"
-    },
-    {
-      "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\Debug\\net6\\build-gz\\X4Xls+tx.gz",
-      "SourceId": "AffilateSource.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/Microsoft.JSInterop.dll.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "RelatedAsset": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.JSInterop.dll",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.JSInterop.dll"
     },
     {
       "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\Debug\\net6\\build-gz\\xBGfk5vN.gz",
@@ -13292,6 +13394,23 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\System.Diagnostics.Contracts.dll"
+    },
+    {
+      "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\Debug\\net6\\build-gz\\ysmF5NhK.gz",
+      "SourceId": "AffilateSource.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\bin\\Debug\\net6\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll"
     },
     {
       "Identity": "D:\\SourceAffilateAntDesignGit\\SourceAffilateAntDesign\\AffilateSource\\src\\Client\\obj\\Debug\\net6\\build-gz\\YsoTUKa+.gz",

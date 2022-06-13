@@ -61,9 +61,21 @@
               "target": "Package",
               "version": "[8.0.0, )"
             },
+            "Blazored.LocalStorage": {
+              "target": "Package",
+              "version": "[4.2.0, )"
+            },
+            "Microsoft.AspNetCore.Components.Authorization": {
+              "target": "Package",
+              "version": "[6.0.5, )"
+            },
             "Microsoft.AspNetCore.Components.WebAssembly": {
               "target": "Package",
               "version": "[6.0.0, )"
+            },
+            "Microsoft.AspNetCore.Components.WebAssembly.Authentication": {
+              "target": "Package",
+              "version": "[6.0.5, )"
             },
             "Microsoft.AspNetCore.Components.WebAssembly.DevServer": {
               "suppressParent": "All",

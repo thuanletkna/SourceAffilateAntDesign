@@ -15,6 +15,7 @@
   </ItemGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)telerik.ui.for.blazor\3.0.0\buildTransitive\Telerik.UI.for.Blazor.props" Condition="Exists('$(NuGetPackageRoot)telerik.ui.for.blazor\3.0.0\buildTransitive\Telerik.UI.for.Blazor.props')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.aspnetcore.components.webassembly.authentication\6.0.5\buildTransitive\Microsoft.AspNetCore.Components.WebAssembly.Authentication.props" Condition="Exists('$(NuGetPackageRoot)microsoft.aspnetcore.components.webassembly.authentication\6.0.5\buildTransitive\Microsoft.AspNetCore.Components.WebAssembly.Authentication.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.aspnetcore.components.webassembly\6.0.0\build\net6.0\Microsoft.AspNetCore.Components.WebAssembly.props" Condition="Exists('$(NuGetPackageRoot)microsoft.aspnetcore.components.webassembly\6.0.0\build\net6.0\Microsoft.AspNetCore.Components.WebAssembly.props')" />
     <Import Project="$(NuGetPackageRoot)antdesign\0.10.6\buildTransitive\AntDesign.props" Condition="Exists('$(NuGetPackageRoot)antdesign\0.10.6\buildTransitive\AntDesign.props')" />
     <Import Project="$(NuGetPackageRoot)antdesign.prolayout\0.10.6\buildTransitive\AntDesign.ProLayout.props" Condition="Exists('$(NuGetPackageRoot)antdesign.prolayout\0.10.6\buildTransitive\AntDesign.ProLayout.props')" />
