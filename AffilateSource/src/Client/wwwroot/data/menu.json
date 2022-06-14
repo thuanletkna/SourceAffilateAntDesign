@@ -62,21 +62,13 @@
     "key": "exception",
     "icon": "exception",
     "children": [
-      {
-        "path": "/exception/403",
-        "name": "Trang chủ",
-        "key": "exception.403"
-      },
+      
       {
         "path": "/contact",
         "name": "Giới thiệu",
         "key": "exception.404"
-      },
-      {
-        "path": "/exception/500",
-        "name": "Liên hệ",
-        "key": "exception.500"
       }
+      
     ]
   },
   {

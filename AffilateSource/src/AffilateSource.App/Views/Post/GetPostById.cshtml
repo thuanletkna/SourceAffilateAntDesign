@@ -61,25 +61,23 @@
                                     @Html.Raw(item.Content)
                                     @if (@item.ProductAffilateName!= null)
                                     {
-                                        <div class="strip_list" style="min-height: 250px;">
+                                        <div class="strip_list" style="min-height: 275px;">
                                             <div class="ribbon_1">
                                                 Popular
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <div class="desc" style="padding-left: 225px;">
-                                                        <div class="thumb_strip" style="width: 200px;height: 200px;">
+                                                    <div class="desc" style="padding-left: 275px;">
+                                                        <div class="thumb_strip" style="width: 250px;height: 225px;">
                                                             <a href="#"><img src="@(Configuration["BackendApiUrl"]+ @item.ImageProducts)" alt=""></a>
                                                         </div>
-                                                        <h3>@item.ProductAffilateName</h3>
-                                                        <div class="type">
-                                                            @item.CategoryName
-                                                        </div>
-                                                        <div class="location">
+                                                        <h3 style="font-size: 30px;">@item.ProductAffilateName</h3>
+                                                        
+                                                        <div class="location" style="margin-bottom: 20px;">
                                                             @item.Description
                                                         </div>
                                                         <ul>
-                                                            <li>Giá bán: @item.ProductAffilatePrice</li>
+                                                            <li font-size: 20px;>Giá bán: <span style="color:red">@item.ProductAffilatePrice VNĐ </span></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -89,12 +87,12 @@
                                                         <div>
                                                             @if (@item.LinkAffilateLazada != null)
                                                             {
-                                                                <a style="width: 261.79px;background-color: #ff008b;color: white;" href="@item.LinkAffilateLazada" class="btn_listing">Xem chi tiết sản phẩm tại Lazada</a>
+                                                                <a style="width: 261.79px;background-color: #ff008b;color: white;margin-bottom: 5px;" href="@item.LinkAffilateLazada" class="btn_listing">Xem chi tiết sản phẩm tại Lazada</a>
 
                                                             }
                                                             @if (@item.LinkAffilateShopee != null)
                                                             {
-                                                                <a style="width: 261.79px;background-color: #f5824c;color: white;" href="@item.LinkAffilateShopee" class="btn_listing">Xem chi tiết sản phẩm tại Shopee</a>
+                                                                <a style="width: 261.79px;background-color: #f5824c;color: white;margin-bottom: 5px;" href="@item.LinkAffilateShopee" class="btn_listing">Xem chi tiết sản phẩm tại Shopee</a>
 
                                                             }
                                                             @if (@item.LinkAffilateOther != null)

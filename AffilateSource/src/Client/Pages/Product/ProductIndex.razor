@@ -1,4 +1,5 @@
-﻿@page "/product"
+﻿@attribute [Authorize]
+@page "/product"
 @using AffilateSource.Client.Services
 @using AffilateSource.Shared.ViewModel.Product
 @inject HttpClient Http

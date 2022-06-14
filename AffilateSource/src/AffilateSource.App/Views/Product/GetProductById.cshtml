@@ -48,11 +48,11 @@
                                     <td>@Model.GetProductById.Price VNĐ</td>
                                 </tr>
                                 <tr>
-                                    <td>Stock Availability</td>
-                                    <td>AVAILABLE</td>
+                                    <td>Danh mục</td>
+                                    <td>@Model.GetProductById.CategoryName</td>
                                 </tr>
                                 <tr>
-                                    <td>Rating</td>
+                                    <td>Đánh giá</td>
                                     <td><span class="rating-bx"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i> </span> </td>
                                 </tr>
                             </table>
@@ -70,7 +70,7 @@
                         <div class="dez-tabs border-tp product-description bg-tabs">
                             <ul class="nav nav-tabs ">
                                 <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#web-design-1"><i class="fa fa-globe"></i> <span class="title-head">Thông tin sản phẩm</span></a></li>
-                                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#developement-1"><i class="fa fa-cog"></i> <span class="title-head"> Đánh giá sản phẩm</span></a></li>
+                                @*<li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#developement-1"><i class="fa fa-cog"></i> <span class="title-head"> Đánh giá sản phẩm</span></a></li>*@
                             </ul>
                             <div class="tab-content">
                                 <div id="web-design-1" class="tab-pane active">
@@ -78,7 +78,7 @@
                                         @Model.GetProductById.Description</p>
                                 </div>
                                 
-                                <div id="developement-1" class="tab-pane">
+                               @* <div id="developement-1" class="tab-pane">
                                     <div id="comments">
                                         <ol class="commentlist">
                                             <li class="comment">
@@ -171,7 +171,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div>*@
                             </div>
                         </div>
                     </div>

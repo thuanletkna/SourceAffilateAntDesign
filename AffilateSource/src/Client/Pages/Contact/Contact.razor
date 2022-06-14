@@ -1,8 +1,10 @@
-﻿@page "/contact"
+﻿@attribute [Authorize]
+@page "/contact"
 @using AffilateSource.Client.Services
 @using AffilateSource.Shared.ViewModel.Contact
 @using AffilateSource.Shared.ViewModel.Post
 @using Telerik.Blazor.Components
+@using Telerik.Blazor.Components.Editor
 @inject HttpClient Http
 @inject PostApiServices postApi
 @inject NavigationManager NavigationManager
@@ -36,17 +38,30 @@
 
 <Modal Title="@("Chỉnh sửa liên hệ - giới thiệu")"
        Visible="@_visibleUpdate"
+       Width="1020"
        OnOk="@HandleOkUpdate"
        OnCancel="@HandleCancelUpdate">
     <Form Loading="loadingUpdate" Model="@modelUpdate"
           OnFinish="OnFinishUpdate"
           OnFinishFailed="OnFinishFailedUpdate"
           @ref="@_formUpdate">
-        <AntDesign.FormItem Label="Giới thiệu">
-            <Input @bind-Value="@context.Content" />
+        <AntDesign.FormItem >
+            <Template>
+                <label for="mail" class="k-label k-form-label">Mô tả giới thiệu:</label>
+                <TelerikEditor Tools="@EditorToolSets.All"
+                               Height="500px"
+                               @bind-Value="@context.Content"></TelerikEditor>
+            </Template>
+            @*<Input @bind-Value="@context.Content" />*@
         </AntDesign.FormItem>
-        <AntDesign.FormItem Label="Giới thiệu ngắn trang chủ">
-            <Input @bind-Value="@context.ContentHome" />
+        <AntDesign.FormItem>
+             <Template>
+                <label for="mail" class="k-label k-form-label">Giới thiệu ngắn trang chủ:</label>
+                <TelerikEditor Tools="@EditorToolSets.All"
+                               Height="300px"
+                               @bind-Value="@context.ContentHome"></TelerikEditor>
+            </Template>
+            @*<Input @bind-Value="@context.ContentHome" />*@
         </AntDesign.FormItem>
         <AntDesign.FormItem Label="Địa chỉ">
             <Input @bind-Value="@context.Address" />
@@ -74,4 +89,5 @@
         background: #fff;
         box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09);
     }
+    
 </style>

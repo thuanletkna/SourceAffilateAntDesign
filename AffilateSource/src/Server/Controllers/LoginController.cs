@@ -55,7 +55,7 @@ namespace AffilateSource.Server.Controllers
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtSecurityKey"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-            var expirys = DateTime.UtcNow.AddSeconds(60);
+            var expirys = DateTime.UtcNow.AddMinutes(60);
 
             var token = new JwtSecurityToken(
                 _configuration["JwtIssuer"],

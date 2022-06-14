@@ -1,4 +1,5 @@
-﻿@using AffilateSource.Client.Services
+﻿@attribute [Authorize]
+@using AffilateSource.Client.Services
 @using AffilateSource.Shared.ViewModel.Category
 @using System.Text.Json
 @using AffilateSource.Shared.ViewModel.Status
@@ -45,8 +46,15 @@ else
         <AntDesign.FormItem Label="Tên danh mục">
             <Input @bind-Value="@context.CategoryName" />
         </AntDesign.FormItem>
-        <AntDesign.FormItem Label="Danh mục cha">
-            <Input @bind-Value="@context.ParentId" />
+        <AntDesign.FormItem>
+            <Text>Danh mục cha</Text>
+            <Select DataSource="@categorySelect"
+                    @bind-Value="@context.ParentId"
+                    LabelName="@nameof(CategoryQuickVM.CategoryName)"
+                    ValueName="@nameof(CategoryQuickVM.Id)"
+                    Placeholder="Chọn danh mục cha"
+                    AllowClear>
+            </Select>
         </AntDesign.FormItem>
         <AntDesign.FormItem Label="Thứ tự hiển thị">
             <Input @bind-Value="@context.SortOrder" />
@@ -71,6 +79,7 @@ else
 
 @code {
     [Parameter] public int EmployeeId { get; set; }
+    public List<CategoryQuickVM> categorySelect { get; set; } = new List<CategoryQuickVM>();
     public List<StatusVm> StatusViewModel { get; set; } = new List<StatusVm>();
     public List<CategoryQuickVM> ProjectsData { get; set; }
     protected override async Task OnParametersSetAsync()
@@ -88,6 +97,7 @@ else
     {
         modelUpdate = await postApi.GetCategoryDetailByIdAdmin("Categories", "GetCategoryDetailById", id);  // get thông tin chi tiết của 1 danh mục
         StatusViewModel = await postApi.GetDataSelectStatus("Status", "GetListSatatus");
+        categorySelect = await postApi.GetListCategories("Categories", "GetCategory");
         _visibleUpdate = true;
         return modelUpdate;
     }

@@ -1,4 +1,5 @@
-﻿@page "/product/update-product/{id:int}"
+﻿@attribute [Authorize]
+@page "/product/update-product/{id:int}"
 @using AffilateSource.Client.Services
 @using AffilateSource.Shared.ViewModel
 @using AffilateSource.Shared.ViewModel.Filter

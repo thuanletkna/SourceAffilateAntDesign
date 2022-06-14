@@ -1,3 +1,4 @@
+﻿@inject NavigationManager NavigationManager
 @using AffilateSource.Client.Pages.Account
 @using BasicLayout = AffilateSource.BasicLayout
 <CascadingAuthenticationState>
@@ -5,8 +6,14 @@
         <Found Context="routeData">
             <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(BasicLayout)">
                 <NotAuthorized>
-                    <RedirectToLogin />
+                    @{
+
+                        NavigationManager.NavigateTo("login");
+                    }
                 </NotAuthorized>
+                <Authorizing>
+                    <p>Vui lòng đăng nhập.</p>
+                </Authorizing>
             </AuthorizeRouteView>
         </Found>
 
@@ -23,12 +30,12 @@
 
 @*<Router AppAssembly="@typeof(Program).Assembly">
     <Found Context="routeData">
-        <RouteView RouteData="@routeData" DefaultLayout="@typeof(BasicLayout)" />
+    <RouteView RouteData="@routeData" DefaultLayout="@typeof(BasicLayout)" />
     </Found>
     <NotFound>
-        <LayoutView Layout="@typeof(BasicLayout)">
-            <p>Sorry, there's nothing at this address.</p>
-        </LayoutView>
+    <LayoutView Layout="@typeof(BasicLayout)">
+    <p>Sorry, there's nothing at this address.</p>
+    </LayoutView>
     </NotFound>
-</Router>
-<AntContainer />*@
+    </Router>
+    <AntContainer />*@

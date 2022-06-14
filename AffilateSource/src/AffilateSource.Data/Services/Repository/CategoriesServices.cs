@@ -211,10 +211,7 @@ namespace AffilateSource.Data.Services.Repository
                 ObjParm.Add("@Id", objEmp.Id);
                 ObjParm.Add("@CategoryName", objEmp.CategoryName);
                 ObjParm.Add("@ParentId", objEmp.ParentId);
-                if (!string.IsNullOrEmpty(objEmp.SeoAlias))
-                {
-                    objEmp.SeoAlias = TextHelper.ToUnsignString(objEmp.CategoryName);
-                }
+               
                 ObjParm.Add("@SeoAlias", objEmp.SeoAlias);
                 ObjParm.Add("@SortOrder", objEmp.SortOrder);
                 ObjParm.Add("@StatusId", objEmp.StatusId);
@@ -223,6 +220,10 @@ namespace AffilateSource.Data.Services.Repository
                     objEmp.Level = 2;
                 }
                 ObjParm.Add("@Level", objEmp.Level);
+                if (!string.IsNullOrEmpty(objEmp.SeoAlias) && objEmp.Level > 1)
+                {
+                    objEmp.SeoAlias = TextHelper.ToUnsignString(objEmp.CategoryName);
+                }
                 await conn.ExecuteAsync("[CATEGORIES_update]", ObjParm, commandType: CommandType.StoredProcedure);
                 conn.Close();
                 return objEmp;
