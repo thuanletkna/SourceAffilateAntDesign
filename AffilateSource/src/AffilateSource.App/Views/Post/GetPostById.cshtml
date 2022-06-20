@@ -25,7 +25,7 @@
         <div class="container">
             <ul class="list-inline">
                 @*<li><a href="javascript:void(0);">Home</a></li>
-                    <li>Blog single with left sidebar</li>*@
+                <li>Blog single with left sidebar</li>*@
             </ul>
         </div>
     </div>
@@ -47,7 +47,7 @@
                         <div class="dez-post-meta m-b20">
                             <ul>
                                 <li class="post-date"> <i class="far fa-calendar-alt"></i><strong>@Model.GetPostById.CreateDate</strong> </li>
-                                <li class="post-author"><i class="fa fa-user"></i>Đăng bởi <a href="javascript:void(0);">@Model.GetPostById.FirstName &nbsp; @Model.GetPostById.LastName</a> </li>
+                                @*<li class="post-author"><i class="fa fa-user"></i>Đăng bởi <a href="javascript:void(0);">@Model.GetPostById.FirstName &nbsp; @Model.GetPostById.LastName</a> </li>*@
                                 <li class="post-comment"><i class="fa fa-comments"></i> <a href="javascript:void(0);">0 Comments</a> </li>
                             </ul>
                         </div>
@@ -59,7 +59,7 @@
                             {
                                 <p>
                                     @Html.Raw(item.Content)
-                                    @if (@item.ProductAffilateName!= null)
+                                    @if (@item.ProductAffilateName != null)
                                     {
                                         <div class="strip_list" style="min-height: 275px;">
                                             <div class="ribbon_1">
@@ -72,7 +72,7 @@
                                                             <a href="#"><img src="@(Configuration["BackendApiUrl"]+ @item.ImageProducts)" alt=""></a>
                                                         </div>
                                                         <h3 style="font-size: 30px;">@item.ProductAffilateName</h3>
-                                                        
+
                                                         <div class="location" style="margin-bottom: 20px;">
                                                             @item.Description
                                                         </div>
@@ -97,29 +97,29 @@
                                                             }
                                                             @if (@item.LinkAffilateOther != null)
                                                             {
-                                                                <a style="width: 261.79px;background-color: #1fa65d;color: white;" href="@item.LinkAffilateOther" class="btn_listing">Xem chi tiết sản phẩm tại Tiki</a>
+                                                                <a style="width: 261.79px;background-color: #1fa65d;color: white;" href="@item.LinkAffilateOther" class="btn_listing">Xem chi tiết sản phẩm tại shop</a>
 
                                                             }
                                                             @*@if(@item.LinkAffilateOther!=null)
-                                                                {
-                                                                <a onclick="onHtmlClick('Pizza', 1)" class="btn_listing">View on Map</a>
-                                                                }*@
+                                                    {
+                                                    <a onclick="onHtmlClick('Pizza', 1)" class="btn_listing">View on Map</a>
+                                                    }*@
                                                             @*<a href="detail_page.html" class="btn_1">View Menu</a>*@
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div><!-- End row-->
-                                </div>
+                                        </div>
                                     }
 
                                 </p>
                             }
                         </div>
-                        <div class="dez-post-tags clear">
+                       @* <div class="dez-post-tags clear">
                             <div class="post-tags"> <a href="javascript:void(0);">Child </a> <a href="javascript:void(0);">Eduction </a> <a href="javascript:void(0);">Money </a> <a href="javascript:void(0);">Resturent </a> </div>
-                        </div>
+                        </div>*@
                     </div>
-                    
+
                     <!-- blog END -->
                 </div>
                 <!-- Left part END -->
